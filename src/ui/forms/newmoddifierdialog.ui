@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewModdifierDialog</class>
+ <widget class="QDialog" name="NewModdifierDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="5" column="1">
+    <widget class="QPushButton" name="addB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <layout class="QHBoxLayout" name="typeLayout">
+     <item>
+      <widget class="QLabel" name="typeLabel">
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="typeCombo">
+       <item>
+        <property name="text">
+         <string>Health</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Mana</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Stats</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Haste</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dodge</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Damage</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Undetect</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dualwield</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Resistance</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Unlock</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Attitude</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Flag</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="1">
+    <layout class="QHBoxLayout" name="attrLayout">
+     <item>
+      <widget class="QLabel" name="attrLabel">
+       <property name="text">
+        <string>Attribute</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="attrCombo"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="attrValueLabel">
+       <property name="text">
+        <string>Value</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="attrValueEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addAttrB">
+       <property name="text">
+        <string>Add</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="1">
+    <widget class="QListWidget" name="attrsList"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

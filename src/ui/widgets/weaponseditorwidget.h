@@ -1,0 +1,63 @@
+/*
+ * weaponseditorwidget.h
+ *
+ * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+#ifndef WEAPONSEDITORWIDGET_H
+#define WEAPONSEDITORWIDGET_H
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+#include <QWidget>
+#include <QMessageBox>
+
+#include "src/core/edit/weaponseditor.h"
+#include "src/core/data/object/modifier.h"
+#include "newmoddifierdialog.h"
+
+using namespace std;
+
+namespace Ui
+{
+class WeaponsEditorWidget;
+}
+/**
+ * @brief Class for widget of weapon editor
+ */
+class WeaponsEditorWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent = 0);
+    ~WeaponsEditorWidget();
+    NewModdifierDialog* getNMDialog();
+
+private:
+    Ui::WeaponsEditorWidget *ui;
+    WeaponsEditor *editor;
+    NewModdifierDialog *newModifier;
+
+private slots:
+    void on_addB_clicked();
+    void on_addBonusB_clicked();
+    void modifierAdded(Modifier *m);
+};
+
+#endif // WEAPONSEDITORWIDGET_H

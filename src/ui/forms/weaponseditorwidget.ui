@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WeaponsEditorWidget</class>
+ <widget class="QWidget" name="WeaponsEditorWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>606</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="7" column="1" colspan="11">
+    <widget class="QListWidget" name="bonusesList"/>
+   </item>
+   <item row="8" column="9" colspan="2">
+    <widget class="QLabel" name="effectsHitLabel">
+     <property name="text">
+      <string>Effects-hit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="4">
+    <widget class="QComboBox" name="spritesheetCombo"/>
+   </item>
+   <item row="8" column="7">
+    <widget class="QPushButton" name="addEffectEqB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2">
+    <widget class="QLabel" name="bonusesLabel">
+     <property name="text">
+      <string>Bonuses</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="typeLabel">
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="8">
+    <widget class="QLabel" name="materialLabel">
+     <property name="text">
+      <string>Material</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="spritesheetLabel">
+     <property name="text">
+      <string>Spritesheet</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="4">
+    <widget class="QComboBox" name="typeCombo">
+     <item>
+      <property name="text">
+       <string>Dagger</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sword</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Axe</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mace</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Spear</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bow</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="9">
+    <widget class="QSpinBox" name="levelEdit"/>
+   </item>
+   <item row="5" column="9" colspan="3">
+    <widget class="QComboBox" name="iconCombo"/>
+   </item>
+   <item row="8" column="11">
+    <widget class="QPushButton" name="addEffectHitB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="8">
+    <widget class="QLabel" name="iconLabel">
+     <property name="text">
+      <string>Icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="10">
+    <widget class="QLabel" name="valueLabel">
+     <property name="text">
+      <string>Value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="9">
+    <widget class="QSpinBox" name="dmgMinEdit"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="idLabel">
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="9" colspan="3">
+    <widget class="QComboBox" name="materialCombo">
+     <item>
+      <property name="text">
+       <string>Wood</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Iron</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Steel</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Nephrite</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="9" column="9" colspan="3">
+    <widget class="QListWidget" name="effectsHitList"/>
+   </item>
+   <item row="6" column="11">
+    <widget class="QPushButton" name="addBonusB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
+    <widget class="QLabel" name="levelLabel">
+     <property name="text">
+      <string>Level</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="11">
+    <widget class="QSpinBox" name="valueEdit"/>
+   </item>
+   <item row="10" column="11">
+    <widget class="QPushButton" name="addB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1" colspan="7">
+    <widget class="QListWidget" name="effectsEqList"/>
+   </item>
+   <item row="8" column="1" colspan="2">
+    <widget class="QLabel" name="effectsEqLabel">
+     <property name="text">
+      <string>Effects-equip</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="4">
+    <widget class="QLineEdit" name="idEdit"/>
+   </item>
+   <item row="1" column="8">
+    <widget class="QLabel" name="dmgMinLabel">
+     <property name="text">
+      <string>Damage min</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="10">
+    <widget class="QLabel" name="dmgMaxLabel">
+     <property name="text">
+      <string>Damage max</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="11">
+    <widget class="QSpinBox" name="dmgMaxEdit"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
