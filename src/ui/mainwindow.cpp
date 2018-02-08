@@ -136,7 +136,8 @@ void MainWindow::on_actionOpen_module_triggered()
         weWidget = new WeaponsEditorWidget(editor->getItemEditor()->getWeaponsEditor(), this);
         setModuleTree(editor);
         modInfo = new ModuleInfoWidget(editor->getOpenModule(), this);
-        ui->workspace->insertTab(0, modInfo, "Module");
+        ui->workspace->removeTab(0); //remove welcome tab
+        ui->workspace->addTab(modInfo, "Module");
     }
     catch(const char* msg)
     {
@@ -161,9 +162,21 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
     QStandardItem *item = model->itemFromIndex(index);
 
     QWidget *widgetToSet = getEditorWidget(item->text().toStdString());
+    ui->workspace->removeTab(0); //remove module info tab
     ui->workspace->addTab(widgetToSet, "Editor");
 
     BaseEditor* editor = getBaseEditor(item->text().toStdString());
+    activeEditor = editor;
     activeSource = new QPlainTextEdit(QString::fromStdString(editor->getBaseSource()));
     ui->workspace->addTab(activeSource, "Source");
+}
+/**
+ * @brief MainWindow::sourceUpdate Updates source tab
+ */
+void MainWindow::updateSource()
+{
+    //activeSource = new QPlainTextEdit();
+    QPlainTextEdit* sourceTab = (QPlainTextEdit*)ui->workspace->widget(1);
+    sourceTab->clear();
+    sourceTab->insertPlainText(QString::fromStdString(activeEditor->getBaseSource()));
 }

@@ -31,8 +31,8 @@ ModuleInfoWidget::ModuleInfoWidget(Module* module, QWidget *parent) :
     ui->setupUi(this);
 
     ui->moduleLabel->setText(QString::fromStdString(module->getModName()));
-    ui->infoLabel->setText(QString::fromStdString(module->getModInfo()));
-    ui->engineVerLabel->setText(QString::fromStdString(module->getEngineVer()));
+    ui->infoVal->setText(QString::fromStdString(module->getModInfo()));
+    ui->engineVerVal->setText(QString::fromStdString(module->getEngineVer()));
 }
 /**
  * @brief ModuleInfoWidget::~ModuleInfoWidget Module info destcructor

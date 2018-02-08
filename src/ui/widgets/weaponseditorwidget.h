@@ -1,7 +1,7 @@
 /*
  * weaponseditorwidget.h
  *
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ namespace Ui
 class WeaponsEditorWidget;
 }
 /**
- * @brief Class for widget of weapon editor
+ * @brief Class for widget of weapons editor
  */
 class WeaponsEditorWidget : public QWidget
 {
@@ -48,6 +48,9 @@ public:
     explicit WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent = 0);
     ~WeaponsEditorWidget();
     NewModdifierDialog* getNMDialog();
+
+signals:
+    void itemAdded();
 
 private:
     Ui::WeaponsEditorWidget *ui;

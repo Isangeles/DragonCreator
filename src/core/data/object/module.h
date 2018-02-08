@@ -42,6 +42,10 @@ public:
     string getEngineVer();
 private:
     string modRoot;
+    string confPath;
+    string name;
+    string info;
+    string engineVer;
     bool isValidDir(string path);
 };
 

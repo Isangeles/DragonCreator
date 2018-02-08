@@ -21,53 +21,6 @@
 const string TextReader::COMMENT_PREFIX = "#";
 const string TextReader::ENDL_CHAR = ";";
 /**
- * @brief Text reader constructor
- */
-TextReader::TextReader()
-{
-}
-/**
- * @brief Text reader constructor, creates reader for specified file
- * @param pathToFile Path to file to read
- * @throws Exception if no such file was found
- */
-TextReader::TextReader(string pathToFile)
-{
-    fileS = new ifstream(pathToFile);
-    if(!fileS->is_open())
-        throw "No such file!";
-}
-/**
- * @brief TextReader::getText Returns text with specified ID from opened file
- * @param textId Desired text ID
- * @return String with text
- * @throws Exception if no file is opened
- */
-string TextReader::getText(string textId)
-{
-    if(!fileS->is_open())
-        throw "No file open!";
-    else
-    {
-        string line;
-        while(getline(*fileS, line))
-        {
-            if(line.compare(0, COMMENT_PREFIX.size(), COMMENT_PREFIX))
-            {
-                if(!line.compare(0, textId.size(), textId))
-                {
-                    vector<string> lineL = getListFromLine(line, ':');
-                    string text = lineL.at(1);
-                    if(!text.compare(text.size()-1, 1, ENDL_CHAR)) //removes end line char
-                        text.pop_back();
-                    return text;
-                }
-            }
-        }
-    }
-    return "No text with such ID";
-}
-/**
  * @brief TextReader::getListFromLine Splits specified line by specified delimiter to list
  * @param line String with text line
  * @param delimeter Delimiter
@@ -91,4 +44,60 @@ const vector<string> TextReader::getListFromLine(const string& line, const char&
     if(buff != "")
         list.push_back(buff);
     return list;
+}
+
+/**
+ * @brief Text reader constructor, creates reader for specified file
+ * @param pathToFile Path to file to read
+ * @throws Exception if no such file was found
+ */
+TextReader::TextReader(string pathToFile)
+{
+    fileS = new ifstream(pathToFile);
+    if(!fileS->is_open())
+        throw runtime_error("No such file!");
+}
+/**
+ * @brief TextReader::getText Returns text with specified ID from opened file
+ * @param textId Desired text ID
+ * @return String with text
+ * @throws Exception if no file is opened
+ */
+string TextReader::getText(string textId)
+{
+    if(!fileS->is_open())
+        throw runtime_error("No file open!");
+    else
+    {
+        string line;
+        while(getline(*fileS, line))
+        {
+            if(line.compare(0, COMMENT_PREFIX.size(), COMMENT_PREFIX))
+            {
+                if(!line.compare(0, textId.size(), textId))
+                {
+                    vector<string> lineL = getListFromLine(line, ':');
+                    string text = lineL.at(1);
+                    if(!text.compare(text.size()-1, 1, ENDL_CHAR)) //removes end line char
+                        text.pop_back();
+                    return text;
+                }
+            }
+        }
+    }
+    return "No text with such ID";
+}
+/**
+ * @brief TextReader::close Closes open file
+ * @return Ture if file was successfully closed, false if file was not open
+ */
+bool TextReader::close()
+{
+    if(fileS->is_open())
+    {
+        fileS->close();
+        return true;
+    }
+    else
+        return false;
 }

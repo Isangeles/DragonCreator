@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
-    <height>595</height>
+    <width>647</width>
+    <height>627</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,13 @@
     </widget>
    </item>
    <item row="5" column="2" colspan="4">
-    <widget class="QComboBox" name="spritesheetCombo"/>
+    <widget class="QComboBox" name="spritesheetCombo">
+     <item>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item row="8" column="7">
     <widget class="QPushButton" name="addEffectEqB">
@@ -106,7 +112,13 @@
     <widget class="QSpinBox" name="levelEdit"/>
    </item>
    <item row="5" column="9" colspan="3">
-    <widget class="QComboBox" name="iconCombo"/>
+    <widget class="QComboBox" name="iconCombo">
+     <item>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item row="8" column="11">
     <widget class="QPushButton" name="addEffectHitB">

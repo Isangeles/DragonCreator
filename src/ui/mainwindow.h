@@ -58,7 +58,7 @@ private:
     Ui::MainWindow *ui;
     ModuleEditor *editor;
 
-    QWidget *activeEditor;
+    BaseEditor *activeEditor;
     QPlainTextEdit *activeSource;
 
     WelcomeWidget *welcomeScreen;
@@ -74,6 +74,7 @@ private slots:
     void on_actionOpen_module_triggered();
     void on_actionClose_triggered();
     void on_moduleTree_clicked(const QModelIndex &index);
+    void updateSource();
 };
 
 #endif // MAINWINDOW_H

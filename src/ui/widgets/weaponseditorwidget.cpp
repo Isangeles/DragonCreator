@@ -31,9 +31,7 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
     ui->setupUi(this);
     this->editor = editor;
     newModifier = new NewModdifierDialog(this);
-    //bool connResult = QObject::connect(newModifier, SIGNAL(add()), this, SLOT(modifierAdded())); //TODO conncet new modifier dialog to widget
-    //emit newModifier->add();
-    //cout << connResult << endl;
+    QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(updateSource()));
 }
 /**
  * @brief WeaponsEditorWidget::~WeaponsEditorWidget Weapon editor widget destructor
@@ -69,8 +67,12 @@ void WeaponsEditorWidget::on_addB_clicked()
    Modifier mod(ModifierType::HEALTH, new map<string, string>);
    modifiers->push_back(mod);
 
+   //TODO translate messages
    if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, modifiers))
+   {
+       emit itemAdded();
        QMessageBox::information(this, "Succes", "Items successfully added");
+   }
    else
        QMessageBox::warning(this, "Error", "Fail to add item");
 }

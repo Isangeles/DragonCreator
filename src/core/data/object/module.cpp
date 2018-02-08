@@ -26,7 +26,16 @@
 Module::Module(string modulePath)
 {
     if(isValidDir(modulePath))
+    {
         modRoot = modulePath;
+        confPath = modRoot + "/" + Engine::MOD_CONF_NAME;
+
+        TextReader read(confPath);
+        name = read.getText("name");
+        info = read.getText("info");
+        engineVer = read.getText("engine_ver");
+        read.close();
+    }
     else
         throw std::runtime_error("Not a game module direcotry!");
 }
@@ -52,7 +61,7 @@ string Module::getItemsPath()
  */
 string Module::getModName()
 {
-    return ""; //TODO module name
+    return name;
 }
 /**
  * @brief Module::getModInfo Returns module info
@@ -60,7 +69,7 @@ string Module::getModName()
  */
 string Module::getModInfo()
 {
-    return ""; //TODO module info
+    return info;
 }
 /**
  * @brief Module::getEngineVer Returns engine version required by this module
@@ -68,7 +77,7 @@ string Module::getModInfo()
  */
 string Module::getEngineVer()
 {
-    return ""; //TODO engine version
+    return engineVer;
 }
 /**
  * @brief ModuleEditor::isValidDir Checks if specified directory is valid module directory
@@ -76,16 +85,26 @@ string Module::getEngineVer()
  */
 bool Module::isValidDir(string path)
 {
-    string modConfPath = path + "/" + Engine::MOD_CONF_NAME;
-    ifstream modConfS(modConfPath);
+    string conf = path + "/" + Engine::MOD_CONF_NAME;
+    ifstream modConfS(conf);
     if(modConfS.is_open())
     {
-        TextReader reader(modConfPath);
-        string modVer = reader.getText("engine_ver");
-        if(!modVer.compare(0, modVer.size(), Config::getEngineVer()))
-            return true;
-        else
+        try
+        {
+            TextReader reader(conf);
+            string modVer = reader.getText("engine_ver");
+            reader.close();
+
+            if(!modVer.compare(0, modVer.size(), Config::getEngineVer()))
+                return true;
+            else
+                return false;
+        }
+        catch(runtime_error e)
+        {
+            cerr << "module_directory_validation_error-msg//" << e.what() << endl;
             return false;
+        }
     }
     else
         return false;
