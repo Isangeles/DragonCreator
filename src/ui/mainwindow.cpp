@@ -175,7 +175,6 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
  */
 void MainWindow::updateSource()
 {
-    //activeSource = new QPlainTextEdit();
     QPlainTextEdit* sourceTab = (QPlainTextEdit*)ui->workspace->widget(1);
     sourceTab->clear();
     sourceTab->insertPlainText(QString::fromStdString(activeEditor->getBaseSource()));

@@ -19,6 +19,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <iostream>
+#include <unistd.h>
+
 #include <QMainWindow>
 #include <QDesktopWidget>
 #include <QFontDatabase>
@@ -31,8 +34,7 @@
 #include <QStandardItem>
 #include <QPlainTextEdit>
 
-#include <iostream>
-#include <unistd.h>
+#include <zlib.h>
 
 #include "src/core/moduleeditor.h"
 #include "widgets/weaponseditorwidget.h"

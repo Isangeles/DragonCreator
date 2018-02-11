@@ -1,6 +1,7 @@
 /*
+ * weaponseditor.h
  *
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,6 +26,7 @@
 #include "src/core/data/object/item/weapon.h"
 #include "src/core/data/object/modifier.h"
 #include "src/core/data/dconnector.h"
+#include "zip/zipeditor.h"
 
 using namespace std;
 /**
@@ -33,7 +35,7 @@ using namespace std;
 class WeaponsEditor : public BaseEditor
 {
 public:
-    WeaponsEditor(string pathToBase);
+    WeaponsEditor(string pathToBase, ZipEditor *gBase);
     ~WeaponsEditor();
     string getBaseSource();
     bool newWeapon(string id, int level, string type, string material, int value, int damageMin, int damageMax,
@@ -43,6 +45,7 @@ private:
     Weapon *getEditedWeapon(); //UNUSED
     string basePath;
     Weapon *editedWeapon;
+    ZipEditor *gData;
 };
 
 #endif // WEAPONSEDITOR_H

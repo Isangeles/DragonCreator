@@ -22,7 +22,7 @@
  * @brief WeaponsEditor::WeaponsEditor Weapons editor constructor
  * @param pathToBase Path to weapons base
  */
-WeaponsEditor::WeaponsEditor(string pathToBase)
+WeaponsEditor::WeaponsEditor(string pathToBase, ZipEditor *gBase)
 {
     basePath = pathToBase;
 }

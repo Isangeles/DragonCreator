@@ -26,59 +26,63 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += static
 
+INCLUDEPATH += lib/quazip
+
 SOURCES += \
-    src/core/main.cpp \
-    src/ui/mainwindow.cpp \
-    src/core/moduleeditor.cpp \
+    src/core/data/object/item/weapon.cpp \
+    src/core/data/object/modifier.cpp \
+    src/core/data/object/module.cpp \
+    src/core/data/dconnector.cpp \
+    src/core/edit/xml/parser/itemparser.cpp \
+    src/core/edit/xml/parser/modifierparser.cpp \
+    src/core/edit/xml/qxmleditor.cpp \
+    src/core/edit/zip/zipeditor.cpp \
+    src/core/edit/baseeditor.cpp \
     src/core/edit/itemeditor.cpp \
+    src/core/edit/weaponseditor.cpp \
     src/core/config.cpp \
+    src/core/main.cpp \
+    src/core/moduleeditor.cpp \
+    src/ui/widgets/moduleinfowidget.cpp \
+    src/ui/widgets/newmoddifierdialog.cpp \
+    src/ui/widgets/weaponseditorwidget.cpp \
+    src/ui/widgets/welcomewidget.cpp \
+    src/ui/lang.cpp \
+    src/ui/mainwindow.cpp \
     src/util/text/textreader.cpp \
     src/util/engine.cpp \
-    src/core/edit/weaponseditor.cpp \
-    src/ui/widgets/weaponseditorwidget.cpp \
-    src/core/data/object/item/weapon.cpp \
-    src/core/data/dconnector.cpp \
-    src/core/edit/xml/qxmleditor.cpp \
-    src/core/edit/xml/parser/itemparser.cpp \
-    src/core/data/object/modifier.cpp \
-    src/core/edit/xml/parser/modifierparser.cpp \
-    src/core/edit/baseeditor.cpp \
-    src/ui/widgets/newmoddifierdialog.cpp \
-    src/util/modifierutils.cpp \
-    src/ui/lang.cpp \
-    src/ui/widgets/welcomewidget.cpp \
-    src/ui/widgets/moduleinfowidget.cpp \
-    src/core/data/object/module.cpp
+    src/util/modifierutils.cpp
 
 HEADERS += \
-    src/ui/mainwindow.h \
-    src/core/moduleeditor.h \
+    src/core/data/object/item/weapon.h \
+    src/core/data/object/modifier.h \
+    src/core/data/object/module.h \
+    src/core/data/dconnector.h \
+    src/core/edit/xml/parser/itemparser.h \
+    src/core/edit/xml/parser/modifierparser.h \
+    src/core/edit/xml/qxmleditor.h \
+    src/core/edit/zip/zipeditor.h \
+    src/core/edit/baseeditor.h \
     src/core/edit/itemeditor.h \
+    src/core/edit/weaponseditor.h \
     src/core/config.h \
+    src/core/moduleeditor.h \
+    src/ui/widgets/moduleinfowidget.h \
+    src/ui/widgets/newmoddifierdialog.h \
+    src/ui/widgets/weaponseditorwidget.h \
+    src/ui/widgets/welcomewidget.h \
+    src/ui/lang.h \
+    src/ui/mainwindow.h \
     src/util/text/textreader.h \
     src/util/engine.h \
-    src/core/edit/weaponseditor.h \
-    src/ui/widgets/weaponseditorwidget.h \
-    src/core/data/object/item/weapon.h \
-    src/core/data/dconnector.h \
-    src/core/edit/xml/qxmleditor.h \
-    src/core/edit/xml/parser/itemparser.h \
-    src/core/data/object/modifier.h \
-    src/core/edit/xml/parser/modifierparser.h \
-    src/core/edit/baseeditor.h \
-    src/ui/widgets/newmoddifierdialog.h \
-    src/util/modifierutils.h \
-    src/ui/lang.h \
-    src/ui/widgets/welcomewidget.h \
-    src/ui/widgets/moduleinfowidget.h \
-    src/core/data/object/module.h
+    src/util/modifierutils.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
-    src/ui/forms/weaponseditorwidget.ui \
+    src/ui/forms/moduleinfowidget.ui \
     src/ui/forms/newmoddifierdialog.ui \
-    src/ui/forms/welcomewidget.ui \
-    src/ui/forms/moduleinfowidget.ui
+    src/ui/forms/weaponseditorwidget.ui \
+    src/ui/forms/welcomewidget.ui
 
 SUBDIRS += \
     DragonCreator.pro

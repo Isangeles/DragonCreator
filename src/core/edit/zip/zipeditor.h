@@ -1,7 +1,7 @@
 /*
- * baseeditor.h
+ * zipeditor.h
  *
- * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,27 +17,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef BASEEDITOR_H
-#define BASEEDITOR_H
+#ifndef ZIPEDITOR_H
+#define ZIPEDITOR_H
 
 #include <iostream>
-#include <vector>
 
-#include "zip/zipeditor.h"
+#include <quazip.h>
 
 using namespace std;
 /**
- * @brief Abstract class for editors
+ * @brief Class for reading and editing ZIP archives
+ * Uses quazip library
  */
-class BaseEditor
+class ZipEditor
 {
 public:
-    BaseEditor(string pathToBase, ZipEditor *gData) = 0;
-    virtual string getBaseSource() = 0;
-    //virtual vector<BaseEditor> getChildEditors() = 0;
-protected:
-    BaseEditor();
-    string pathToBase;
+    ZipEditor(string pathToZip);
+    ~ZipEditor();
+    bool isOpen();
+    vector<string> getFilesNamesIn(string zipPath);
+
+private:
+    QuaZip *zip;
 };
 
-#endif // BASEEDITOR_H
+#endif // ZIPEDITOR_H
