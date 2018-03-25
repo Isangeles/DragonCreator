@@ -32,7 +32,7 @@ using namespace std;
 class BaseEditor
 {
 public:
-    BaseEditor(string pathToBase, ZipEditor *gData) = 0;
+    BaseEditor(string pathToBase, ZipEditor *gData);
     virtual string getBaseSource() = 0;
     //virtual vector<BaseEditor> getChildEditors() = 0;
 protected:

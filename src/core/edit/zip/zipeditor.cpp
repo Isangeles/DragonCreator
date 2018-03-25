@@ -24,16 +24,16 @@
  */
 ZipEditor::ZipEditor(string pathToZip)
 {
-    zip = new QuaZip(QString::fromStdString(pathToZip));
-    if(!zip->open(QuaZip::mdNotOpen))
-        throw runtime_error("zip not found in:" + pathToZip);
+//    zip = new QuaZip(QString::fromStdString(pathToZip));
+//    if(!zip->open(QuaZip::mdNotOpen))
+//        throw runtime_error("zip not found in:" + pathToZip);
 }
 /**
  * @brief ZipEditor::~ZipEditor Zip editor destructor
  */
 ZipEditor::~ZipEditor()
 {
-    delete zip;
+//    delete zip;
 }
 /**
  * @brief ZipEditor::getFilesNamesIn Returns list with names of all files in specified directory inside open zip
@@ -50,9 +50,9 @@ vector<string> ZipEditor::getFilesNamesIn(string zipPath)
  * @return True if zip archive is open and ready to edit, false otherwise
  */
 bool ZipEditor::isOpen()
-{
+{/*
     if(zip != NULL)
         return zip->isOpen();
     else
-        return false;
+        return false;*/
 }

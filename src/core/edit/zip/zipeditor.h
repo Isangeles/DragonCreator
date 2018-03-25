@@ -38,7 +38,7 @@ public:
     vector<string> getFilesNamesIn(string zipPath);
 
 private:
-    QuaZip *zip;
+//    QuaZip *zip;
 };
 
 #endif // ZIPEDITOR_H

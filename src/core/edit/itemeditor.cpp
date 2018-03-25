@@ -30,7 +30,7 @@ ItemEditor::ItemEditor(std::string pathToItems)
     weaponsPath = itemsPath + "/weapons" + Engine::BASE_EXT;
     miscPath = itemsPath + "/misc" + Engine::BASE_EXT;
 
-    wEdit = new WeaponsEditor(weaponsPath);
+    wEdit = new WeaponsEditor(weaponsPath, new ZipEditor("test"));
 }
 /**
  * @brief ItemEditor::~ItemEditor ItemEditor deconstructor
