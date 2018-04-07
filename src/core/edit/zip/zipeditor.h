@@ -21,8 +21,11 @@
 #define ZIPEDITOR_H
 
 #include <iostream>
+#include <vector>
 
-#include <quazip.h>
+#include <quazip/quazip.h>
+#include <quazip/quazipdir.h>
+#include <zipios/zipfile.hpp>
 
 using namespace std;
 /**
@@ -36,9 +39,11 @@ public:
     ~ZipEditor();
     bool isOpen();
     vector<string> getFilesNamesIn(string zipPath);
+    istream* getFile(string path);
 
 private:
-//    QuaZip *zip;
+    QuaZip *zip;
+//    zipios::ZipFile *zip;
 };
 
 #endif // ZIPEDITOR_H

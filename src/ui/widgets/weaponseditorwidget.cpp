@@ -32,6 +32,16 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
     this->editor = editor;
     newModifier = new NewModdifierDialog(this);
     QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(updateSource()));
+
+    for(WeaponType type : *Weapon::getWeaponTypes())
+    {
+        string typeName = Lang::getWeaponTypeName(type);
+        ui->typeCombo->addItem(QString::fromStdString(typeName));
+    }
+    for(string &file : editor->getIconsFiles())
+    {
+        ui->iconCombo->addItem(QString::fromStdString(file));
+    }
 }
 /**
  * @brief WeaponsEditorWidget::~WeaponsEditorWidget Weapon editor widget destructor
@@ -52,7 +62,7 @@ NewModdifierDialog *WeaponsEditorWidget::getNMDialog()
 void WeaponsEditorWidget::on_addB_clicked()
 {
    string id = ui->idEdit->text().toStdString();
-   string type = ui->typeCombo->currentText().toStdString();
+   WeaponType type = (WeaponType)ui->typeCombo->currentIndex();
    string material = ui->materialCombo->currentText().toStdString();
 
    int level = ui->levelEdit->value();

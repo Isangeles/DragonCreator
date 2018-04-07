@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>647</width>
-    <height>627</height>
+    <height>634</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -75,38 +75,7 @@
     </widget>
    </item>
    <item row="3" column="2" colspan="4">
-    <widget class="QComboBox" name="typeCombo">
-     <item>
-      <property name="text">
-       <string>Dagger</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Sword</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Axe</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Mace</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Spear</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Bow</string>
-      </property>
-     </item>
-    </widget>
+    <widget class="QComboBox" name="typeCombo"/>
    </item>
    <item row="0" column="9">
     <widget class="QSpinBox" name="levelEdit"/>

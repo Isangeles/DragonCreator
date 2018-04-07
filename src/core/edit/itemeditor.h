@@ -24,8 +24,9 @@
 #include <QtXml>
 #include <vector>
 
-#include "baseeditor.h"
 #include "src/util/engine.h"
+#include "src/core/config.h"
+#include "baseeditor.h"
 #include "weaponseditor.h"
 
 using namespace std;

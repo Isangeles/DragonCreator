@@ -28,9 +28,11 @@ class Config
 {
 public:
     static std::string getEngineVer();
+    static std::string getGameDir();
 private:
     Config();
     static const std::string REQ_ENGINE_VERSION;
+    static const std::string GAME_DIR;
 };
 
 #endif // CONFIG_H

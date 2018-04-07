@@ -19,6 +19,7 @@
 #include "config.h"
 
 const std::string Config::REQ_ENGINE_VERSION = "0.7";
+const std::string Config::GAME_DIR = "/home/darek/Senlin"; //TEST DIR
 /**
  * @brief Config::Config Private constructor to prevent initialization
  */
@@ -32,4 +33,12 @@ Config::Config()
 std::string Config::getEngineVer()
 {
     return REQ_ENGINE_VERSION;
+}
+/**
+ * @brief Config::getGameDir Returns current game directory
+ * @return String with absolute path to game directory
+ */
+std::string Config::getGameDir()
+{
+    return GAME_DIR;
 }

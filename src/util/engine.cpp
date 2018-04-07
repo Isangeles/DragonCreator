@@ -1,6 +1,6 @@
 /*
  * engine.cpp
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,6 +21,7 @@
 const std::string Engine::BASE_EXT = ".base";
 const std::string Engine::CONF_EXT = ".conf";
 const std::string Engine::MOD_CONF_NAME = "mod.conf";
+const std::string Engine::GBASE_PATH = "data/gData";
 /**
  * @brief Engine::Engine Private constructor
  */

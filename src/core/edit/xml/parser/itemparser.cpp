@@ -35,7 +35,10 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
 
     weaponE.setAttribute("id", QString::fromStdString(weapon->id));
     weaponE.setAttribute("reqLevel", QString::number(weapon->level));
-    weaponE.setAttribute("type", QString::fromStdString(weapon->type));
+
+    string typeId = WeaponUtils::typeToId(weapon->type);
+    weaponE.setAttribute("type", QString::fromStdString(typeId));
+
     weaponE.setAttribute("material", QString::fromStdString(weapon->material));
     weaponE.setAttribute("value", QString::number(weapon->value));
     QString damage = QString::number(weapon->damageMin) + "-" + QString::number(weapon->damageMax);

@@ -24,6 +24,7 @@
 #include <QString>
 
 #include "src/core/data/object/modifier.h"
+#include "src/core/data/object/item/weapon.h"
 
 using namespace std;
 /**
@@ -34,6 +35,7 @@ class Lang
 public:
     static string getModifierAttributeName(ModifierAtributeType attr);
     static string getModifierAttributeValueName(string value);
+    static string getWeaponTypeName(WeaponType type);
 private:
     Lang();
 };

@@ -1,6 +1,6 @@
 /*
  * engine.h
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@ public:
     static const std::string BASE_EXT;
     static const std::string CONF_EXT;
     static const std::string MOD_CONF_NAME;
+    static const std::string GBASE_PATH;
 private:
     Engine();
 };

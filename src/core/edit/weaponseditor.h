@@ -35,10 +35,11 @@ using namespace std;
 class WeaponsEditor : public BaseEditor
 {
 public:
-    WeaponsEditor(string pathToBase, ZipEditor *gBase);
+    WeaponsEditor(string pathToBase, ZipEditor *gData);
     ~WeaponsEditor();
     string getBaseSource();
-    bool newWeapon(string id, int level, string type, string material, int value, int damageMin, int damageMax,
+    vector<string> getIconsFiles();
+    bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                    string icon, string spritesheet, vector<Modifier> *modifiers);
 
 private:
@@ -46,6 +47,7 @@ private:
     string basePath;
     Weapon *editedWeapon;
     ZipEditor *gData;
+    static const string WEAPONS_ICONS_PATH;
 };
 
 #endif // WEAPONSEDITOR_H

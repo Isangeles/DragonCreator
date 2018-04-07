@@ -18,13 +18,16 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 #include "weaponseditor.h"
+
+const string WeaponsEditor::WEAPONS_ICONS_PATH = "graphic/icon/item/weapon";
 /**
  * @brief WeaponsEditor::WeaponsEditor Weapons editor constructor
  * @param pathToBase Path to weapons base
  */
-WeaponsEditor::WeaponsEditor(string pathToBase, ZipEditor *gBase)
+WeaponsEditor::WeaponsEditor(string pathToBase, ZipEditor *gData)
 {
     basePath = pathToBase;
+    this->gData = gData;
 }
 /**
  * @brief WeaponsEditor::~WeaponsEditor Weapons editor consructor
@@ -34,7 +37,7 @@ WeaponsEditor::~WeaponsEditor()
     delete editedWeapon;
 }
 /**
- * @brief WeaponsEditor::newWeapon Creates new weapon with specified parameters
+ * @brief WeaponsEditor::newWeapon Adds new weapon with specified parameters to base
  * @param id ID
  * @param level Item level
  * @param type Weapon type
@@ -45,7 +48,7 @@ WeaponsEditor::~WeaponsEditor()
  * @param modifiers List of modifiers
  * @return True if weapon was successfully created, false otherwise
  */
-bool WeaponsEditor::newWeapon(string id, int level, string type, string material, int value, int damageMin, int damageMax,
+bool WeaponsEditor::newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                               string icon, string spritesheet, vector<Modifier> *modifiers)
 {
     editedWeapon = new Weapon(id, level, type, material ,value, damageMin, damageMax, icon, spritesheet, modifiers);
@@ -71,5 +74,21 @@ Weapon *WeaponsEditor::getEditedWeapon()
 string WeaponsEditor::getBaseSource()
 {
     return DConnector::getXmlSource(basePath);
+}
+/**
+ * @brief WeaponsEditor::getIconsFiles Returns names of avalible icons files from graphic archive
+ * @return List with file names
+ */
+vector<string> WeaponsEditor::getIconsFiles()
+{
+    try
+    {
+        return gData->getFilesNamesIn(WEAPONS_ICONS_PATH);
+    }
+    catch(runtime_error er)
+    {
+        cerr << "weapons_editor_get_icons_fail:" << er.what() << endl;
+        //return vector<string> list(); //empty list
+    }
 }
 

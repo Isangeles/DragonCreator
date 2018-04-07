@@ -53,6 +53,33 @@ string Lang::getModifierAttributeName(ModifierAtributeType attr)
         return QObject::tr("Unknown").toStdString();
     }
 }
+/**
+ * @brief Lang::getWeaponTypeName Returns translated name for specified weapon type
+ * @param type Weapon type
+ * @return String with translated name of specified weapon type
+ */
+string Lang::getWeaponTypeName(WeaponType type)
+{
+    switch (type)
+    {
+    case DAGGER:
+        return QObject::tr("Dagger").toStdString();
+    case SWORD:
+        return QObject::tr("Sword").toStdString();
+    case AXE:
+        return QObject::tr("Axe").toStdString();
+    case MACE:
+        return QObject::tr("Mace").toStdString();
+    case SPEAR:
+        return QObject::tr("Spear").toStdString();
+    case BOW:
+        return QObject::tr("Bow").toStdString();
+    case FIST:
+        return QObject::tr("Fist").toStdString();
+    default:
+        return QObject::tr("Unknown").toStdString();
+    }
+}
 
 string Lang::getModifierAttributeValueName(string value)
 {

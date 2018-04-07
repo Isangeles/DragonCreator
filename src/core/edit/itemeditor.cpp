@@ -30,7 +30,22 @@ ItemEditor::ItemEditor(std::string pathToItems)
     weaponsPath = itemsPath + "/weapons" + Engine::BASE_EXT;
     miscPath = itemsPath + "/misc" + Engine::BASE_EXT;
 
-    wEdit = new WeaponsEditor(weaponsPath, new ZipEditor("test"));
+    try
+    {
+        ZipEditor *gBase = new ZipEditor(Config::getGameDir() + "/" + Engine::GBASE_PATH);
+        wEdit = new WeaponsEditor(weaponsPath, gBase);
+        /*TEST
+        vector<string> files = gBase->getFilesNamesIn("graphic/ui"); //TEST
+        for(string &file : files)
+        {
+            cout << file << endl;
+        }
+        */
+    }
+    catch(runtime_error msg)
+    {
+        cerr << "item_editor_init_fail:" << msg.what() << endl;
+    }
 }
 /**
  * @brief ItemEditor::~ItemEditor ItemEditor deconstructor

@@ -25,6 +25,7 @@
 #include <QDomDocument>
 
 #include "src/core/data/object/item/weapon.h"
+#include "src/util/weaponutils.h"
 #include "modifierparser.h"
 
 using namespace std;

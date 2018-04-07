@@ -27,6 +27,8 @@
 #include "src/core/data/object/modifier.h"
 
 using namespace std;
+
+enum WeaponType{DAGGER = 0, SWORD = 1, AXE = 2, MACE = 3, SPEAR = 4, BOW = 5, FIST = 6};
 /**
  * @brief Class for weapons to edit
  */
@@ -34,12 +36,13 @@ class Weapon
 {
     friend class ItemParser;
 public:
-    Weapon(string id, int level, string type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet, vector<Modifier> *modifiers);
+    static vector<WeaponType> *getWeaponTypes();
+    Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet, vector<Modifier> *modifiers);
     string toString();
 private:
     string id;
     int level;
-    string type;
+    WeaponType type;
     string material;
     int value;
     int damageMin;

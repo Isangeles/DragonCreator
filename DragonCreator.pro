@@ -26,7 +26,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += static
 
-INCLUDEPATH += lib/quazip
+#INCLUDEPATH += lib/zipios/include
+#INCLUDEPATH += lib/zipios/lib64
+#LIBS += -L"lib/zipios/lib64" -lzipios
 
 SOURCES += \
     src/core/data/object/item/weapon.cpp \
@@ -51,7 +53,8 @@ SOURCES += \
     src/ui/mainwindow.cpp \
     src/util/text/textreader.cpp \
     src/util/engine.cpp \
-    src/util/modifierutils.cpp
+    src/util/modifierutils.cpp \
+    src/util/weaponutils.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -75,7 +78,8 @@ HEADERS += \
     src/ui/mainwindow.h \
     src/util/text/textreader.h \
     src/util/engine.h \
-    src/util/modifierutils.h
+    src/util/modifierutils.h \
+    src/util/weaponutils.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
@@ -87,4 +91,16 @@ FORMS += \
 SUBDIRS += \
     DragonCreator.pro
 
-RESOURCES +=
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/zipios/lib64/release/ -lzipios
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/zipios/lib64/debug/ -lzipios
+else:unix: LIBS += -L$$PWD/lib/zipios/lib64/ -lzipios
+
+INCLUDEPATH += $$PWD/lib/zipios/include
+DEPENDPATH += $$PWD/lib/zipios/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/quazip/lib/release/ -lquazip
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/quazip/lib/debug/ -lquazip
+else:unix: LIBS += -L$$PWD/lib/quazip/lib/ -lquazip
+
+INCLUDEPATH += $$PWD/lib/quazip/include
+DEPENDPATH += $$PWD/lib/quazip/include
