@@ -54,7 +54,8 @@ SOURCES += \
     src/util/text/textreader.cpp \
     src/util/engine.cpp \
     src/util/modifierutils.cpp \
-    src/util/weaponutils.cpp
+    src/util/weaponutils.cpp \
+    src/ui/widgets/settingswidget.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -79,14 +80,16 @@ HEADERS += \
     src/util/text/textreader.h \
     src/util/engine.h \
     src/util/modifierutils.h \
-    src/util/weaponutils.h
+    src/util/weaponutils.h \
+    src/ui/widgets/settingswidget.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
     src/ui/forms/moduleinfowidget.ui \
     src/ui/forms/newmoddifierdialog.ui \
     src/ui/forms/weaponseditorwidget.ui \
-    src/ui/forms/welcomewidget.ui
+    src/ui/forms/welcomewidget.ui \
+    src/ui/forms/settingswidget.ui
 
 SUBDIRS += \
     DragonCreator.pro

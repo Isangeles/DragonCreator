@@ -40,6 +40,7 @@
 #include "widgets/weaponseditorwidget.h"
 #include "widgets/welcomewidget.h"
 #include "widgets/moduleinfowidget.h"
+#include "widgets/settingswidget.h"
 #include "src/core/edit/baseeditor.h"
 
 namespace Ui {
@@ -64,6 +65,7 @@ private:
     QPlainTextEdit *activeSource;
 
     WelcomeWidget *welcomeScreen;
+    SettingsWidget *settingsWindow;
     ModuleInfoWidget *modInfo;
     WeaponsEditorWidget *weWidget;
 
@@ -74,6 +76,7 @@ private:
 
 private slots:
     void on_actionOpen_module_triggered();
+    void on_actionSettings_triggered();
     void on_actionClose_triggered();
     void on_moduleTree_clicked(const QModelIndex &index);
     void updateSource();

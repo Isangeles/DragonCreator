@@ -18,8 +18,8 @@
 */
 #include "config.h"
 
-const std::string Config::REQ_ENGINE_VERSION = "0.7";
-const std::string Config::GAME_DIR = "/home/darek/Senlin"; //TEST DIR
+const string Config::REQ_ENGINE_VERSION = "0.7";
+string Config::gameDir = "/home/darek/Senlin"; //TEST DIR
 /**
  * @brief Config::Config Private constructor to prevent initialization
  */
@@ -30,7 +30,7 @@ Config::Config()
  * @brief Config::getEngineVer Returns required version of game engine
  * @return String with version number
  */
-std::string Config::getEngineVer()
+string Config::getEngineVer()
 {
     return REQ_ENGINE_VERSION;
 }
@@ -38,7 +38,28 @@ std::string Config::getEngineVer()
  * @brief Config::getGameDir Returns current game directory
  * @return String with absolute path to game directory
  */
-std::string Config::getGameDir()
+string Config::getGameDir()
 {
-    return GAME_DIR;
+    return gameDir;
+}
+/**
+ * @brief Config::setGameDir Sets directory with specified path as game directory
+ * @param path String with path to directory
+ * @return  True if specified directory was susscessfully set, false otherwise
+ */
+bool Config::setGameDir(string path)
+{
+    if(isGameDirValid(path))
+    {
+        gameDir = path;
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Config::isGameDirValid(string path)
+{
+    //TODO path validation
+    return true;
 }

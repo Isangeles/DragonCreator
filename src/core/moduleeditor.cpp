@@ -34,7 +34,8 @@ ModuleEditor::ModuleEditor(string pathToModule)
     }
     catch(runtime_error e)
     {
-        throw e;
+        cerr << "module_editor_init_fail_msg:" << e.what() << endl;
+        throw runtime_error("Invalid path to game module direcotry!");
     }
 }
 /**

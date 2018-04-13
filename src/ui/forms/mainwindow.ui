@@ -110,7 +110,7 @@
      <x>0</x>
      <y>0</y>
      <width>442</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -119,6 +119,7 @@
     </property>
     <addaction name="actionNew_module"/>
     <addaction name="actionOpen_module"/>
+    <addaction name="actionSettings"/>
     <addaction name="actionhelp"/>
     <addaction name="actionAbout"/>
     <addaction name="actionClose"/>
@@ -157,6 +158,11 @@
   <action name="actionClose">
    <property name="text">
     <string>Close</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>

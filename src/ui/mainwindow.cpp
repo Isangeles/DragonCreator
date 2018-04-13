@@ -57,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete welcomeScreen;
+    delete settingsWindow;
     delete weWidget;
 }
 /**
@@ -139,11 +141,19 @@ void MainWindow::on_actionOpen_module_triggered()
         ui->workspace->removeTab(0); //remove welcome tab
         ui->workspace->addTab(modInfo, "Module");
     }
-    catch(const char* msg)
+    catch(runtime_error e)
     {
-        QMessageBox::warning(this, "Directory error", QString::fromUtf8(msg));
-        std::cerr << msg << std::endl;
+        QMessageBox::warning(this, "Directory error", QString::fromUtf8(e.what()));
+        cerr << e.what() << endl;
     }
+}
+/**
+ * @brief MainWindow::on_actionSettings_triggered Triggered on menu->settings clicked
+ */
+void MainWindow::on_actionSettings_triggered()
+{
+    settingsWindow = new SettingsWidget();
+    settingsWindow->show();
 }
 /**
  * @brief MainWindow::on_actionClose_triggered Triggered on menu->close clicked

@@ -1,6 +1,6 @@
 /*
- * config.h
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * settingswidget.h
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,26 +16,37 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef SETTINGSWIDGET_H
+#define SETTINGSWIDGET_H
 
-#include <string>
+#include <iostream>
+
+#include <QWidget>
+#include <QFileDialog>
+#include <QMessageBox>
+
+#include "src/core/config.h"
 
 using namespace std;
-/**
- * @brief Static class for configuration parameters
- */
-class Config
+
+namespace Ui {
+class SettingsWidget;
+}
+
+class SettingsWidget : public QWidget
 {
+    Q_OBJECT
+
 public:
-    static string getEngineVer();
-    static string getGameDir();
-    static bool setGameDir(string path);
+    explicit SettingsWidget(QWidget *parent = 0);
+    ~SettingsWidget();
+
 private:
-    Config();
-    static bool isGameDirValid(string path);
-    static const string REQ_ENGINE_VERSION;
-    static string gameDir;
+    Ui::SettingsWidget *ui;
+private slots:
+    void on_gameDirB_clicked();
+    void on_settingsDialog_accepted();
+    void on_settingsDialog_rejected();
 };
 
-#endif // CONFIG_H
+#endif // SETTINGSWIDGET_H
