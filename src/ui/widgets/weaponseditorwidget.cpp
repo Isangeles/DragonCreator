@@ -42,6 +42,10 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
     {
         ui->iconCombo->addItem(QString::fromStdString(file));
     }
+    for(string &file : editor->getSpritesheetsFiles())
+    {
+        ui->spritesheetCombo->addItem(QString::fromStdString(file));
+    }
 }
 /**
  * @brief WeaponsEditorWidget::~WeaponsEditorWidget Weapon editor widget destructor
@@ -93,6 +97,17 @@ void WeaponsEditorWidget::on_addBonusB_clicked()
 {
     newModifier = new NewModdifierDialog(this);
     newModifier->show();
+}
+/**
+ * @brief WeaponsEditorWidget::on_removeB_clicked Triggered on remove modiffer button clicked
+ */
+void WeaponsEditorWidget::on_removeModifierB_clicked()
+{
+    QList<QListWidgetItem*> moddifiers = ui->bonusesList->selectedItems();
+    for(QListWidgetItem* item : moddifiers)
+    {
+        ui->bonusesList->takeItem(ui->bonusesList->row(item));
+    }
 }
 /**
  * @brief WeaponsEditorWidget::on_modifer_add Triggered by adding new modifier

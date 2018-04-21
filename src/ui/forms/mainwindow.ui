@@ -60,27 +60,14 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>-1</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideNone</enum>
         </property>
-        <widget class="QWidget" name="edit">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <attribute name="title">
-          <string>Tab 1</string>
-         </attribute>
-        </widget>
-        <widget class="QWidget" name="source">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <attribute name="title">
-          <string>Tab 2</string>
-         </attribute>
-        </widget>
+        <property name="tabsClosable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>

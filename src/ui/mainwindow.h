@@ -79,6 +79,7 @@ private slots:
     void on_actionSettings_triggered();
     void on_actionClose_triggered();
     void on_moduleTree_clicked(const QModelIndex &index);
+    void on_workspace_tabCloseRequested(int id);
     void updateSource();
 };
 

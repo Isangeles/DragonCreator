@@ -22,7 +22,6 @@
 
 //TODO translate tabs names
 
-
 /**
  * @brief MainWindow::MainWindow Main window constructor
  * @param parent Parent widget for window
@@ -41,10 +40,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //sets max size for window
     QDesktopWidget* dw = qApp->desktop();
     resize(dw->availableGeometry(this).size());
-
-    //Can't remove default tabs in UI designer(?)
-    ui->workspace->removeTab(0);
-    ui->workspace->removeTab(0);
 
     //activeSource = new QPlainTextEdit(this);
 
@@ -179,6 +174,14 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
     activeEditor = editor;
     activeSource = new QPlainTextEdit(QString::fromStdString(editor->getBaseSource()));
     ui->workspace->addTab(activeSource, "Source");
+}
+/**
+ * @brief MainWindow::on_workspace_tabCloseRequested Triggered in tab close reqauest
+ * @param id Tab ID
+ */
+void MainWindow::on_workspace_tabCloseRequested(int id)
+{
+    ui->workspace->removeTab(id);
 }
 /**
  * @brief MainWindow::sourceUpdate Updates source tab

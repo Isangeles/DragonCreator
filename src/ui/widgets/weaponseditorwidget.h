@@ -59,6 +59,7 @@ private:
 
 private slots:
     void on_addB_clicked();
+    void on_removeModifierB_clicked();
     void on_addBonusB_clicked();
     void modifierAdded(Modifier *m);
 };

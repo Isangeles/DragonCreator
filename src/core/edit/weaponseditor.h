@@ -39,6 +39,7 @@ public:
     ~WeaponsEditor();
     string getBaseSource();
     vector<string> getIconsFiles();
+    vector<string> getSpritesheetsFiles();
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                    string icon, string spritesheet, vector<Modifier> *modifiers);
 
@@ -48,6 +49,7 @@ private:
     Weapon *editedWeapon;
     ZipEditor *gData;
     static const string WEAPONS_ICONS_PATH;
+    static const string WEAPONS_SPRITESHEETS_PATH;
 };
 
 #endif // WEAPONSEDITOR_H

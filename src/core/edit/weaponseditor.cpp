@@ -20,6 +20,7 @@
 #include "weaponseditor.h"
 
 const string WeaponsEditor::WEAPONS_ICONS_PATH = "graphic/icon/item/weapon";
+const string WeaponsEditor::WEAPONS_SPRITESHEETS_PATH = "graphic/sprite/item";
 /**
  * @brief WeaponsEditor::WeaponsEditor Weapons editor constructor
  * @param pathToBase Path to weapons base
@@ -77,7 +78,7 @@ string WeaponsEditor::getBaseSource()
 }
 /**
  * @brief WeaponsEditor::getIconsFiles Returns names of avalible icons files from graphic archive
- * @return List with file names
+ * @return List with files names
  */
 vector<string> WeaponsEditor::getIconsFiles()
 {
@@ -88,7 +89,23 @@ vector<string> WeaponsEditor::getIconsFiles()
     catch(runtime_error er)
     {
         cerr << "weapons_editor_get_icons_fail:" << er.what() << endl;
-        //return vector<string> list(); //empty list
+        return vector<string>(); //empty list
+    }
+}
+/**
+ * @brief WeaponsEditor::getSpritesheetsFiles Returns names of avalibel spritesheets files from graphic archive
+ * @return List with files names
+ */
+vector<string> WeaponsEditor::getSpritesheetsFiles()
+{
+    try
+    {
+        return gData->getFilesNamesIn(WEAPONS_SPRITESHEETS_PATH);
+    }
+    catch(runtime_error er)
+    {
+        cerr << "weapons_editor_get_spritesheets_fail:" << er.what() << endl;
+        return vector<string>(); //empty list
     }
 }
 
