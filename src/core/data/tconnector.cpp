@@ -1,6 +1,7 @@
 /*
- * config.h
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * tconnector.cpp
+ *
+ * Copyright (C) 2018 Dariusz Sikora<darek@dell-ins-ant>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,33 +17,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef CONFIG_H
-#define CONFIG_H
+#include "tconnector.h"
 
-#include <string>
-#include <iostream>
-#include <fstream>
+TConnector::TConnector(){}
 
-#include "src/util/text/textreader.h"
-#include "src/core/data/tconnector.h"
-
-using namespace std;
-/**
- * @brief Static class for configuration parameters
- */
-class Config
+string TConnector::getSetting(string id)
 {
-public:
-    static string getEngineVer();
-    static string getGameDir();
-    static bool setGameDir(string path);
-    static bool saveConf();
-private:
-    Config();
-    static bool isGameDirValid(string path);
-    static const string CONF_FILE_PATH;
-    static const string REQ_ENGINE_VERSION;
-    static string gameDir;
-};
-
-#endif // CONFIG_H
+    return TextReader("dragoncreator.conf").getText(id);
+}

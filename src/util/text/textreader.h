@@ -31,14 +31,14 @@ using namespace std;
 class TextReader
 {
 public:
-    static const string COMMENT_PREFIX;
-    static const string ENDL_CHAR;
     TextReader(string pathToFile);
     string getText(string textId);
     bool close();
     const vector<string> getListFromLine(const string &line, const char &delimeter);
 
 private:
+    static string COMMENT_PREFIX;
+    static string ENDL_CHAR;
     ifstream *fileS;
 };
 

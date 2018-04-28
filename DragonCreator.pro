@@ -55,7 +55,8 @@ SOURCES += \
     src/util/engine.cpp \
     src/util/modifierutils.cpp \
     src/util/weaponutils.cpp \
-    src/ui/widgets/settingswidget.cpp
+    src/ui/widgets/settingswidget.cpp \
+    src/core/data/tconnector.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -81,7 +82,8 @@ HEADERS += \
     src/util/engine.h \
     src/util/modifierutils.h \
     src/util/weaponutils.h \
-    src/ui/widgets/settingswidget.h
+    src/ui/widgets/settingswidget.h \
+    src/core/data/tconnector.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \

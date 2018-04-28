@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 #include "textreader.h"
-
-const string TextReader::COMMENT_PREFIX = "#";
-const string TextReader::ENDL_CHAR = ";";
+//TODO: handling speparator diferent then ':'
+string TextReader::COMMENT_PREFIX = "#";
+string TextReader::ENDL_CHAR = ";";
 /**
  * @brief TextReader::getListFromLine Splits specified line by specified delimiter to list
  * @param line String with text line
@@ -65,24 +65,39 @@ TextReader::TextReader(string pathToFile)
  */
 string TextReader::getText(string textId)
 {
+    if(COMMENT_PREFIX == "")
+        COMMENT_PREFIX = "#";
+    if(ENDL_CHAR == "")
+        ENDL_CHAR = ";";
+
     if(!fileS->is_open())
         throw runtime_error("No file open!");
     else
     {
         string line;
-        while(getline(*fileS, line))
+        try
         {
-            if(line.compare(0, COMMENT_PREFIX.size(), COMMENT_PREFIX))
+            while(getline(*fileS, line))
             {
-                if(!line.compare(0, textId.size(), textId))
+                //cout << "text_reader_line:" << line << endl; //DEBUG
+                //cout << "text_reader_com_prefix:" << COMMENT_PREFIX << endl; //DEBUG
+                if(line.compare(0, COMMENT_PREFIX.size(), COMMENT_PREFIX))
                 {
-                    vector<string> lineL = getListFromLine(line, ':');
-                    string text = lineL.at(1);
-                    if(!text.compare(text.size()-1, 1, ENDL_CHAR)) //removes end line char
-                        text.pop_back();
-                    return text;
+                    //cout << "text_reader_id_cmp:" << textId << endl; //DEBUG
+                    if(!line.compare(0, textId.size(), textId))
+                    {
+                        vector<string> lineL = getListFromLine(line, ':');
+                        string text = lineL.at(1);
+                        if(!text.compare(text.size()-1, 1, ENDL_CHAR)) //removes end line char
+                            text.pop_back();
+                        return text;
+                    }
                 }
             }
+        }
+        catch(out_of_range &e)
+        {
+            cerr << "text_reader_fail:" << e.what() << endl;
         }
     }
     return "No text with such ID";

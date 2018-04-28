@@ -18,8 +18,9 @@
 */
 #include "config.h"
 
+const string Config::CONF_FILE_PATH = "dragoncreator.conf";
 const string Config::REQ_ENGINE_VERSION = "0.7";
-string Config::gameDir = "/home/darek/Senlin"; //TEST DIR
+string Config::gameDir = TConnector::getSetting("game_path");//"/home/darek/Senlin"; //TEST DIR
 /**
  * @brief Config::Config Private constructor to prevent initialization
  */
@@ -62,4 +63,22 @@ bool Config::isGameDirValid(string path)
 {
     //TODO path validation
     return true;
+}
+
+bool Config::saveConf()
+{
+    string conf = "";
+    conf += "game_path:" + gameDir + ";\n";
+
+    filebuf fb;
+    fb.open(CONF_FILE_PATH, ios::out);
+    if(fb.is_open())
+    {
+        ostream os(&fb);
+        os << conf;
+        fb.close();
+        return true;
+    }
+    else
+        return false;
 }

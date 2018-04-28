@@ -61,7 +61,12 @@ void SettingsWidget::on_settingsDialog_accepted()
     QString gameDir = ui->gameDirEdit->text();
 
     if(Config::setGameDir(gameDir.toStdString()))
-        QMessageBox::information(this, tr("Information"), tr("Settings saved"));
+    {
+        if(Config::saveConf())
+            QMessageBox::information(this, tr("Information"), tr("Settings saved"));
+        else
+            QMessageBox::warning(this, tr("Waring"), tr("Unable to save settings"));
+    }
     else
         QMessageBox::warning(this, tr("Warning"), tr("Game directory is invalid"));
 

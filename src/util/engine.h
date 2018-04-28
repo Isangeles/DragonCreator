@@ -21,7 +21,7 @@
 
 #include <iostream>
 /**
- * @brief Static class with engine properties like file extensions, configuration files names, etc.
+ * @brief Static class with game engine properties like file extensions, configuration files names, etc.
  */
 class Engine
 {

@@ -42,9 +42,9 @@ ItemEditor::ItemEditor(std::string pathToItems)
         }
         */
     }
-    catch(runtime_error msg)
+    catch(runtime_error &msg)
     {
-        cerr << "item_editor_init_fail:" << msg.what() << endl;
+        throw runtime_error("item_editor_init_fail:" + string(msg.what(), 50));
     }
 }
 /**
