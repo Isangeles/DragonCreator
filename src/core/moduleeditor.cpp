@@ -30,9 +30,12 @@ ModuleEditor::ModuleEditor(string pathToModule)
     {
         openMod = new Module(pathToModule);
 
-        iEdit = new ItemEditor(openMod->getItemsPath());
+        ZipEditor *gData = new ZipEditor(Config::getGameDir() + "/" + Engine::GBASE_PATH);
+
+        iEdit = new ItemEditor(openMod->getItemsPath(), gData);
+        eEdit = new EffectsEditor(openMod->getEffectsPath(), gData);
     }
-    catch(runtime_error e)
+    catch(runtime_error &e)
     {
         cerr << "module_editor_init_fail_msg:" << e.what() << endl;
         throw runtime_error("Invalid path to game module direcotry!");
@@ -70,6 +73,14 @@ BaseEditor* ModuleEditor::getEditor(EditorType type)
 ItemEditor *ModuleEditor::getItemEditor()
 {
     return iEdit;
+}
+/**
+ * @brief ModuleEditor::getEffectsEditor Returns effects editor
+ * @return Effects editor
+ */
+EffectsEditor *ModuleEditor::getEffectsEditor()
+{
+    return eEdit;
 }
 /**
  * @brief ModuleEditor::getPath Returns currently open module

@@ -63,17 +63,23 @@ MainWindow::~MainWindow()
 void MainWindow::setModuleTree(ModuleEditor *mEditor)
 {
     QStandardItemModel *sim = new QStandardItemModel;
-    QStandardItem *parentItem = sim->invisibleRootItem();
+    QStandardItem *mainItem = sim->invisibleRootItem();
 
     QStandardItem *items = new QStandardItem(QString("items"));
-    parentItem->appendRow(items);
-    parentItem = items;
+    mainItem->appendRow(items);
+
     QStandardItem *armors = new QStandardItem(QString("armors"));
-    parentItem->appendRow(armors);
+    items->appendRow(armors);
     QStandardItem *weapons = new QStandardItem(QString("weapons"));
-    parentItem->appendRow(weapons);
+    items->appendRow(weapons);
     QStandardItem *misc = new QStandardItem(QString("misc"));
-    parentItem->appendRow(misc);
+    items->appendRow(misc);
+
+    QStandardItem *skills = new QStandardItem(QString("skills"));
+    mainItem->appendRow(skills);
+
+    QStandardItem *effects = new QStandardItem(QString("effects"));
+    skills->appendRow(effects);
 
     ui->moduleTree->setModel(sim);
 }
@@ -104,6 +110,8 @@ QWidget* MainWindow::getEditorWidget(string editorId)
 {
     if(editorId == "weapons")
         return weWidget;
+    else if(editorId == "effects")
+        return efWidget;
     else
         return NULL;
 }
@@ -116,6 +124,8 @@ BaseEditor* MainWindow::getBaseEditor(string editorId)
 {
     if(editorId == "weapons")
         return editor->getItemEditor()->getWeaponsEditor();
+    if(editorId == "effects")
+        return editor->getEffectsEditor();
     else
         return NULL;
 }
@@ -131,6 +141,7 @@ void MainWindow::on_actionOpen_module_triggered()
     {
         editor = new ModuleEditor(path.toStdString());
         weWidget = new WeaponsEditorWidget(editor->getItemEditor()->getWeaponsEditor(), this);
+        efWidget = new EffectsEditorWidget(editor->getEffectsEditor(), this);
         setModuleTree(editor);
         modInfo = new ModuleInfoWidget(editor->getOpenModule(), this);
         ui->workspace->removeTab(0); //remove welcome tab

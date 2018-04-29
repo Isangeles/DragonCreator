@@ -1,7 +1,6 @@
 /*
- * weaponseditor.h
- *
- * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
+ * effectseditor.h
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,38 +16,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef WEAPONSEDITOR_H
-#define WEAPONSEDITOR_H
+#ifndef EFFECTSEDITOR_H
+#define EFFECTSEDITOR_H
 
-#include <vector>
+#include <iostream>
 
 #include "baseeditor.h"
-#include "src/core/data/object/item/weapon.h"
+#include "src/core/data/object/effect.h"
 #include "src/core/data/object/modifier.h"
-#include "src/core/data/dconnector.h"
-#include "zip/zipeditor.h"
 
 using namespace std;
-/**
- * @brief Class for weapons editor
- */
-class WeaponsEditor : public BaseEditor
+
+class EffectsEditor : public BaseEditor
 {
 public:
-    WeaponsEditor(string pathToBase, ZipEditor *gData);
-    ~WeaponsEditor();
+    EffectsEditor(string pathToBase, ZipEditor *gData);
+    ~EffectsEditor();
     string getBaseSource();
-    vector<string> getIconsFiles();
-    vector<string> getSpritesheetsFiles();
-    bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
-                   string icon, string spritesheet, vector<Modifier> *modifiers);
+    bool newEffect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
 private:
-    Weapon *getEditedWeapon(); //UNUSED
     string basePath;
-    Weapon *editedWeapon;
     ZipEditor *gData;
-    static const string WEAPONS_ICONS_PATH;
-    static const string WEAPONS_SPRITESHEETS_PATH;
 };
 
-#endif // WEAPONSEDITOR_H
+#endif // EFFECTSEDITOR_H

@@ -1,7 +1,6 @@
 /*
- * module.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * effect.h
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,37 +16,29 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef MODULE_H
-#define MODULE_H
+#ifndef EFFECT_H
+#define EFFECT_H
 
 #include <iostream>
-#include <fstream>
 
-#include "src/util/engine.h"
-#include "src/util/text/textreader.h"
-#include "src/core/config.h"
+#include "src/core/data/object/modifier.h"
 
 using namespace std;
+
+enum EffectType {NOTMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
 /**
- * @brief Class representing game modules
+ * @brief Class for effects
  */
-class Module
+class Effect
 {
 public:
-    Module(string modulePath);
-    string getRootPath();
-    string getItemsPath();
-    string getEffectsPath();
-    string getModName();
-    string getModInfo();
-    string getEngineVer();
+    Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
+    ~Effect();
 private:
-    string modRoot;
-    string confPath;
-    string name;
-    string info;
-    string engineVer;
-    bool isValidDir(string path);
+    string id;
+    EffectType type;
+    int duration;
+    vector<Modifier> *modifiers;
 };
 
-#endif // MODULE_H
+#endif // EFFECT_H

@@ -36,7 +36,7 @@ using namespace std;
 class ItemEditor
 {
 public:
-    ItemEditor(std::string pathToItems);
+    ItemEditor(std::string pathToItems, ZipEditor *gData);
     ~ItemEditor();
     vector<BaseEditor> getChildEditors();
     WeaponsEditor* getWeaponsEditor();

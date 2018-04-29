@@ -56,7 +56,10 @@ SOURCES += \
     src/util/modifierutils.cpp \
     src/util/weaponutils.cpp \
     src/ui/widgets/settingswidget.cpp \
-    src/core/data/tconnector.cpp
+    src/core/data/tconnector.cpp \
+    src/core/data/object/effect.cpp \
+    src/ui/widgets/effectseditorwidget.cpp \
+    src/core/edit/effectseditor.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -83,7 +86,10 @@ HEADERS += \
     src/util/modifierutils.h \
     src/util/weaponutils.h \
     src/ui/widgets/settingswidget.h \
-    src/core/data/tconnector.h
+    src/core/data/tconnector.h \
+    src/core/data/object/effect.h \
+    src/ui/widgets/effectseditorwidget.h \
+    src/core/edit/effectseditor.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
@@ -91,7 +97,8 @@ FORMS += \
     src/ui/forms/newmoddifierdialog.ui \
     src/ui/forms/weaponseditorwidget.ui \
     src/ui/forms/welcomewidget.ui \
-    src/ui/forms/settingswidget.ui
+    src/ui/forms/settingswidget.ui \
+    src/ui/forms/effectseditorwidget.ui
 
 SUBDIRS += \
     DragonCreator.pro

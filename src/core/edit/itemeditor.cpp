@@ -22,7 +22,7 @@
  * @brief Item editor constructor
  * @param pathToBase Path to XML items base
  */
-ItemEditor::ItemEditor(std::string pathToItems)
+ItemEditor::ItemEditor(std::string pathToItems, ZipEditor* gData)
 {
     itemsPath = pathToItems;
 
@@ -30,22 +30,7 @@ ItemEditor::ItemEditor(std::string pathToItems)
     weaponsPath = itemsPath + "/weapons" + Engine::BASE_EXT;
     miscPath = itemsPath + "/misc" + Engine::BASE_EXT;
 
-    try
-    {
-        ZipEditor *gBase = new ZipEditor(Config::getGameDir() + "/" + Engine::GBASE_PATH);
-        wEdit = new WeaponsEditor(weaponsPath, gBase);
-        /*TEST
-        vector<string> files = gBase->getFilesNamesIn("graphic/ui"); //TEST
-        for(string &file : files)
-        {
-            cout << file << endl;
-        }
-        */
-    }
-    catch(runtime_error &msg)
-    {
-        throw runtime_error("item_editor_init_fail:" + string(msg.what(), 50));
-    }
+    wEdit = new WeaponsEditor(weaponsPath, gData);
 }
 /**
  * @brief ItemEditor::~ItemEditor ItemEditor deconstructor

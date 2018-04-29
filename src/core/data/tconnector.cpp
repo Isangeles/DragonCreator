@@ -18,10 +18,25 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 #include "tconnector.h"
-
+/**
+ * @brief TConnector::TConnector Private constructor
+ */
 TConnector::TConnector(){}
-
+/**
+ * @brief TConnector::getSetting Returns settings parameter with specified ID from conf file
+ * @param id ID of desired conf parameter
+ * @return Value of parameter with specified ID
+ */
 string TConnector::getSetting(string id)
 {
-    return TextReader("dragoncreator.conf").getText(id);
+    try
+    {
+        string text = TextReader("dragoncreator.conf").getText(id);
+        return text;
+    }
+    catch(runtime_error &e)
+    {
+        //TODO create conf file if not exists
+        return "";
+    }
 }

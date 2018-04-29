@@ -41,6 +41,7 @@
 #include "widgets/welcomewidget.h"
 #include "widgets/moduleinfowidget.h"
 #include "widgets/settingswidget.h"
+#include "widgets/effectseditorwidget.h"
 #include "src/core/edit/baseeditor.h"
 
 namespace Ui {
@@ -68,6 +69,7 @@ private:
     SettingsWidget *settingsWindow;
     ModuleInfoWidget *modInfo;
     WeaponsEditorWidget *weWidget;
+    EffectsEditorWidget *efWidget;
 
     void setModuleTree(ModuleEditor *mEditor);
     void loadRobotoFonts();

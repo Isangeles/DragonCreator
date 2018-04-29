@@ -1,7 +1,6 @@
 /*
- * module.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * effectseditor.cpp
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,37 +16,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef MODULE_H
-#define MODULE_H
+#include "effectseditor.h"
 
-#include <iostream>
-#include <fstream>
-
-#include "src/util/engine.h"
-#include "src/util/text/textreader.h"
-#include "src/core/config.h"
-
-using namespace std;
-/**
- * @brief Class representing game modules
- */
-class Module
+EffectsEditor::EffectsEditor(string pathToBase, ZipEditor *gData)
 {
-public:
-    Module(string modulePath);
-    string getRootPath();
-    string getItemsPath();
-    string getEffectsPath();
-    string getModName();
-    string getModInfo();
-    string getEngineVer();
-private:
-    string modRoot;
-    string confPath;
-    string name;
-    string info;
-    string engineVer;
-    bool isValidDir(string path);
-};
+    this->basePath = pathToBase;
+    this->gData = gData;
+}
 
-#endif // MODULE_H
+string EffectsEditor::getBaseSource()
+{
+    return "";
+}

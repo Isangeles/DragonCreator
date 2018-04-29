@@ -1,7 +1,6 @@
 /*
- * module.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * effectseditorwidget.h
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,37 +16,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef MODULE_H
-#define MODULE_H
+#ifndef EFFECTSEDITORWIDGET_H
+#define EFFECTSEDITORWIDGET_H
 
-#include <iostream>
-#include <fstream>
+#include <QWidget>
 
-#include "src/util/engine.h"
-#include "src/util/text/textreader.h"
-#include "src/core/config.h"
+#include "src/core/edit/effectseditor.h"
 
-using namespace std;
-/**
- * @brief Class representing game modules
- */
-class Module
+namespace Ui {
+class EffectsEditorWidget;
+}
+
+class EffectsEditorWidget : public QWidget
 {
+    Q_OBJECT
+
 public:
-    Module(string modulePath);
-    string getRootPath();
-    string getItemsPath();
-    string getEffectsPath();
-    string getModName();
-    string getModInfo();
-    string getEngineVer();
+    explicit EffectsEditorWidget(EffectsEditor *eEdit, QWidget *parent = 0);
+    ~EffectsEditorWidget();
+
 private:
-    string modRoot;
-    string confPath;
-    string name;
-    string info;
-    string engineVer;
-    bool isValidDir(string path);
+    Ui::EffectsEditorWidget *ui;
+    EffectsEditor *edit;
 };
 
-#endif // MODULE_H
+#endif // EFFECTSEDITORWIDGET_H

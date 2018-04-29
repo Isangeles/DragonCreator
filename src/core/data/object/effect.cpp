@@ -1,7 +1,6 @@
 /*
- * module.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * effect.cpp
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,37 +16,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef MODULE_H
-#define MODULE_H
-
-#include <iostream>
-#include <fstream>
-
-#include "src/util/engine.h"
-#include "src/util/text/textreader.h"
-#include "src/core/config.h"
-
-using namespace std;
+#include "effect.h"
 /**
- * @brief Class representing game modules
+ * @brief Effect::Effect Effect constructor
+ * @param id Effect ID
+ * @param type Effect type
+ * @param duration Effect duration
+ * @param modifiers Modifiers for effect target
  */
-class Module
+Effect::Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers)
 {
-public:
-    Module(string modulePath);
-    string getRootPath();
-    string getItemsPath();
-    string getEffectsPath();
-    string getModName();
-    string getModInfo();
-    string getEngineVer();
-private:
-    string modRoot;
-    string confPath;
-    string name;
-    string info;
-    string engineVer;
-    bool isValidDir(string path);
-};
+    this->id = id;
+    this->type = type;
+    this->duration = duration;
+    this->modifiers = modifiers;
+}
 
-#endif // MODULE_H
+Effect::~Effect()
+{
+    delete modifiers;
+}

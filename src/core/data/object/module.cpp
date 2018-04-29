@@ -55,6 +55,11 @@ string Module::getItemsPath()
 {
     return modRoot + "/items";
 }
+
+string Module::getEffectsPath()
+{
+    return modRoot + "/skills/effects" + Engine::BASE_EXT;
+}
 /**
  * @brief Module::getModName Returns module name
  * @return String with module name
