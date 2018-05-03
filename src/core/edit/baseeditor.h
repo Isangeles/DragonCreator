@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "zip/zipeditor.h"
+#include "src/core/data/dconnector.h"
 
 using namespace std;
 /**
@@ -33,11 +34,11 @@ class BaseEditor
 {
 public:
     BaseEditor(string pathToBase, ZipEditor *gData);
-    virtual string getBaseSource() = 0;
+    string getBaseSource();
     //virtual vector<BaseEditor> getChildEditors() = 0;
 protected:
-    BaseEditor();
-    string pathToBase;
+    string basePath;
+    ZipEditor *gData;
 };
 
 #endif // BASEEDITOR_H

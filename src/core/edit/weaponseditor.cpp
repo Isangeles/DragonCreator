@@ -22,15 +22,6 @@
 const string WeaponsEditor::WEAPONS_ICONS_PATH = "graphic/icon/item/weapon";
 const string WeaponsEditor::WEAPONS_SPRITESHEETS_PATH = "graphic/sprite/item";
 /**
- * @brief WeaponsEditor::WeaponsEditor Weapons editor constructor
- * @param pathToBase Path to weapons base
- */
-WeaponsEditor::WeaponsEditor(string pathToBase, ZipEditor *gData)
-{
-    basePath = pathToBase;
-    this->gData = gData;
-}
-/**
  * @brief WeaponsEditor::~WeaponsEditor Weapons editor consructor
  */
 WeaponsEditor::~WeaponsEditor()
@@ -67,14 +58,6 @@ bool WeaponsEditor::newWeapon(string id, int level, WeaponType type, string mate
 Weapon *WeaponsEditor::getEditedWeapon()
 {
     return editedWeapon;
-}
-/**
- * @brief WeaponsEditor::getBaseSource Returns current source of open base
- * @return String with base source
- */
-string WeaponsEditor::getBaseSource()
-{
-    return DConnector::getXmlSource(basePath);
 }
 /**
  * @brief WeaponsEditor::getIconsFiles Returns names of avalible icons files from graphic archive

@@ -24,9 +24,18 @@ EffectsEditorWidget::EffectsEditorWidget(EffectsEditor *eEdit, QWidget *parent) 
     ui(new Ui::EffectsEditorWidget)
 {
     ui->setupUi(this);
+
+    this->edit = eEdit;
+
+    modD = new NewModdifierDialog(this);
 }
 
 EffectsEditorWidget::~EffectsEditorWidget()
 {
     delete ui;
+}
+
+void EffectsEditorWidget::modifierAdded(Modifier *mod)
+{
+
 }

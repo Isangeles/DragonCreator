@@ -31,17 +31,17 @@ QXmlEditor::QXmlEditor(std::string path)
         if(!doc->setContent(xml))
         {
             delete doc;
-            throw std::runtime_error("Fail to parse document:" + path);
+            throw std::runtime_error("qxmleditor_init_fail//Fail to parse document:" + path);
         }
         else
         {
             tempXml = new QTemporaryFile();
             if(!tempXml->open())
-                throw std::runtime_error("Fail to create temp file");
+                throw std::runtime_error("qxmleditor_init_fail//Fail to create temp file");
         }
     }
     else
-        throw std::runtime_error("Fail to open document");
+        throw std::runtime_error("qxmleditor_init_fail//Fail to open document");
 }
 /**
  * @brief XmlEditor::~XmlEditor XML edidor destrcutor

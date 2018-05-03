@@ -22,6 +22,8 @@
 #include <QWidget>
 
 #include "src/core/edit/effectseditor.h"
+#include "src/core/data/object/modifier.h"
+#include "newmoddifierdialog.h"
 
 namespace Ui {
 class EffectsEditorWidget;
@@ -38,6 +40,9 @@ public:
 private:
     Ui::EffectsEditorWidget *ui;
     EffectsEditor *edit;
+    NewModdifierDialog *modD;
+private slots:
+    void modifierAdded(Modifier *mod);
 };
 
 #endif // EFFECTSEDITORWIDGET_H

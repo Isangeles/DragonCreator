@@ -19,9 +19,18 @@
 */
 #include "baseeditor.h"
 /**
- * @brief Editor::Editor Default editor constructor
+ * @brief Editor::Editor Base editor constructor
  */
-BaseEditor::BaseEditor()
+BaseEditor::BaseEditor(string pathToBase, ZipEditor *gData)
 {
-
+    basePath = pathToBase;
+    this->gData = gData;
+}
+/**
+ * @brief BaseEditor::getBaseSource Returns current source of open base
+ * @return String with base source
+ */
+string BaseEditor::getBaseSource()
+{
+    return DConnector::getXmlSource(basePath);
 }

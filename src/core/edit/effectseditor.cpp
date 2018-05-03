@@ -18,13 +18,3 @@
 */
 #include "effectseditor.h"
 
-EffectsEditor::EffectsEditor(string pathToBase, ZipEditor *gData)
-{
-    this->basePath = pathToBase;
-    this->gData = gData;
-}
-
-string EffectsEditor::getBaseSource()
-{
-    return "";
-}
