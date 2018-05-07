@@ -78,8 +78,17 @@ void WeaponsEditorWidget::on_addB_clicked()
    string ss = ui->spritesheetCombo->currentText().toStdString();
 
    vector<Modifier> *modifiers = new vector<Modifier>;
-   Modifier mod(ModifierType::HEALTH, new map<string, string>);
-   modifiers->push_back(mod);
+
+   for(int i = 0; i < ui->bonusesList->count(); i++)
+   {
+       QListWidgetItem* item = ui->bonusesList->item(i);
+       cout << "list_item:" << item->text().toStdString() << endl;
+
+       //Modifier *m = (Modifier*)&item; //TODO cast to modifier dont work
+       Modifier *m = new Modifier(ModifierType::HEALTH, new map<string, string>);
+       cout << "from_list:" << m->getName() << endl;
+       modifiers->push_back(*m);
+   }
 
    //TODO translate messages
    if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, modifiers))
@@ -115,11 +124,14 @@ void WeaponsEditorWidget::on_removeModifierB_clicked()
  */
 void WeaponsEditorWidget::modifierAdded(Modifier* m)
 {
+    cout << "to_list:" << m->getName() << endl;
+    /*
     QString label = QString::fromStdString(m->getName());
-    label += "  ";
+    label += ";";
     for(pair<string, string> attr : *m->getAttributes())
     {
         label += QString::fromStdString(attr.first) + "='" + QString::fromStdString(attr.second) + "'  ";
     }
-    ui->bonusesList->addItem(label);
+    */
+    ui->bonusesList->addItem(m);
 }

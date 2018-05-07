@@ -20,6 +20,7 @@
 #define EFFECTSEDITORWIDGET_H
 
 #include <QWidget>
+#include <QMessageBox>
 
 #include "src/core/edit/effectseditor.h"
 #include "src/core/data/object/modifier.h"
@@ -37,12 +38,17 @@ public:
     explicit EffectsEditorWidget(EffectsEditor *eEdit, QWidget *parent = 0);
     ~EffectsEditorWidget();
 
+signals:
+    void effectAdded();
 private:
     Ui::EffectsEditorWidget *ui;
     EffectsEditor *edit;
     NewModdifierDialog *modD;
 private slots:
-    void modifierAdded(Modifier *mod);
+    void on_addB_clicked();
+    void on_modifierAddB_clicked();
+    void on_modifierRemoveB_clicked();
+    void modifierAdded(Modifier *m);
 };
 
 #endif // EFFECTSEDITORWIDGET_H

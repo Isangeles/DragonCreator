@@ -34,7 +34,7 @@ public:
     TextReader(string pathToFile);
     string getText(string textId);
     bool close();
-    const vector<string> getListFromLine(const string &line, const char &delimeter);
+    static const vector<string> getListFromLine(const string &line, const char &delimeter);
 
 private:
     static string COMMENT_PREFIX;

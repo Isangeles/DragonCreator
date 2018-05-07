@@ -34,7 +34,7 @@ enum WeaponType{DAGGER = 0, SWORD = 1, AXE = 2, MACE = 3, SPEAR = 4, BOW = 5, FI
  */
 class Weapon
 {
-    friend class ItemParser;
+friend class ItemParser;
 public:
     static vector<WeaponType> *getWeaponTypes();
     Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet, vector<Modifier> *modifiers);

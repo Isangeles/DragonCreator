@@ -1,5 +1,5 @@
 /*
- * effect.h
+ * effectutils.h
  * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
@@ -16,30 +16,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef EFFECT_H
-#define EFFECT_H
+#ifndef EFFECTUTILS_H
+#define EFFECTUTILS_H
 
-#include <iostream>
+#include <string>
 
-#include "src/core/data/object/modifier.h"
+#include "src/core/data/object/effect.h"
 
 using namespace std;
-
-enum EffectType {NOTMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
 /**
- * @brief Class for effects
+ * @brief Static class with effect utilities
  */
-class Effect
+class EffectUtils
 {
-friend class EffectParser;
 public:
-    Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
-    ~Effect();
+    static string typeToId(EffectType type);
 private:
-    string id;
-    EffectType type;
-    int duration;
-    vector<Modifier> *modifiers;
+    EffectUtils();
 };
 
-#endif // EFFECT_H
+#endif // EFFECTUTILS_H

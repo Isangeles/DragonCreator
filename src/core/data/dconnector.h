@@ -23,8 +23,10 @@
 #include <iostream>
 
 #include "src/core/data/object/item/weapon.h"
+#include "src/core/data/object/effect.h"
 #include "src/core/edit/xml/qxmleditor.h"
 #include "src/core/edit/xml/parser/itemparser.h"
+#include "src/core/edit/xml/parser/effectparser.h"
 
 using namespace std;
 /**
@@ -34,6 +36,7 @@ class DConnector
 {
 public:
     static bool addWeaponToBase(string basePath, Weapon *weapon);
+    static bool addEffectToBase(string basePath, Effect *effect);
     static string getXmlSource(string xmlPath);
 private:
     DConnector();

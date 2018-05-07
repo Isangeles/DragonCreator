@@ -28,6 +28,8 @@ Modifier::Modifier(ModifierType type, map<string, string> *attributes)
 {
     this->type = type;
     this->attributes = attributes;
+
+    this->setText(QString::fromStdString(getName()));
 }
 /**
  * @brief Modifier::getType Retruns moodifier type

@@ -24,6 +24,7 @@
 DConnector::DConnector(){}
 /**
  * @brief DConnector::addWeaponToBase Adds specified weapon to game weapons base
+ * @param basePath Path to XML wapons base
  * @param weapon Weapon
  * @return  True if specified weapon was successfull added, false otherwsie
  */
@@ -48,6 +49,36 @@ bool DConnector::addWeaponToBase(string basePath, Weapon *weapon)
     catch(runtime_error msg)
     {
         cerr << msg.what() << endl;
+        return false;
+    }
+}
+/**
+ * @brief DConnector::addEffectToBase Adds specified effect to game effect base
+ * @param basePath Path to XML effect base
+ * @param effect Effect
+ * @return True if effect was successfull added, false otherwise
+ */
+bool DConnector::addEffectToBase(string basePath, Effect *effect)
+{
+    try
+    {
+        QXmlEditor baseEdit(basePath);
+        QDomNode effecNode = EffectParser::effectToNode(effect, baseEdit.getDoc());
+        if(baseEdit.addNode(effecNode))
+        {
+            baseEdit.save();
+            baseEdit.close();
+            return true;
+        }
+        else
+        {
+            baseEdit.close();
+            return false;
+        }
+    }
+    catch(runtime_error e)
+    {
+        cerr << e.what() << endl;
         return false;
     }
 }

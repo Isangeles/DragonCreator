@@ -59,7 +59,9 @@ SOURCES += \
     src/core/data/tconnector.cpp \
     src/core/data/object/effect.cpp \
     src/ui/widgets/effectseditorwidget.cpp \
-    src/core/edit/effectseditor.cpp
+    src/core/edit/effectseditor.cpp \
+    src/core/edit/xml/parser/effectparser.cpp \
+    src/util/effectutils.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -89,7 +91,9 @@ HEADERS += \
     src/core/data/tconnector.h \
     src/core/data/object/effect.h \
     src/ui/widgets/effectseditorwidget.h \
-    src/core/edit/effectseditor.h
+    src/core/edit/effectseditor.h \
+    src/core/edit/xml/parser/effectparser.h \
+    src/util/effectutils.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \

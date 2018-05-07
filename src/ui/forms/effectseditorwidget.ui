@@ -21,10 +21,41 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="modifierAddB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <widget class="QComboBox" name="typeCombo"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="modifiersLabel">
+     <property name="text">
+      <string>Modifiers</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="typeLabel">
      <property name="text">
       <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="4">
+    <widget class="QPushButton" name="addB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QPushButton" name="modifierRemoveB">
+     <property name="text">
+      <string>Remove</string>
      </property>
     </widget>
    </item>
@@ -35,38 +66,14 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="idEdit"/>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QListView" name="listView"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="mofifiersLabel">
-     <property name="text">
-      <string>Modifiers</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="modfierAddB">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
+   <item row="2" column="2" colspan="2">
     <widget class="QSpinBox" name="durationEdit"/>
    </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="typeCombo"/>
+   <item row="0" column="2">
+    <widget class="QLineEdit" name="idEdit"/>
    </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QPushButton" name="addB">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
+   <item row="4" column="0" colspan="4">
+    <widget class="QListWidget" name="modifiersList"/>
    </item>
   </layout>
  </widget>

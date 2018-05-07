@@ -17,4 +17,23 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 #include "effectseditor.h"
-
+/**
+ * @brief EffectsEditor::~EffectsEditor Destrcutor of effects editor
+ */
+EffectsEditor::~EffectsEditor()
+{
+    //TODO delete something
+}
+/**
+ * @brief EffectsEditor::newEffect Creates new effect with specified parameter and adds it to XML base
+ * @param id Effect ID
+ * @param type Effect type
+ * @param duration Effect duration in seconds
+ * @param modifiers Effect mofifiers list
+ * @return True if effect was successfully added to base, false otherwise
+ */
+bool EffectsEditor::newEffect(string id, EffectType type, int duration, vector<Modifier> *modifiers)
+{
+    Effect *editedEffect = new Effect(id, type, duration, modifiers);
+    return DConnector::addEffectToBase(basePath, editedEffect);
+}

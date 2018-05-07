@@ -1,5 +1,5 @@
 /*
- * effect.h
+ * effectparser.h
  * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
@@ -16,30 +16,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef EFFECT_H
-#define EFFECT_H
+#ifndef EFFECTPARSER_H
+#define EFFECTPARSER_H
 
-#include <iostream>
+#include <vector>
 
-#include "src/core/data/object/modifier.h"
+#include <QDomDocument>
+
+#include "src/core/data/object/effect.h"
+#include "src/util/effectutils.h"
+#include "modifierparser.h"
 
 using namespace std;
-
-enum EffectType {NOTMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
 /**
- * @brief Class for effects
+ * @brief Class for parsing effects
  */
-class Effect
+class EffectParser
 {
-friend class EffectParser;
 public:
-    Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
-    ~Effect();
+    static QDomNode effectToNode(Effect *effect, QDomDocument *doc);
 private:
-    string id;
-    EffectType type;
-    int duration;
-    vector<Modifier> *modifiers;
+    EffectParser();
 };
 
-#endif // EFFECT_H
+#endif // EFFECTPARSER_H

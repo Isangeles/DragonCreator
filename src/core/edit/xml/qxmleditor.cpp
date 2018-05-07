@@ -37,11 +37,11 @@ QXmlEditor::QXmlEditor(std::string path)
         {
             tempXml = new QTemporaryFile();
             if(!tempXml->open())
-                throw std::runtime_error("qxmleditor_init_fail//Fail to create temp file");
+                throw std::runtime_error("qxmleditor_init_fail//Fail to create temp file:" + path);
         }
     }
     else
-        throw std::runtime_error("qxmleditor_init_fail//Fail to open document");
+        throw std::runtime_error("qxmleditor_init_fail//Fail to open document:" + path);
 }
 /**
  * @brief XmlEditor::~XmlEditor XML edidor destrcutor

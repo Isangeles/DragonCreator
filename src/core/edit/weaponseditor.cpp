@@ -44,12 +44,7 @@ bool WeaponsEditor::newWeapon(string id, int level, WeaponType type, string mate
                               string icon, string spritesheet, vector<Modifier> *modifiers)
 {
     editedWeapon = new Weapon(id, level, type, material ,value, damageMin, damageMax, icon, spritesheet, modifiers);
-    if(editedWeapon != NULL)
-    {
-        return DConnector::addWeaponToBase(basePath, editedWeapon);
-    }
-    else
-        return false;
+    return DConnector::addWeaponToBase(basePath, editedWeapon);
 }
 /**
  * @brief WeaponsEditor::getEditedWeapon Returns currently eddited weapon

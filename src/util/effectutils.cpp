@@ -1,5 +1,5 @@
 /*
- * effect.h
+ * effectutils.cpp
  * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
@@ -16,30 +16,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef EFFECT_H
-#define EFFECT_H
-
-#include <iostream>
-
-#include "src/core/data/object/modifier.h"
-
-using namespace std;
-
-enum EffectType {NOTMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
+#include "effectutils.h"
 /**
- * @brief Class for effects
+ * @brief EffectUtils::EffectUtils Private construcor
  */
-class Effect
+EffectUtils::EffectUtils(){}
+/**
+ * @brief EffectUtils::typeToId Converts specified effect type to ID
+ * @param type Effect type enum
+ * @return String with effect type ID
+ */
+string EffectUtils::typeToId(EffectType type)
 {
-friend class EffectParser;
-public:
-    Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
-    ~Effect();
-private:
-    string id;
-    EffectType type;
-    int duration;
-    vector<Modifier> *modifiers;
-};
-
-#endif // EFFECT_H
+    //TODO
+    return "TODO";
+}
