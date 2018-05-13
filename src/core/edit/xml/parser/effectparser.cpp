@@ -36,12 +36,15 @@ QDomNode EffectParser::effectToNode(Effect *effect, QDomDocument *doc)
     string typeId = EffectUtils::typeToId(effect->type);
     effectE.setAttribute("type", QString::fromStdString(typeId));
 
-    QDomElement bonusesE = doc->createElement("bonuses");
+    effectE.setAttribute("duration", effect->duration);
+
+    QDomElement modifiersE = doc->createElement("modifiers");
     for(Modifier mod : *effect->modifiers)
     {
         QDomNode modNode = ModifierParser::modifierToNode(&mod, doc);
-        bonusesE.appendChild(modNode);
+        modifiersE.appendChild(modNode);
     }
+    effectE.appendChild(modifiersE);
 
     return effectE;
 }

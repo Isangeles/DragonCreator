@@ -23,8 +23,6 @@
 #include <map>
 #include <vector>
 
-#include <QListWidgetItem>
-
 using namespace std;
 /**
  * @brief Enumeration for modifiers types assosiated with XML nodes names
@@ -40,7 +38,7 @@ enum ModifierAtributeType {VALUE = 0, STEALTH_LEVEL = 1, LOCK_LEVEL = 2, RESI_TY
 /**
  * @brief Class for modifiers(a.k.a bonuses)
  */
-class Modifier : public QListWidgetItem
+class Modifier
 {
 public:
     Modifier(ModifierType type, map<string, string> *attributes);

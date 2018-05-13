@@ -61,7 +61,8 @@ SOURCES += \
     src/ui/widgets/effectseditorwidget.cpp \
     src/core/edit/effectseditor.cpp \
     src/core/edit/xml/parser/effectparser.cpp \
-    src/util/effectutils.cpp
+    src/util/effectutils.cpp \
+    src/ui/util/modifierlistitem.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -93,7 +94,8 @@ HEADERS += \
     src/ui/widgets/effectseditorwidget.h \
     src/core/edit/effectseditor.h \
     src/core/edit/xml/parser/effectparser.h \
-    src/util/effectutils.h
+    src/util/effectutils.h \
+    src/ui/util/modifierlistitem.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \

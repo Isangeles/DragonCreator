@@ -30,6 +30,7 @@
 #include "src/core/edit/weaponseditor.h"
 #include "src/core/data/object/modifier.h"
 #include "newmoddifierdialog.h"
+#include "src/ui/util/modifierlistitem.h"
 #include "src/util/text/textreader.h"
 
 using namespace std;

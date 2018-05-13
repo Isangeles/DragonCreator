@@ -63,8 +63,8 @@ bool DConnector::addEffectToBase(string basePath, Effect *effect)
     try
     {
         QXmlEditor baseEdit(basePath);
-        QDomNode effecNode = EffectParser::effectToNode(effect, baseEdit.getDoc());
-        if(baseEdit.addNode(effecNode))
+        QDomNode effectNode = EffectParser::effectToNode(effect, baseEdit.getDoc());
+        if(baseEdit.addNode(effectNode))
         {
             baseEdit.save();
             baseEdit.close();

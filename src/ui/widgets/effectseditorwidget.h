@@ -25,6 +25,7 @@
 #include "src/core/edit/effectseditor.h"
 #include "src/core/data/object/modifier.h"
 #include "newmoddifierdialog.h"
+#include "src/ui/util/modifierlistitem.h"
 
 namespace Ui {
 class EffectsEditorWidget;

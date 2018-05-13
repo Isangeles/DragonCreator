@@ -1,0 +1,58 @@
+<?xml version='1.0'?>
+<base>
+ <effect type="normal" icon="bleed.png" id="bleed01" duration="5">
+  <modifiers>
+   <statsBonus con="-1" int="0" wis="0" str="0" dex="0"/>
+  </modifiers>
+  <dot>-1</dot>
+ </effect>
+ <effect type="normal" icon="lunch.png" id="heal01" duration="5">
+  <modifiers/>
+  <dot>+1</dot>
+ </effect>
+ <effect type="normal" icon="rage.png" id="rage01" duration="15">
+  <modifiers>
+   <statsBonus con="1" int="0" wis="0" str="1" dex="0"/>
+   <healthBonus value="10"/>
+  </modifiers>
+ </effect>
+ <effect type="fire" icon="burn.png" id="burn01" duration="5">
+  <modifiers>
+   <statsBonus con="-1" int="0" wis="0" str="0" dex="-1"/>
+  </modifiers>
+  <dot>-5</dot>
+ </effect>
+ <effect type="normal" icon="meleeBon.png" id="swordBon01" duration="always">
+  <modifiers>
+   <damageBonus type="sword" value="10"/>
+  </modifiers>
+ </effect>
+ <effect type="normal" icon="undetect.png" id="undetect01" duration="10">
+  <modifiers>
+   <undetectBonus level="1"/>
+  </modifiers>
+ </effect>
+ <effect type="normal" icon="open.png" id="unlock01" duration="0">
+  <modifiers>
+   <unlockBonus level="1"/>
+  </modifiers>
+ </effect>
+ <effect type="TODO" id="test3">
+  <modifiers/>
+ </effect>
+ <effect type="TODO" id="test4">
+  <modifiers>
+   <statsBonus str="12"/>
+  </modifiers>
+ </effect>
+ <effect type="TODO" id="test5">
+  <modifiers>
+   <statsBonus str="12"/>
+  </modifiers>
+ </effect>
+ <effect type="TODO" id="test6" duration="4">
+  <modifiers>
+   <manaBonus value="12"/>
+  </modifiers>
+ </effect>
+</base>

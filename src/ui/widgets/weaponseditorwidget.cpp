@@ -82,12 +82,9 @@ void WeaponsEditorWidget::on_addB_clicked()
    for(int i = 0; i < ui->bonusesList->count(); i++)
    {
        QListWidgetItem* item = ui->bonusesList->item(i);
-       cout << "list_item:" << item->text().toStdString() << endl;
 
-       //Modifier *m = (Modifier*)&item; //TODO cast to modifier dont work
-       Modifier *m = new Modifier(ModifierType::HEALTH, new map<string, string>);
-       cout << "from_list:" << m->getName() << endl;
-       modifiers->push_back(*m);
+       ModifierListItem *m = static_cast<ModifierListItem*>(item);
+       modifiers->push_back(*m->getModifier());
    }
 
    //TODO translate messages
@@ -124,14 +121,6 @@ void WeaponsEditorWidget::on_removeModifierB_clicked()
  */
 void WeaponsEditorWidget::modifierAdded(Modifier* m)
 {
-    cout << "to_list:" << m->getName() << endl;
-    /*
-    QString label = QString::fromStdString(m->getName());
-    label += ";";
-    for(pair<string, string> attr : *m->getAttributes())
-    {
-        label += QString::fromStdString(attr.first) + "='" + QString::fromStdString(attr.second) + "'  ";
-    }
-    */
-    ui->bonusesList->addItem(m);
+    ModifierListItem * mItem = new ModifierListItem(m);
+    ui->bonusesList->addItem(mItem);
 }

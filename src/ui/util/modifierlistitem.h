@@ -1,7 +1,6 @@
 /*
- * qxmleditor.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * moddifierlistitem.h
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,38 +16,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef XMLEDITOR_H
-#define XMLEDITOR_H
+#ifndef MODIFIERLISTITEM_H
+#define MODIFIERLISTITEM_H
 
-#include <iostream>
-#include <fstream>
+#include <QListWidgetItem>
 
-#include <QFile>
-#include <QDebug>
-#include <QTextStream>
-#include <QTemporaryFile>
-#include <QDomDocument>
-#include <QException>
-
-using namespace std;
+#include "src/core/data/object/modifier.h"
 /**
- * @brief Class to editing XML documents, using Qt XML library
+ * @brief Modifier wrapper class for Qt qlistwidgetitem
  */
-class QXmlEditor
+class ModifierListItem : public QListWidgetItem
 {
 public:
-    QXmlEditor(std::string path);
-    ~QXmlEditor();
-    QDomDocument *getDoc();
-    bool addNode(QDomNode element);
-    QString getSource();
-    bool isOpen();
-    bool save();
-    void close();
+    ModifierListItem(Modifier *modifier);
+    ~ModifierListItem();
+    const Modifier *getModifier();
 private:
-    QFile *xml;
-    QTemporaryFile *tempXml;
-    QDomDocument *doc;
+    const Modifier *modifier;
 };
 
-#endif // QXMLEDITOR_H
+#endif // MODIFIERLISTITEM_H
