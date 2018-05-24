@@ -36,6 +36,7 @@ public:
     BaseEditor(string pathToBase, ZipEditor *gData);
     string getBaseSource();
     //virtual vector<BaseEditor> getChildEditors() = 0;
+    virtual vector<BaseObject *> getBaseObjects() = 0;
 protected:
     string basePath;
     ZipEditor *gData;

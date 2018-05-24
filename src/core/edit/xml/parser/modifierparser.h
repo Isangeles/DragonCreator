@@ -23,11 +23,15 @@
 #include <QDomDocument>
 
 #include "src/core/data/object/modifier.h"
-
+#include "src/util/modifierutils.h"
+/**
+ * @brief Class for parsing modifiers
+ */
 class ModifierParser
 {
 public:
     static QDomNode modifierToNode(Modifier *modifier, QDomDocument *doc);
+    static Modifier modifierFromNode(QDomNode *node);
 private:
     ModifierParser();
 };

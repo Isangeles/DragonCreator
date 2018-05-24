@@ -39,3 +39,27 @@ QDomNode ModifierParser::modifierToNode(Modifier *modifier, QDomDocument *doc)
 
     return modE;
 }
+/**
+ * @brief ModifierParser::modifierFromNode Parses specified modifier node to modifier object
+ * @param node XML node from modifiers base
+ * @return Modifier from node
+ */
+Modifier ModifierParser::modifierFromNode(QDomNode *node)
+{
+    //TODO node parsing
+    QDomElement modE = node->toElement();
+
+    ModifierType type = ModifierUtils::typeFromTagName(modE.tagName().toStdString());
+
+    map<string, string> *attrs = new map<string, string>;
+    QDomNamedNodeMap nodeAttrsMap = modE.attributes();
+    /*
+    for(int i = 0; i < nodeAttrsMap.size(); i ++)
+    {
+        QDomNode attr = nodeAttrsMap.item(i);
+        attrs->insert(attr.nodeName().toStdString(), attr.nodeValue().toStdString());
+    }
+    */
+    Modifier mod(type, attrs);
+    return mod;
+}

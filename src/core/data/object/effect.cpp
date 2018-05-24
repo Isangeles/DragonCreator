@@ -36,3 +36,8 @@ Effect::~Effect()
 {
     delete modifiers;
 }
+
+string Effect::getId()
+{
+    return id;
+}

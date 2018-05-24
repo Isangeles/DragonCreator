@@ -83,6 +83,33 @@ bool DConnector::addEffectToBase(string basePath, Effect *effect)
     }
 }
 /**
+ * @brief DConnector::getEffectsFromBase Return all effects form effects base in specified path
+ * @param basePath Path to XML effect base
+ * @return List with effects
+ */
+vector<Effect> *DConnector::getEffectsFromBase(string basePath)
+{
+    vector<Effect> *effects = new vector<Effect>();
+    try
+    {
+        QXmlEditor xml(basePath);
+
+        QDomNodeList nl = xml.getDoc()->elementsByTagName("effect");
+        for(int i = 0; i < nl.size(); i ++)
+        {
+            QDomNode effectNode = nl.at(i);
+            //Effect effect = EffectParser::effectFromNode(&effectNode); //TODO causes 'double free or corruption (fasttop)'
+            //effects->push_back(effect);
+        }
+    }
+    catch(runtime_error e)
+    {
+        cerr << "get_effects_from_base_fail:" << e.what() << endl;
+    }
+
+    return effects;
+}
+/**
  * @brief DConnector::getXmlSource Retruns source of XML document from specified path
  * @param xmlPath Path to XML document
  * @return String with source of XML document

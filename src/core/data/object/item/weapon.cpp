@@ -60,3 +60,8 @@ string Weapon::toString()
 {
     return id;
 }
+
+string Weapon::getId()
+{
+    return id;
+}

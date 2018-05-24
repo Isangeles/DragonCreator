@@ -86,4 +86,13 @@ vector<string> WeaponsEditor::getSpritesheetsFiles()
         return vector<string>(); //empty list
     }
 }
-
+/**
+ * @brief WeaponsEditor::getBaseObjects Returns all objects from open base
+ * @return List with base objects
+ */
+vector<BaseObject *> WeaponsEditor::getBaseObjects()
+{
+    //TODO return base objects
+    vector<BaseObject *> objects = vector<BaseObject *>();
+    return objects;
+}

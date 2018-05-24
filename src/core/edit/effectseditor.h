@@ -30,10 +30,12 @@ using namespace std;
 class EffectsEditor : public BaseEditor
 {
 public:
-    EffectsEditor(string pathToBase, ZipEditor *gData) : BaseEditor(pathToBase, gData){}
+    EffectsEditor(string pathToBase, ZipEditor *gData);
     ~EffectsEditor();
     bool newEffect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
+    vector<BaseObject *> getBaseObjects();
 private:
+    vector<Effect> *effects;
 };
 
 #endif // EFFECTSEDITOR_H

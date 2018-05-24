@@ -23,6 +23,8 @@
 #include <map>
 #include <vector>
 
+#include "baseobject.h"
+
 using namespace std;
 /**
  * @brief Enumeration for modifiers types assosiated with XML nodes names

@@ -18,6 +18,15 @@
 */
 #include "effectseditor.h"
 /**
+ * @brief EffectsEditor::EffectsEditor Effects editor constructor
+ * @param pathToBase String with path to XML base
+ * @param gData ZipEditor for game graphic data archive
+ */
+EffectsEditor::EffectsEditor(string pathToBase, ZipEditor *gData) : BaseEditor(pathToBase, gData)
+{
+    effects = DConnector::getEffectsFromBase(pathToBase);
+}
+/**
  * @brief EffectsEditor::~EffectsEditor Destrcutor of effects editor
  */
 EffectsEditor::~EffectsEditor()
@@ -36,4 +45,20 @@ bool EffectsEditor::newEffect(string id, EffectType type, int duration, vector<M
 {
     Effect *editedEffect = new Effect(id, type, duration, modifiers);
     return DConnector::addEffectToBase(basePath, editedEffect);
+}
+/**
+ * @brief EffectsEditor::getBaseObjects Returns all objects from open base
+ * @return List with base objects
+ */
+vector<BaseObject *> EffectsEditor::getBaseObjects()
+{
+    //TODO check if works
+    vector<BaseObject *> objects = vector<BaseObject *>();
+    /*
+    for(Effect &e : *effects)
+    {
+        objects.push_back(&e);
+    }
+    */
+    return objects;
 }

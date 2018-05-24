@@ -54,25 +54,25 @@ string Modifier::getName()
     switch(type)
     {
     case STATS:
-        return "statsBonus";
+        return "statsModifier";
     case HEALTH:
-        return "healthBonus";
+        return "healthModifier";
     case MANA:
-        return "manaBonus";
+        return "manaModifier";
     case HASTE:
-        return "hasteBonus";
+        return "hasteModifier";
     case DODGE:
-        return "dodgeBonus";
+        return "dodgeModifier";
     case DAMAGE:
-        return "damageBonus";
+        return "damageModifier";
     case UNDETECT:
-        return "undetectBonus";
+        return "undetectModifier";
     case DUALWIELD:
-        return "dualwieldBonus";
+        return "dualwieldModifier";
     case RESISTANCE:
-        return "resistanceBonus";
+        return "resistanceModifier";
     case UNLOCK:
-        return "unlockBonus";
+        return "unlockModifier";
     case ATTITUDE:
         return "attitudeModifier";
     case FLAG:

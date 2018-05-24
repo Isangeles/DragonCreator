@@ -1,5 +1,5 @@
 /*
- * effect.h
+ * baseobjectlistitem.cpp
  * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
@@ -16,32 +16,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef EFFECT_H
-#define EFFECT_H
-
-#include <iostream>
-
-#include "baseobject.h"
-#include "src/core/data/object/modifier.h"
-
-using namespace std;
-
-enum EffectType {NORMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
+#include "baseobjectlistitem.h"
 /**
- * @brief Class for effects
+ * @brief BaseObjectListItem::BaseObjectListItem Base object list item constructor
+ * @param object Base object
  */
-class Effect : public BaseObject
+BaseObjectListItem::BaseObjectListItem(BaseObject *object)
 {
-friend class EffectParser;
-public:
-    Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
-    ~Effect();
-    string getId();
-private:
-    string id;
-    EffectType type;
-    int duration;
-    vector<Modifier> *modifiers;
-};
-
-#endif // EFFECT_H
+    this->object = object;
+    this->setText(QString::fromStdString(object->getId()));
+}
+/**
+ * @brief BaseObjectListItem::getObject Returns base object contained by this item
+ * @return Base object
+ */
+BaseObject *BaseObjectListItem::getObject()
+{
+    return object;
+}

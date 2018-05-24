@@ -41,6 +41,7 @@ public:
     vector<string> getSpritesheetsFiles();
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                    string icon, string spritesheet, vector<Modifier> *modifiers);
+    vector<BaseObject *> getBaseObjects();
 private:
     Weapon *getEditedWeapon(); //UNUSED
     Weapon *editedWeapon;

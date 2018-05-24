@@ -84,6 +84,19 @@ void MainWindow::setModuleTree(ModuleEditor *mEditor)
     ui->moduleTree->setModel(sim);
 }
 /**
+ * @brief MainWindow::setBaseTree Displays content of specified base editor
+ * @param bEditor Base editor
+ */
+void MainWindow::setBaseTree(BaseEditor *bEditor)
+{
+    //TODO check if works
+    for(BaseObject *o : bEditor->getBaseObjects())
+    {
+        BaseObjectListItem *oListItem = new BaseObjectListItem(o);
+        ui->baseTree->addItem(oListItem);
+    }
+}
+/**
  * @brief MainWindow::loadRobotoFonts Loads all font from Roboto family in 'fonts' catalog
  */
 void MainWindow::loadRobotoFonts()
@@ -185,6 +198,8 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
     activeEditor = editor;
     activeSource = new QPlainTextEdit(QString::fromStdString(editor->getBaseSource()));
     ui->workspace->addTab(activeSource, "Source");
+
+    setBaseTree(editor);
 }
 /**
  * @brief MainWindow::on_workspace_tabCloseRequested Triggered in tab close reqauest

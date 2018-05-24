@@ -120,6 +120,40 @@ ModifierAtributeType ModifierUtils::typeFromOrdinal(int ordinal)
     }
 }
 /**
+ * @brief ModifierUtils::typeFromTagName Returns modifier type for specified XML tag name
+ * @param name Tage name
+ * @return Modifier type
+ */
+ModifierType ModifierUtils::typeFromTagName(string name)
+{
+    if(name == "statsModifier" && name == "statsBonus")
+        return ModifierType::STATS;
+    else if(name == "healthModifier" && name == "healthBonus")
+        return ModifierType::HEALTH;
+    else if(name == "manaModifier" && name == "manaBonus")
+        return ModifierType::MANA;
+    else if(name == "hasteModifier" && name == "hasteBonus")
+        return ModifierType::HASTE;
+    else if(name == "dodgeModifier" && name == "dodgeBonus")
+        return ModifierType::DODGE;
+    else if(name == "damageModifier" && name == "damageBonus")
+        return ModifierType::DAMAGE;
+    else if(name == "undetectModifier" && name == "undetectBonus")
+        return ModifierType::UNDETECT;
+    else if(name == "dualwieldModifier" && name == "dualwieldBonus")
+        return ModifierType::DUALWIELD;
+    else if(name == "resistanceModifier" && name == "resistanceBonus")
+        return ModifierType::RESISTANCE;
+    else if(name == "unlockModifier" && name == "unlockBonus")
+        return ModifierType::UNLOCK;
+    else if(name == "attitudeModifier" && name == "attitudeBonus")
+        return ModifierType::ATTITUDE;
+    else if(name == "flagModifier" && name == "flagBonus")
+        return ModifierType::FLAG;
+    else
+        return ModifierType::NONE;
+}
+/**
  * @brief ModifierUtils::getNameForAttr Converts attribute type to name(for XML document node)
  * @param attr Attribute type
  * @return String with attribute name

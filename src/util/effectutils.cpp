@@ -31,3 +31,13 @@ string EffectUtils::typeToId(EffectType type)
     //TODO
     return "TODO";
 }
+/**
+ * @brief EffectUtils::typeFromTagName Converts specified XML tag name to effect type
+ * @param tagName Tag name
+ * @return Effect type enum
+ */
+EffectType EffectUtils::typeFromTagName(string tagName)
+{
+    //TODO tag name to effect type conversion
+    return EffectType::NORMAL;
+}

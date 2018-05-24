@@ -53,6 +53,26 @@ QXmlEditor::~QXmlEditor()
     delete tempXml;
 }
 /**
+ * @brief QXmlEditor::getNode Returns node with specified name
+ * @param nodeName Desired node name
+ * @return Node from open document or null if not found
+ */
+/*
+QDomNode QXmlEditor::getNode(string nodeName)
+{
+    if(isOpen())
+    {
+        QDomNodeList nl = doc->childNodes();
+        for(int i = 0; i < nl.size(); i++)
+        {
+            QDomNode n = nl.at(i);
+            if(n.nodeName().toStdString() == nodeName)
+                return n;
+        }
+    }
+}
+*/
+/**
  * @brief XmlEditor::getDoc Rertuns edited document
  * @return XML document
  */

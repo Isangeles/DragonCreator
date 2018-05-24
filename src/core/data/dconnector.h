@@ -30,13 +30,14 @@
 
 using namespace std;
 /**
- * @brief Class for editing game data
+ * @brief Class for editing game data archives
  */
 class DConnector
 {
 public:
     static bool addWeaponToBase(string basePath, Weapon *weapon);
     static bool addEffectToBase(string basePath, Effect *effect);
+    static vector<Effect> *getEffectsFromBase(string basePath);
     static string getXmlSource(string xmlPath);
 private:
     DConnector();

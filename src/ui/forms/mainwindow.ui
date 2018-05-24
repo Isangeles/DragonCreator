@@ -73,7 +73,7 @@
       <item>
        <layout class="QVBoxLayout" name="rightColumn">
         <item>
-         <widget class="QTreeView" name="baseTree">
+         <widget class="QListWidget" name="baseTree">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
             <horstretch>0</horstretch>

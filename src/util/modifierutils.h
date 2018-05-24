@@ -34,6 +34,7 @@ public:
     static vector<ModifierAtributeType> getAttributesListFor(ModifierType mod);
     static vector<string> getValuesListFor(ModifierAtributeType attr);
     static ModifierAtributeType typeFromOrdinal(int ordinal);
+    static ModifierType typeFromTagName(string name);
     static string getNameFor(ModifierAtributeType attr);
 private:
     ModifierUtils();

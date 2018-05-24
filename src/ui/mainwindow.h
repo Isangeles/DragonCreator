@@ -1,6 +1,6 @@
 /*
  * mainwindow.h
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -42,6 +42,7 @@
 #include "widgets/moduleinfowidget.h"
 #include "widgets/settingswidget.h"
 #include "widgets/effectseditorwidget.h"
+#include "util/baseobjectlistitem.h"
 #include "src/core/edit/baseeditor.h"
 
 namespace Ui {
@@ -72,6 +73,7 @@ private:
     EffectsEditorWidget *efWidget;
 
     void setModuleTree(ModuleEditor *mEditor);
+    void setBaseTree(BaseEditor *bEditor);
     void loadRobotoFonts();
     QWidget* getEditorWidget(string editorId);
     BaseEditor* getBaseEditor(string editorId);

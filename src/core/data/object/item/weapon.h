@@ -24,6 +24,7 @@
 #include <string>
 #include <vector>
 
+#include "../baseobject.h"
 #include "src/core/data/object/modifier.h"
 
 using namespace std;
@@ -39,6 +40,7 @@ public:
     static vector<WeaponType> *getWeaponTypes();
     Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet, vector<Modifier> *modifiers);
     string toString();
+    string getId();
 private:
     string id;
     int level;
