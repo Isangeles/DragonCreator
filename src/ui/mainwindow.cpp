@@ -89,7 +89,6 @@ void MainWindow::setModuleTree(ModuleEditor *mEditor)
  */
 void MainWindow::setBaseTree(BaseEditor *bEditor)
 {
-    //TODO check if works
     for(BaseObject *o : bEditor->getBaseObjects())
     {
         BaseObjectListItem *oListItem = new BaseObjectListItem(o);
@@ -200,6 +199,17 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
     ui->workspace->addTab(activeSource, "Source");
 
     setBaseTree(editor);
+}
+/**
+ * @brief MainWindow::on_baseTree_itemClicked Triggered on base tree item clicked
+ * @param item Clicked item
+ */
+void MainWindow::on_baseTree_itemClicked(const QListWidgetItem &item)
+{
+    //TODO cast list item to base object
+    const QListWidgetItem *i = &item;
+    const BaseObjectListItem *o = reinterpret_cast<const BaseObjectListItem*>(i);
+    //cout << "base_tree_item_clicked:" << o->text().toStdString() << endl;
 }
 /**
  * @brief MainWindow::on_workspace_tabCloseRequested Triggered in tab close reqauest

@@ -19,6 +19,7 @@
 #ifndef BASEOBJECTLISTITEM_H
 #define BASEOBJECTLISTITEM_H
 
+#include <iostream>
 #include <QListWidgetItem>
 
 #include "src/core/data/object/baseobject.h"

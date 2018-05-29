@@ -93,4 +93,18 @@ void EffectsEditorWidget::modifierAdded(Modifier *m)
     ModifierListItem *mItem = new ModifierListItem(m);
     ui->modifiersList->addItem(mItem);
 }
+/**
+ * @brief EffectsEditorWidget::baseTreeObjectSelected Triggered when item from base object list is selected
+ * @param o Selected object
+ */
+void EffectsEditorWidget::baseTreeObjectSelected(BaseObject *o)
+{
+    editEffect((Effect*)o);
+}
+
+void EffectsEditorWidget::editEffect(Effect *e)
+{
+    ui->idEdit->setText(QString::fromStdString(e->getId()));
+    ui->durationEdit->setValue(e->getDuration());
+}
 

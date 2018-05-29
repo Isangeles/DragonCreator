@@ -37,6 +37,9 @@ public:
     Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
     ~Effect();
     string getId();
+    EffectType getType();
+    int getDuration();
+    vector<Modifier> *getModifiers();
 private:
     string id;
     EffectType type;

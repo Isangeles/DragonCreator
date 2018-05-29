@@ -98,9 +98,12 @@ vector<Effect> *DConnector::getEffectsFromBase(string basePath)
         for(int i = 0; i < nl.size(); i ++)
         {
             QDomNode effectNode = nl.at(i);
-            //Effect effect = EffectParser::effectFromNode(&effectNode); //TODO causes 'double free or corruption (fasttop)'
-            //effects->push_back(effect);
+            Effect *effect = EffectParser::effectFromNode(&effectNode);
+            //cout << "e_from_node:" << effect->getId() << endl; //DEBUG
+            effects->push_back(*effect);
         }
+
+        xml.close();
     }
     catch(runtime_error e)
     {

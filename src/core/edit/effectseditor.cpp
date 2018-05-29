@@ -52,13 +52,12 @@ bool EffectsEditor::newEffect(string id, EffectType type, int duration, vector<M
  */
 vector<BaseObject *> EffectsEditor::getBaseObjects()
 {
-    //TODO check if works
     vector<BaseObject *> objects = vector<BaseObject *>();
-    /*
+
     for(Effect &e : *effects)
     {
         objects.push_back(&e);
     }
-    */
+
     return objects;
 }

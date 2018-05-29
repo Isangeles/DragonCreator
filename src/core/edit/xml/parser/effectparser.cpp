@@ -53,29 +53,20 @@ QDomNode EffectParser::effectToNode(Effect *effect, QDomDocument *doc)
  * @param node Effect node form effect XML base
  * @return Effect from node
  */
-Effect EffectParser::effectFromNode(QDomNode *node)
+Effect *EffectParser::effectFromNode(QDomNode *node)
 {
     QDomElement effectE = node->toElement();
     string id = "none";
     EffectType type = EffectType::NORMAL;
     int duration = 0;
-    vector<Modifier> *modfiers = new vector<Modifier>;
+    vector<Modifier> *modfiers = new vector<Modifier>();
 
-    /* TODO causes 'double free or corruption (fasttop)'
-    try
-    {
-        id = effectE.attribute("id").toStdString();
-        type = EffectUtils::typeFromTagName(effectE.tagName().toStdString());
-        duration = effectE.attribute("duration").toInt();
+    id = effectE.attribute("id").toStdString();
+    type = EffectUtils::typeFromTagName(effectE.tagName().toStdString());
+    duration = effectE.attribute("duration").toInt();
 
-        //QDomNode modE = effectE.elementsByTagName("modifiers").at(0);
-    }
-    catch(runtime_error e)
-    {
-        cerr << "effect_from_node_fail:" << e.what() << endl;
-    }
-    */
+     //QDomNode modE = effectE.elementsByTagName("modifiers").at(0);
 
-    Effect e(id, type, duration, modfiers);
+    Effect *e = new Effect(id, type, duration, modfiers);
     return e;
 }

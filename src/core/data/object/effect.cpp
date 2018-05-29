@@ -31,13 +31,42 @@ Effect::Effect(string id, EffectType type, int duration, vector<Modifier> *modif
     this->duration = duration;
     this->modifiers = modifiers;
 }
-
+/**
+ * @brief Effect::~Effect Effect destructor
+ */
 Effect::~Effect()
 {
-    delete modifiers;
+    //delete modifiers; //TODO: causes problems like 'invalid pointer' and other s*it
 }
-
+/**
+ * @brief Effect::getId Returns effect ID
+ * @return String with effect ID
+ */
 string Effect::getId()
 {
     return id;
+}
+/**
+ * @brief Effect::getType Returns effect type
+ * @return Effect type enum
+ */
+EffectType Effect::getType()
+{
+    return type;
+}
+/**
+ * @brief Effect::getDuration Returns effect duration
+ * @return Duration time in seconds
+ */
+int Effect::getDuration()
+{
+    return duration;
+}
+/**
+ * @brief Effect::getModifiers Returns list with effect modifiers
+ * @return List with modifiers
+ */
+vector<Modifier> *Effect::getModifiers()
+{
+    return modifiers;
 }

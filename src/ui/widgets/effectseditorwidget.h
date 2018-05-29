@@ -45,11 +45,13 @@ private:
     Ui::EffectsEditorWidget *ui;
     EffectsEditor *edit;
     NewModdifierDialog *modD;
+    void editEffect(Effect *e);
 private slots:
     void on_addB_clicked();
     void on_modifierAddB_clicked();
     void on_modifierRemoveB_clicked();
     void modifierAdded(Modifier *m);
+    void baseTreeObjectSelected(BaseObject *o);
 };
 
 #endif // EFFECTSEDITORWIDGET_H
