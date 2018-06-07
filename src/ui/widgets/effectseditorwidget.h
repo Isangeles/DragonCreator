@@ -38,14 +38,14 @@ class EffectsEditorWidget : public QWidget
 public:
     explicit EffectsEditorWidget(EffectsEditor *eEdit, QWidget *parent = 0);
     ~EffectsEditorWidget();
-
+    void editEffect(Effect *e);
 signals:
     void effectAdded();
 private:
     Ui::EffectsEditorWidget *ui;
     EffectsEditor *edit;
     NewModdifierDialog *modD;
-    void editEffect(Effect *e);
+    void clearEditor();
 private slots:
     void on_addB_clicked();
     void on_modifierAddB_clicked();

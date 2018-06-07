@@ -78,12 +78,16 @@ private:
     QWidget* getEditorWidget(string editorId);
     BaseEditor* getBaseEditor(string editorId);
 
+signals:
+    void baseObjectSelected(BaseObject *object);
+
 private slots:
     void on_actionOpen_module_triggered();
     void on_actionSettings_triggered();
     void on_actionClose_triggered();
     void on_moduleTree_clicked(const QModelIndex &index);
     void on_baseTree_itemClicked(const QListWidgetItem &item);
+    void on_baseTree_clicked(const QModelIndex &index);
     void on_workspace_tabCloseRequested(int id);
     void updateSource();
 };

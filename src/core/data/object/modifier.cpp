@@ -30,6 +30,12 @@ Modifier::Modifier(ModifierType type, map<string, string> *attributes)
     this->attributes = attributes;
 }
 /**
+ * @brief Modifier::~Modifier Modifier attributes
+ */
+Modifier::~Modifier()
+{
+}
+/**
  * @brief Modifier::getType Retruns moodifier type
  * @return Modifier type enumeration
  */

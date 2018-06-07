@@ -59,14 +59,21 @@ Effect *EffectParser::effectFromNode(QDomNode *node)
     string id = "none";
     EffectType type = EffectType::NORMAL;
     int duration = 0;
-    vector<Modifier> *modfiers = new vector<Modifier>();
+    vector<Modifier> *modifiers = new vector<Modifier>();
 
     id = effectE.attribute("id").toStdString();
     type = EffectUtils::typeFromTagName(effectE.tagName().toStdString());
     duration = effectE.attribute("duration").toInt();
 
-     //QDomNode modE = effectE.elementsByTagName("modifiers").at(0);
+    QDomElement modifiersE = effectE.elementsByTagName("modifiers").at(0).toElement();
+    QDomNodeList modNl = modifiersE.childNodes();
+    for(int i = 0; i < modNl.size(); i ++)
+    {
+        QDomNode modNode = modNl.at(i);
+        Modifier mod = ModifierParser::modifierFromNode(&modNode);
+        modifiers->push_back(mod);
+    }
 
-    Effect *e = new Effect(id, type, duration, modfiers);
+    Effect *e = new Effect(id, type, duration, modifiers);
     return e;
 }

@@ -20,10 +20,14 @@
 #ifndef MODIFIERPARSER_H
 #define MODIFIERPARSER_H
 
+#include <iostream>
+
 #include <QDomDocument>
 
 #include "src/core/data/object/modifier.h"
 #include "src/util/modifierutils.h"
+
+using namespace std;
 /**
  * @brief Class for parsing modifiers
  */

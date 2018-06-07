@@ -44,6 +44,7 @@ class Modifier
 {
 public:
     Modifier(ModifierType type, map<string, string> *attributes);
+    ~Modifier();
     ModifierType getType();
     map<string, string> *getAttributes();
     string getName();

@@ -31,6 +31,7 @@ EffectsEditorWidget::EffectsEditorWidget(EffectsEditor *eEdit, QWidget *parent) 
     this->edit = eEdit;
 
     QObject::connect(this, SIGNAL(effectAdded()), parent, SLOT(updateSource()));
+    QObject::connect(parent, SIGNAL(baseObjectSelected(BaseObject*)), this, SLOT(baseTreeObjectSelected(BaseObject*)));
 }
 /**
  * @brief EffectsEditorWidget::~EffectsEditorWidget Destrcutor of effects editor widget
@@ -99,12 +100,33 @@ void EffectsEditorWidget::modifierAdded(Modifier *m)
  */
 void EffectsEditorWidget::baseTreeObjectSelected(BaseObject *o)
 {
-    editEffect((Effect*)o);
+    if(Effect *e = dynamic_cast<Effect*>(o))
+    {
+        editEffect(e);
+    }
 }
-
+/**
+ * @brief EffectsEditorWidget::editEffect Edits specified effect(sets all values of specified effect to editor fields)
+ * @param e Effect to edit
+ */
 void EffectsEditorWidget::editEffect(Effect *e)
 {
+    clearEditor();
     ui->idEdit->setText(QString::fromStdString(e->getId()));
     ui->durationEdit->setValue(e->getDuration());
+    for(Modifier m : *e->getModifiers())
+    {
+        ModifierListItem *mItem = new ModifierListItem(&m);
+        ui->modifiersList->addItem(mItem);
+    }
+}
+/**
+ * @brief EffectsEditorWidget::clearEditor Clears all editor fields
+ */
+void EffectsEditorWidget::clearEditor()
+{
+    ui->idEdit->setText("");
+    ui->durationEdit->setValue(0);
+    ui->modifiersList->clear();
 }
 

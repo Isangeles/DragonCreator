@@ -27,6 +27,13 @@ BaseObjectListItem::BaseObjectListItem(BaseObject *object)
     this->setText(QString::fromStdString(object->getId()));
 }
 /**
+ * @brief BaseObjectListItem::~BaseObjectListItem Base object item destructor
+ */
+BaseObjectListItem::~BaseObjectListItem()
+{
+    delete object;
+}
+/**
  * @brief BaseObjectListItem::getObject Returns base object contained by this item
  * @return Base object
  */

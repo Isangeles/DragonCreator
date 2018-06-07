@@ -207,9 +207,18 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
 void MainWindow::on_baseTree_itemClicked(const QListWidgetItem &item)
 {
     //TODO cast list item to base object
-    const QListWidgetItem *i = &item;
-    const BaseObjectListItem *o = reinterpret_cast<const BaseObjectListItem*>(i);
+    //const QListWidgetItem *i = &item;
+    //cout << "base_tree_item_clicked:" << item.isSelected() << endl;
+    //const BaseObjectListItem *o = reinterpret_cast<const BaseObjectListItem*>(i);
     //cout << "base_tree_item_clicked:" << o->text().toStdString() << endl;
+}
+
+void MainWindow::on_baseTree_clicked(const QModelIndex &index)
+{
+    QListWidgetItem *item = ui->baseTree->item(index.row());
+
+    BaseObjectListItem *m = static_cast<BaseObjectListItem*>(item);
+    emit baseObjectSelected(m->getObject());
 }
 /**
  * @brief MainWindow::on_workspace_tabCloseRequested Triggered in tab close reqauest
