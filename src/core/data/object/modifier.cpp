@@ -24,7 +24,7 @@
  * @param attributes Map with modifier attributes(key-name, value-value)
  * @param value Attribute value
  */
-Modifier::Modifier(ModifierType type, map<string, string> *attributes)
+Modifier::Modifier(ModifierType type, map<string, string> attributes)
 {
     this->type = type;
     this->attributes = attributes;
@@ -34,6 +34,7 @@ Modifier::Modifier(ModifierType type, map<string, string> *attributes)
  */
 Modifier::~Modifier()
 {
+    //delete attributes;
 }
 /**
  * @brief Modifier::getType Retruns moodifier type
@@ -49,7 +50,7 @@ ModifierType Modifier::getType()
  */
 map<string, string> *Modifier::getAttributes()
 {
-    return attributes;
+    return &attributes;
 }
 /**
  * @brief Modifier::getName Returns name of this modifier(for document node)

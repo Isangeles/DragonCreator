@@ -79,7 +79,7 @@ void NewModdifierDialog::loadValuesFor(ModifierAtributeType attr)
 void NewModdifierDialog::on_addB_clicked()
 {
     ModifierType type = (ModifierType)ui->typeCombo->currentIndex();
-    map<string, string> *attributes = new map<string, string>();
+    map<string, string> attributes;
     for(int i = 0; i < ui->attrsList->count(); i ++)
     {
         QListWidgetItem* attr = ui->attrsList->item(i);
@@ -93,7 +93,7 @@ void NewModdifierDialog::on_addB_clicked()
             QString aValue = a.at(1);
             aValue = aValue.replace("'", "");
 
-            attributes->insert(make_pair(aName.toStdString(), aValue.toStdString()));
+            attributes.insert(make_pair(aName.toStdString(), aValue.toStdString()));
         }
     }
     Modifier *m = new Modifier(type, attributes);

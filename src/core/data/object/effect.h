@@ -34,7 +34,7 @@ class Effect : public BaseObject
 {
 friend class EffectParser;
 public:
-    Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
+    Effect(string id, EffectType type, int duration, vector<Modifier> modifiers);
     ~Effect();
     string getId();
     EffectType getType();
@@ -44,7 +44,7 @@ private:
     string id;
     EffectType type;
     int duration;
-    vector<Modifier> *modifiers;
+    vector<Modifier> modifiers;
 };
 
 #endif // EFFECT_H

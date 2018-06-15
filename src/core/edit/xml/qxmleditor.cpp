@@ -106,6 +106,76 @@ bool QXmlEditor::addNode(QDomNode node)
         return false;
 }
 /**
+ * @brief QXmlEditor::removeNode Removes node with specified attribute value from open document
+ * @param attr Attribute name
+ * @param value Attribute value
+ * @return True if node with specified attribute was successfully removed, false otherwise
+ */
+bool QXmlEditor::removeNode(string attr, string value)
+{
+    if(isOpen())
+    {
+        QDomNodeList nList = doc->childNodes();
+        QDomNode root = nList.at(1); //Main node at index 1
+
+        QDomNodeList eList = root.childNodes();
+        for(int i = 0; i < eList.size(); i ++)
+        {
+            QDomNode eNode = eList.at(i);
+            QDomNamedNodeMap attrs = eNode.attributes();
+            for(int i = 0; i < attrs.size(); i ++)
+            {
+                QDomNode a = attrs.item(i);
+                //cout << "attr_check:" << a.nodeName().toStdString() << " " <<  a.nodeValue().toStdString() << " ?= " << attr << " " << value << endl;
+                if(a.nodeName().toStdString() == attr && a.nodeValue().toStdString() == value)
+                {
+                    //TODO remove node from doc
+                    //QDomNode rn = doc->childNodes().at(1).removeChild(eNode);
+                    //cout << rn.nodeName().toStdString() << endl;
+                    //writeTempDoc();
+                    break;
+                }
+            }
+        }
+
+        return true;
+    }
+    else
+        return false;
+}
+/**
+ * @brief QXmlEditor::hasNode Checks if open document has node with specified attribiute and with specified value
+ * @param attr Attibute name
+ * @param value Attribute value
+ * @return True if open document has node with specified attribute, false otherwise
+ */
+bool QXmlEditor::hasNode(string attr, string value)
+{
+
+    if(isOpen())
+    {
+        QDomNodeList nList = doc->childNodes();
+        QDomNode root = nList.at(1); //Main node at index 1
+
+        QDomNodeList eList = root.childNodes();
+        for(int i = 0; i < eList.size(); i ++)
+        {
+            QDomNode eNode = eList.at(i);
+            QDomNamedNodeMap attrs = eNode.attributes();
+            for(int i = 0; i < attrs.size(); i ++)
+            {
+                QDomNode a = attrs.item(i);
+                if(a.nodeName().toStdString() == attr && a.nodeValue().toStdString() == value)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+    else
+        return false;
+}
+/**
  * @brief QXmlEditor::getSource Returns source of open document
  * @return String with source of XML document
  */
@@ -147,4 +217,11 @@ void QXmlEditor::close()
 {
     xml->close();
     tempXml->close();
+}
+
+bool QXmlEditor::writeTempDoc()
+{
+    QByteArray docContent = doc->toByteArray();
+    tempXml->write(docContent);
+    return true; //TODO check if everything OK(?)
 }

@@ -24,7 +24,7 @@
  * @param duration Effect duration
  * @param modifiers Modifiers for effect target
  */
-Effect::Effect(string id, EffectType type, int duration, vector<Modifier> *modifiers)
+Effect::Effect(string id, EffectType type, int duration, vector<Modifier> modifiers)
 {
     this->id = id;
     this->type = type;
@@ -68,5 +68,5 @@ int Effect::getDuration()
  */
 vector<Modifier> *Effect::getModifiers()
 {
-    return modifiers;
+    return &modifiers;
 }

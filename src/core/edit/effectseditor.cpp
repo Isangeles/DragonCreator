@@ -41,10 +41,20 @@ EffectsEditor::~EffectsEditor()
  * @param modifiers Effect mofifiers list
  * @return True if effect was successfully added to base, false otherwise
  */
-bool EffectsEditor::newEffect(string id, EffectType type, int duration, vector<Modifier> *modifiers)
+bool EffectsEditor::newEffect(string id, EffectType type, int duration, vector<Modifier> modifiers)
 {
+    removeEffect(id); //removes previous effect with same ID
     Effect *editedEffect = new Effect(id, type, duration, modifiers);
     return DConnector::addEffectToBase(basePath, editedEffect);
+}
+/**
+ * @brief EffectsEditor::removeEffect Removes effect with specified ID from base
+ * @param id ID of effect to remove
+ * @return True if effect was succesfully removed, false otherwise
+ */
+bool EffectsEditor::removeEffect(string id)
+{
+    return DConnector::removeBaseObjectById(basePath, id);
 }
 /**
  * @brief EffectsEditor::getBaseObjects Returns all objects from open base

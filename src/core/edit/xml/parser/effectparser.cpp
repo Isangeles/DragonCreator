@@ -39,7 +39,7 @@ QDomNode EffectParser::effectToNode(Effect *effect, QDomDocument *doc)
     effectE.setAttribute("duration", effect->duration);
 
     QDomElement modifiersE = doc->createElement("modifiers");
-    for(Modifier mod : *effect->modifiers)
+    for(Modifier mod : *effect->getModifiers())
     {
         QDomNode modNode = ModifierParser::modifierToNode(&mod, doc);
         modifiersE.appendChild(modNode);
@@ -53,13 +53,13 @@ QDomNode EffectParser::effectToNode(Effect *effect, QDomDocument *doc)
  * @param node Effect node form effect XML base
  * @return Effect from node
  */
-Effect *EffectParser::effectFromNode(QDomNode *node)
+Effect *EffectParser::effectFromNode(QDomNode node)
 {
-    QDomElement effectE = node->toElement();
+    QDomElement effectE = node.toElement();
     string id = "none";
     EffectType type = EffectType::NORMAL;
     int duration = 0;
-    vector<Modifier> *modifiers = new vector<Modifier>();
+    vector<Modifier> modifiers;
 
     id = effectE.attribute("id").toStdString();
     type = EffectUtils::typeFromTagName(effectE.tagName().toStdString());
@@ -70,8 +70,8 @@ Effect *EffectParser::effectFromNode(QDomNode *node)
     for(int i = 0; i < modNl.size(); i ++)
     {
         QDomNode modNode = modNl.at(i);
-        Modifier mod = ModifierParser::modifierFromNode(&modNode);
-        modifiers->push_back(mod);
+        //Modifier mod = ModifierParser::modifierFromNode(&modNode);
+        modifiers.push_back(ModifierParser::modifierFromNode(&modNode));
     }
 
     Effect *e = new Effect(id, type, duration, modifiers);

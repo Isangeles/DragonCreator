@@ -51,14 +51,14 @@ void EffectsEditorWidget::on_addB_clicked()
 
     int duration = ui->durationEdit->value();
 
-    vector<Modifier> *modifiers = new vector<Modifier>;
+    vector<Modifier> modifiers;
 
     for(int i = 0; i < ui->modifiersList->count(); i++)
     {
         QListWidgetItem* item = ui->modifiersList->item(i);
 
         ModifierListItem *m = static_cast<ModifierListItem*>(item);
-        modifiers->push_back(*m->getModifier());
+        modifiers.push_back(*m->getModifier());
     }
 
     //TODO translate messages

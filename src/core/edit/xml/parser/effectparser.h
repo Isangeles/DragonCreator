@@ -35,7 +35,7 @@ class EffectParser
 {
 public:
     static QDomNode effectToNode(Effect *effect, QDomDocument *doc);
-    static Effect *effectFromNode(QDomNode *node);
+    static Effect *effectFromNode(QDomNode node);
 private:
     EffectParser();
 };

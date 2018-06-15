@@ -41,6 +41,8 @@ public:
     ~QXmlEditor();
     QDomDocument *getDoc();
     bool addNode(QDomNode element);
+    bool removeNode(string attr, string value);
+    bool hasNode(string attr, string value);
     QString getSource();
     bool isOpen();
     bool save();
@@ -49,6 +51,7 @@ private:
     QFile *xml;
     QTemporaryFile *tempXml;
     QDomDocument *doc;
+    bool writeTempDoc();
 };
 
 #endif // QXMLEDITOR_H

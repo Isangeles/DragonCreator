@@ -43,14 +43,14 @@ enum ModifierAtributeType {VALUE = 0, STEALTH_LEVEL = 1, LOCK_LEVEL = 2, RESI_TY
 class Modifier
 {
 public:
-    Modifier(ModifierType type, map<string, string> *attributes);
+    Modifier(ModifierType type, map<string, string> attributes);
     ~Modifier();
     ModifierType getType();
     map<string, string> *getAttributes();
     string getName();
 private:
     ModifierType type;
-    map<string, string> *attributes;
+    map<string, string> attributes;
 };
 
 #endif // MODIFIER_H

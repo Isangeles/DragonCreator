@@ -32,7 +32,8 @@ class EffectsEditor : public BaseEditor
 public:
     EffectsEditor(string pathToBase, ZipEditor *gData);
     ~EffectsEditor();
-    bool newEffect(string id, EffectType type, int duration, vector<Modifier> *modifiers);
+    bool newEffect(string id, EffectType type, int duration, vector<Modifier> modifiers);
+    bool removeEffect(string id);
     vector<BaseObject *> getBaseObjects();
 private:
     vector<Effect> *effects;

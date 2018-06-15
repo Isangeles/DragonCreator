@@ -31,7 +31,7 @@ ModifierListItem::ModifierListItem(Modifier *modifier)
  */
 ModifierListItem::~ModifierListItem()
 {
-    delete modifier;
+    //delete modifier; //TODO causes crash on edited object change
 }
 /**
  * @brief ModifierListItem::getModifier Returns modifier

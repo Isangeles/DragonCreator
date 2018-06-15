@@ -51,14 +51,14 @@ Modifier ModifierParser::modifierFromNode(QDomNode *node)
 
     ModifierType type = ModifierUtils::typeFromTagName(modE.tagName().toStdString());
 
-    map<string, string> *attrs = new map<string, string>;
+    map<string, string> attrs;
     QDomNamedNodeMap nodeAttrsMap = modE.attributes();
 
     for(int i = 0; i < nodeAttrsMap.size(); i ++)
     {
         QDomNode attr = nodeAttrsMap.item(i);
         //cout << "node_attr_name:" << attr.nodeName().toStdString() << endl;
-        attrs->insert(make_pair(attr.nodeName().toStdString(), attr.nodeValue().toStdString()));
+        attrs.insert(make_pair(attr.nodeName().toStdString(), attr.nodeValue().toStdString()));
     }
 
     Modifier mod(type, attrs);

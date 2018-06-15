@@ -121,6 +121,6 @@ void WeaponsEditorWidget::on_removeModifierB_clicked()
  */
 void WeaponsEditorWidget::modifierAdded(Modifier* m)
 {
-    ModifierListItem * mItem = new ModifierListItem(m);
+    ModifierListItem* mItem = new ModifierListItem(m);
     ui->bonusesList->addItem(mItem);
 }

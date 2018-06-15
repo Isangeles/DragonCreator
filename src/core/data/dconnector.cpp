@@ -53,7 +53,7 @@ bool DConnector::addWeaponToBase(string basePath, Weapon *weapon)
     }
 }
 /**
- * @brief DConnector::addEffectToBase Adds specified effect to game effect base
+ * @brief DConnector::addEffectToBase Adds specified effect to game effects base
  * @param basePath Path to XML effect base
  * @param effect Effect
  * @return True if effect was successfull added, false otherwise
@@ -83,7 +83,35 @@ bool DConnector::addEffectToBase(string basePath, Effect *effect)
     }
 }
 /**
- * @brief DConnector::getEffectsFromBase Return all effects form effects base in specified path
+ * @brief DConnector::removeBaseObjectById Removes object(node) with specified ID from specified base
+ * @param id ID of object(node) to remove
+ * @return True if object was successfully removed, false otherwise
+ */
+bool DConnector::removeBaseObjectById(string basePath, string id)
+{
+    try
+    {
+        QXmlEditor baseEdit(basePath);
+        if(baseEdit.removeNode("id", id))
+        {
+            baseEdit.save();
+            baseEdit.close();
+            return true;
+        }
+        else
+        {
+            baseEdit.close();
+            return false;
+        }
+    }
+    catch(runtime_error* e)
+    {
+        cerr << e->what() <<endl;
+        return false;
+    }
+}
+/**
+ * @brief DConnector::getEffectsFromBase Returns all effects form effects base in specified path
  * @param basePath Path to XML effect base
  * @return List with effects
  */
@@ -98,7 +126,7 @@ vector<Effect> *DConnector::getEffectsFromBase(string basePath)
         for(int i = 0; i < nl.size(); i ++)
         {
             QDomNode effectNode = nl.at(i);
-            Effect *effect = EffectParser::effectFromNode(&effectNode);
+            Effect *effect = EffectParser::effectFromNode(effectNode);
             //cout << "e_from_node:" << effect->getId() << endl; //DEBUG
             effects->push_back(*effect);
         }
