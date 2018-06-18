@@ -78,6 +78,8 @@ private:
     QWidget* getEditorWidget(string editorId);
     BaseEditor* getBaseEditor(string editorId);
 
+    void updateSource();
+    void updateBaseTree();
 signals:
     void baseObjectSelected(BaseObject *object);
 
@@ -89,7 +91,7 @@ private slots:
     void on_baseTree_itemClicked(const QListWidgetItem &item);
     void on_baseTree_clicked(const QModelIndex &index);
     void on_workspace_tabCloseRequested(int id);
-    void updateSource();
+    void onBaseObjectEdit();
 };
 
 #endif // MAINWINDOW_H

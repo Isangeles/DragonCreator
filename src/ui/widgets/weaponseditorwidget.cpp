@@ -31,7 +31,7 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
     ui->setupUi(this);
     this->editor = editor;
     newModifier = new NewModdifierDialog(this);
-    QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(updateSource()));
+    QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(onBaseObjectEdit()));
 
     for(WeaponType type : *Weapon::getWeaponTypes())
     {

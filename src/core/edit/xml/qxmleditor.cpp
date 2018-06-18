@@ -122,23 +122,25 @@ bool QXmlEditor::removeNode(string attr, string value)
         for(int i = 0; i < eList.size(); i ++)
         {
             QDomNode eNode = eList.at(i);
+
             QDomNamedNodeMap attrs = eNode.attributes();
             for(int i = 0; i < attrs.size(); i ++)
             {
                 QDomNode a = attrs.item(i);
-                //cout << "attr_check:" << a.nodeName().toStdString() << " " <<  a.nodeValue().toStdString() << " ?= " << attr << " " << value << endl;
+
                 if(a.nodeName().toStdString() == attr && a.nodeValue().toStdString() == value)
                 {
-                    //TODO remove node from doc
-                    //QDomNode rn = doc->childNodes().at(1).removeChild(eNode);
-                    //cout << rn.nodeName().toStdString() << endl;
-                    //writeTempDoc();
-                    break;
+                    root.removeChild(eNode.toElement());
+                    doc->appendChild(root);
+                    QByteArray docContent = doc->toByteArray();
+
+                    tempXml->write(docContent);
+
+                    return true;
                 }
             }
         }
-
-        return true;
+        return false;
     }
     else
         return false;
@@ -151,7 +153,6 @@ bool QXmlEditor::removeNode(string attr, string value)
  */
 bool QXmlEditor::hasNode(string attr, string value)
 {
-
     if(isOpen())
     {
         QDomNodeList nList = doc->childNodes();
@@ -203,7 +204,11 @@ bool QXmlEditor::save()
     tempXml->reset();
     xml->reset();
     QByteArray docContent = tempXml->readAll();
-    //xml->resize(0); //clear file
+
+    //QString tempText(docContent); //DEBUG
+    //cout << "save_xml_temp_xml:" << tempText.toStdString() << endl; //DEBUG
+
+    xml->resize(0); //clear file
     if(xml->write(docContent) != -1) //TODO check if everything is right with temp file(?)
         return true;
     else
@@ -223,5 +228,6 @@ bool QXmlEditor::writeTempDoc()
 {
     QByteArray docContent = doc->toByteArray();
     tempXml->write(docContent);
+    QTextStream qts(tempXml);
     return true; //TODO check if everything OK(?)
 }

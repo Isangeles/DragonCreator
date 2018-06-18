@@ -29,7 +29,7 @@
 class BaseObjectListItem : public QListWidgetItem
 {
 public:
-    BaseObjectListItem(BaseObject *object);
+    BaseObjectListItem(BaseObject &object);
     ~BaseObjectListItem();
     BaseObject *getObject();
 private:

@@ -91,7 +91,7 @@ void MainWindow::setBaseTree(BaseEditor *bEditor)
 {
     for(BaseObject *o : bEditor->getBaseObjects())
     {
-        BaseObjectListItem *oListItem = new BaseObjectListItem(o);
+        BaseObjectListItem *oListItem = new BaseObjectListItem(*o);
         ui->baseTree->addItem(oListItem);
     }
 }
@@ -203,6 +203,7 @@ void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
 /**
  * @brief MainWindow::on_baseTree_itemClicked Triggered on base tree item clicked
  * @param item Clicked item
+ * @deprecated Now on_baseTree_clicked method used
  */
 void MainWindow::on_baseTree_itemClicked(const QListWidgetItem &item)
 {
@@ -229,6 +230,14 @@ void MainWindow::on_workspace_tabCloseRequested(int id)
     ui->workspace->removeTab(id);
 }
 /**
+ * @brief MainWindow::onBaseObjectEdit Called be editors widgets after base object edit
+ */
+void MainWindow::onBaseObjectEdit()
+{
+    updateSource();
+    updateBaseTree();
+}
+/**
  * @brief MainWindow::sourceUpdate Updates source tab
  */
 void MainWindow::updateSource()
@@ -236,4 +245,19 @@ void MainWindow::updateSource()
     QPlainTextEdit* sourceTab = (QPlainTextEdit*)ui->workspace->widget(1);
     sourceTab->clear();
     sourceTab->insertPlainText(QString::fromStdString(activeEditor->getBaseSource()));
+}
+/**
+ * @brief MainWindow::updateBaseTree Updates base tree
+ */
+void MainWindow::updateBaseTree()
+{
+    if(activeEditor != NULL)
+    {
+        ui->baseTree->clear();
+        for(BaseObject *o : activeEditor->getBaseObjects())
+        {
+            BaseObjectListItem *oListItem = new BaseObjectListItem(*o);
+            ui->baseTree->addItem(oListItem);
+        }
+    }
 }

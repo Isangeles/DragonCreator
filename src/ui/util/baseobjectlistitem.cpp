@@ -21,17 +21,17 @@
  * @brief BaseObjectListItem::BaseObjectListItem Base object list item constructor
  * @param object Base object
  */
-BaseObjectListItem::BaseObjectListItem(BaseObject *object)
+BaseObjectListItem::BaseObjectListItem(BaseObject &object)
 {
-    this->object = object;
-    this->setText(QString::fromStdString(object->getId()));
+    this->object = &object;
+    this->setText(QString::fromStdString(this->object->getId()));
 }
 /**
  * @brief BaseObjectListItem::~BaseObjectListItem Base object item destructor
  */
 BaseObjectListItem::~BaseObjectListItem()
 {
-    delete object;
+    //delete object;
 }
 /**
  * @brief BaseObjectListItem::getObject Returns base object contained by this item

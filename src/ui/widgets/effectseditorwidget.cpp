@@ -30,7 +30,7 @@ EffectsEditorWidget::EffectsEditorWidget(EffectsEditor *eEdit, QWidget *parent) 
     ui->setupUi(this);
     this->edit = eEdit;
 
-    QObject::connect(this, SIGNAL(effectAdded()), parent, SLOT(updateSource()));
+    QObject::connect(this, SIGNAL(effectAdded()), parent, SLOT(onBaseObjectEdit()));
     QObject::connect(parent, SIGNAL(baseObjectSelected(BaseObject*)), this, SLOT(baseTreeObjectSelected(BaseObject*)));
 }
 /**
