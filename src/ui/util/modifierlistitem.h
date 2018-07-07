@@ -28,11 +28,11 @@
 class ModifierListItem : public QListWidgetItem
 {
 public:
-    ModifierListItem(Modifier *modifier);
+    ModifierListItem(Modifier &modifier);
     ~ModifierListItem();
     const Modifier *getModifier();
 private:
-    const Modifier *modifier;
+    Modifier *modifier;
 };
 
 #endif // MODIFIERLISTITEM_H

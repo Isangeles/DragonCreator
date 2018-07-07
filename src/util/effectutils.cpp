@@ -28,8 +28,24 @@ EffectUtils::EffectUtils(){}
  */
 string EffectUtils::typeToId(EffectType type)
 {
-    //TODO
-    return "TODO";
+    switch(type)
+    {
+    case MAGIC:
+        return "magic";
+        break;
+    case FIRE:
+        return "fire";
+        break;
+    case ICE:
+        return "ice";
+        break;
+    case NATURE:
+        return "nature";
+        break;
+    default:
+        return "normal";
+        break;
+    }
 }
 /**
  * @brief EffectUtils::typeFromTagName Converts specified XML tag name to effect type
@@ -38,6 +54,14 @@ string EffectUtils::typeToId(EffectType type)
  */
 EffectType EffectUtils::typeFromTagName(string tagName)
 {
-    //TODO tag name to effect type conversion
-    return EffectType::NORMAL;
+    if(tagName == "magic")
+        return EffectType::MAGIC;
+    else if(tagName == "fire")
+        return EffectType::FIRE;
+    else if(tagName == "ice")
+        return EffectType::ICE;
+    else if(tagName == "nature")
+        return EffectType::NATURE;
+    else
+        return EffectType::NORMAL;
 }

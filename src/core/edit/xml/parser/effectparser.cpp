@@ -56,8 +56,8 @@ QDomNode EffectParser::effectToNode(Effect *effect, QDomDocument *doc)
 Effect *EffectParser::effectFromNode(QDomNode node)
 {
     QDomElement effectE = node.toElement();
-    string id = "none";
-    EffectType type = EffectType::NORMAL;
+    string id = effectE.attribute("id").toStdString();
+    EffectType type = EffectUtils::typeFromTagName(effectE.attribute("type").toStdString());
     int duration = 0;
     vector<Modifier> modifiers;
 
@@ -70,7 +70,6 @@ Effect *EffectParser::effectFromNode(QDomNode node)
     for(int i = 0; i < modNl.size(); i ++)
     {
         QDomNode modNode = modNl.at(i);
-        //Modifier mod = ModifierParser::modifierFromNode(&modNode);
         modifiers.push_back(ModifierParser::modifierFromNode(&modNode));
     }
 

@@ -21,10 +21,10 @@
  * @brief ModifierListItem::ModifierListItem Modifier list item constructor
  * @param modifier Modifier
  */
-ModifierListItem::ModifierListItem(Modifier *modifier)
+ModifierListItem::ModifierListItem(Modifier &modifier)
 {
-    this->modifier = modifier;
-    this->setText(QString::fromStdString(modifier->getName()));
+    this->modifier = &modifier;
+    this->setText(QString::fromStdString(this->modifier->getName()));
 }
 /**
  * @brief ModifierListItem::~ModifierListItem Modifier list item dostructor

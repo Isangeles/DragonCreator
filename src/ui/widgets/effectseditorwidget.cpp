@@ -91,7 +91,7 @@ void EffectsEditorWidget::on_modifierRemoveB_clicked()
  */
 void EffectsEditorWidget::modifierAdded(Modifier *m)
 {
-    ModifierListItem *mItem = new ModifierListItem(m);
+    ModifierListItem *mItem = new ModifierListItem(*m);
     ui->modifiersList->addItem(mItem);
 }
 /**
@@ -100,8 +100,14 @@ void EffectsEditorWidget::modifierAdded(Modifier *m)
  */
 void EffectsEditorWidget::baseTreeObjectSelected(BaseObject *o)
 {
-    if(Effect *e = dynamic_cast<Effect*>(o))
+    if(Effect *e = static_cast<Effect*>(o))
     {
+         /* //DEBUG
+        for(Modifier &mod : *e->getModifiers())
+        {
+            cout << "e_sel_mod:" << mod.getName() << endl;
+        }
+        */
         editEffect(e);
     }
 }
@@ -114,9 +120,9 @@ void EffectsEditorWidget::editEffect(Effect *e)
     clearEditor();
     ui->idEdit->setText(QString::fromStdString(e->getId()));
     ui->durationEdit->setValue(e->getDuration());
-    for(Modifier m : *e->getModifiers())
+    for(Modifier &m : *e->getModifiers())
     {
-        ModifierListItem *mItem = new ModifierListItem(&m);
+        ModifierListItem *mItem = new ModifierListItem(m);
         ui->modifiersList->addItem(mItem);
     }
 }
