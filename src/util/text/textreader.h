@@ -35,6 +35,7 @@ public:
     string getText(string textId);
     bool close();
     static const vector<string> getListFromLine(const string &line, const char &delimeter);
+    static const bool startsWith(const string &prefix, const string &text);
 
 private:
     static string COMMENT_PREFIX;

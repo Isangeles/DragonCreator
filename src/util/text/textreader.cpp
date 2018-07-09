@@ -45,7 +45,16 @@ const vector<string> TextReader::getListFromLine(const string& line, const char&
         list.push_back(buff);
     return list;
 }
-
+/**
+ * @brief TextReader::startsWith Checks if specified text starts with specified prefix
+ * @param prefix Prefix
+ * @param text Text to check
+ * @return True if text starts with prefix, false otherwise
+ */
+const bool TextReader::startsWith(const string &prefix, const string &text)
+{
+    return !text.compare(0, prefix.size(), prefix);
+}
 /**
  * @brief Text reader constructor, creates reader for specified file
  * @param pathToFile Path to file to read

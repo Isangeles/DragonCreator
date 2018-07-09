@@ -33,7 +33,7 @@ vector<ModifierAtributeType> ModifierUtils::getAttributesListFor(ModifierType mo
 
     switch(mod)
     {
-    case HEALTH: case MANA: case DUALWIELD: case ATTITUDE: {
+    case HEALTH: case MANA: case DUALWIELD: case ATTITUDE: case DODGE: {
         attrs.push_back(ModifierAtributeType(VALUE));
         break;
     }
@@ -55,8 +55,8 @@ vector<ModifierAtributeType> ModifierUtils::getAttributesListFor(ModifierType mo
         attrs.push_back(ModifierAtributeType(RESI_TYPE));
         break;
     }
-    case FLAG_NAME: {
-        attrs.push_back(ModifierAtributeType(FLAG));
+    case FLAG: {
+        attrs.push_back(ModifierAtributeType(FLAG_NAME));
         break;
     }
     case STATS: {
@@ -109,7 +109,7 @@ vector<string> ModifierUtils::getValuesListFor(ModifierAtributeType attr)
  * @brief ModifierUtils::typeFromOrdinal Converts specified attribute type ordinal to attribute type
  * @param ordinal Ordinal number of attribute type
  * @return Modifier attrubite type
- * @deprecated UNUSED
+ * @deprecated UNUSED now int is just casted to enum
  */
 ModifierAtributeType ModifierUtils::typeFromOrdinal(int ordinal)
 {

@@ -1,80 +1,85 @@
 <?xml version='1.0'?>
 <base>
- <effect type="normal" icon="bleed.png" duration="5" id="bleed01">
+ <effect type="normal" id="bleed01" icon="bleed.png" duration="5">
   <modifiers>
-   <statsBonus wis="0" str="0" con="-1" int="0" dex="0"/>
+   <statsBonus str="0" wis="0" con="-1" int="0" dex="0"/>
   </modifiers>
   <dot>-1</dot>
  </effect>
- <effect type="normal" icon="lunch.png" duration="5" id="heal01">
+ <effect type="normal" id="heal01" icon="lunch.png" duration="5">
   <modifiers/>
   <dot>+1</dot>
  </effect>
- <effect type="normal" icon="rage.png" duration="15" id="rage01">
+ <effect type="normal" id="rage01" icon="rage.png" duration="15">
   <modifiers>
-   <statsBonus wis="0" str="1" con="1" int="0" dex="0"/>
+   <statsBonus str="1" wis="0" con="1" int="0" dex="0"/>
    <healthBonus value="10"/>
   </modifiers>
  </effect>
- <effect type="fire" icon="burn.png" duration="5" id="burn01">
+ <effect type="fire" id="burn01" icon="burn.png" duration="5">
   <modifiers>
-   <statsBonus wis="0" str="0" con="-1" int="0" dex="-1"/>
+   <statsBonus str="0" wis="0" con="-1" int="0" dex="-1"/>
   </modifiers>
   <dot>-5</dot>
  </effect>
- <effect type="normal" icon="meleeBon.png" duration="always" id="swordBon01">
+ <effect type="normal" id="swordBon01" icon="meleeBon.png" duration="always">
   <modifiers>
    <damageBonus type="sword" value="10"/>
   </modifiers>
  </effect>
- <effect type="TODO" duration="10" id="undetect01">
+ <effect type="TODO" id="undetect01" duration="10">
   <modifiers>
    <noneModifier/>
   </modifiers>
  </effect>
- <effect type="TODO" duration="0" id="test6">
+ <effect type="TODO" id="test6" duration="0">
   <modifiers/>
  </effect>
- <effect type="TODO" duration="0" id="test5">
+ <effect type="TODO" id="test5" duration="0">
   <modifiers/>
  </effect>
- <effect type="TODO" duration="0" id="test4">
+ <effect type="TODO" id="test4" duration="0">
   <modifiers/>
  </effect>
- <effect type="TODO" duration="0" id="test3">
+ <effect type="TODO" id="test3" duration="0">
   <modifiers/>
  </effect>
- <effect type="TODO" duration="0" id="test2">
+ <effect type="TODO" id="test2" duration="0">
   <modifiers/>
  </effect>
- <effect type="TODO" duration="0" id="test1">
+ <effect type="TODO" id="test1" duration="0">
   <modifiers/>
  </effect>
- <effect type="TODO" duration="0" id="effTest1">
+ <effect type="TODO" id="effTest1" duration="0">
   <modifiers>
    <noneModifier/>
   </modifiers>
  </effect>
- <effect type="normal" duration="1" id="effTEst3">
+ <effect type="normal" id="effTEst3" duration="1">
   <modifiers>
    <noneModifier/>
   </modifiers>
  </effect>
- <effect type="normal" duration="2" id="effTEst2">
+ <effect type="normal" id="effTEst2" duration="2">
   <modifiers>
    <noneModifier/>
    <noneModifier/>
   </modifiers>
  </effect>
- <effect type="normal" duration="2" id="effTEst4">
+ <effect type="normal" id="effTEst4" duration="2">
   <modifiers>
    <noneModifier/>
    <healthModifier value="11"/>
   </modifiers>
  </effect>
- <effect type="normal" duration="1" id="effTest6">
+ <effect type="normal" id="effTest6" duration="1">
   <modifiers>
    <manaModifier value="11"/>
+  </modifiers>
+ </effect>
+ <effect type="nature" id="natureEffTest" duration="3">
+  <modifiers>
+   <damageModifier value="13"/>
   </modifiers>
  </effect>
 </base>

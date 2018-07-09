@@ -29,6 +29,7 @@
 #include "src/core/data/object/modifier.h"
 #include "src/util/modifierutils.h"
 #include "src/ui/lang.h"
+#include "src/util/text/textreader.h"
 
 namespace Ui
 {

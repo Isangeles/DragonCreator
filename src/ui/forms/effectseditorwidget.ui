@@ -29,7 +29,33 @@
     </widget>
    </item>
    <item row="1" column="2" colspan="2">
-    <widget class="QComboBox" name="typeCombo"/>
+    <widget class="QComboBox" name="typeCombo">
+     <item>
+      <property name="text">
+       <string>Normal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Magic</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fire</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ice</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Nautre</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="modifiersLabel">

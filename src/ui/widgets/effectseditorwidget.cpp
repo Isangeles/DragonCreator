@@ -83,7 +83,11 @@ void EffectsEditorWidget::on_modifierAddB_clicked()
  */
 void EffectsEditorWidget::on_modifierRemoveB_clicked()
 {
-    //TODO: remove modifier from list action
+    QList<QListWidgetItem*> selection = ui->modifiersList->selectedItems();
+    for(QListWidgetItem* i : selection)
+    {
+        delete i;
+    }
 }
 /**
  * @brief WeaponsEditorWidget::on_modifer_add Triggered by adding new modifier
