@@ -1,7 +1,7 @@
 /*
  * weaponseditorwidget.h
  *
- * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -30,6 +30,7 @@
 #include "src/core/edit/weaponseditor.h"
 #include "src/core/data/object/modifier.h"
 #include "newmoddifierdialog.h"
+#include "addeffectdialog.h"
 #include "src/ui/util/modifierlistitem.h"
 #include "src/util/text/textreader.h"
 
@@ -57,13 +58,18 @@ signals:
 private:
     Ui::WeaponsEditorWidget *ui;
     WeaponsEditor *editor;
-    NewModdifierDialog *newModifier;
+    NewModdifierDialog *newModifierD;
+    AddEffectDialog *addEffectD;
 
 private slots:
     void on_addB_clicked();
     void on_removeModifierB_clicked();
     void on_addBonusB_clicked();
+    void on_addEffectEqB_clicked();
+    void on_addEffectHitB_clicked();
     void modifierAdded(Modifier *m);
+    void effectsEqAdded(vector<Effect*> effects);
+    void effectsHitAdded(vector<Effect*> effects);
 };
 
 #endif // WEAPONSEDITORWIDGET_H

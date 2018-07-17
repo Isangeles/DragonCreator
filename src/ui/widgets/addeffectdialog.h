@@ -1,7 +1,6 @@
 /*
- * baseeditor.h
- *
- * Copyright (C) 2017-2018 Dariusz Sikora<darek@dellins-solus>
+ * addeffectdialog.h
+ * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,32 +16,41 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef BASEEDITOR_H
-#define BASEEDITOR_H
+#ifndef ADDEFFECTDIALOG_H
+#define ADDEFFECTDIALOG_H
 
-#include <iostream>
-#include <vector>
+#include <QDialog>
 
-#include "zip/zipeditor.h"
-#include "src/core/data/dconnector.h"
+#include "vector"
+
 #include "src/core/data/object/module.h"
+#include "src/core/data/object/effect.h"
+#include "src/core/data/dconnector.h"
+#include "src/ui/util/baseobjectlistitem.h"
 
-using namespace std;
+namespace Ui {
+class AddEffectDialog;
+}
+
 /**
- * @brief Abstract class for editors
+ * @brief Dialog for adding effects from base
  */
-class BaseEditor
+class AddEffectDialog : public QDialog
 {
+    Q_OBJECT
+
 public:
-    BaseEditor(string pathToBase, Module *mod, ZipEditor *gData);
-    string getBaseSource();
-    Module *getModule();
-    virtual vector<BaseObject *> getBaseObjects() = 0;
-protected:
-    string basePath;
-    ZipEditor *gData;
+    explicit AddEffectDialog(Module *mod, const char *callbackSlot, QWidget *parent = 0);
+    ~AddEffectDialog();
+
+signals:
+    void add(vector<Effect*> effect);
+
 private:
-    Module *mod;
+    Ui::AddEffectDialog *ui;
+
+private slots:
+    void on_addEffectB_clicked();
 };
 
-#endif // BASEEDITOR_H
+#endif // ADDEFFECTDIALOG_H

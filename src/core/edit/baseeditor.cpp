@@ -21,10 +21,11 @@
 /**
  * @brief Editor::Editor Base editor constructor
  */
-BaseEditor::BaseEditor(string pathToBase, ZipEditor *gData)
+BaseEditor::BaseEditor(string pathToBase, Module *mod, ZipEditor *gData)
 {
     basePath = pathToBase;
     this->gData = gData;
+    this->mod = mod;
 }
 /**
  * @brief BaseEditor::getBaseSource Returns current source of open base
@@ -33,4 +34,12 @@ BaseEditor::BaseEditor(string pathToBase, ZipEditor *gData)
 string BaseEditor::getBaseSource()
 {
     return DConnector::getXmlSource(basePath);
+}
+/**
+ * @brief BaseEditor::getModule Returns edited module
+ * @return Pointer to module
+ */
+Module *BaseEditor::getModule()
+{
+    return mod;
 }

@@ -32,8 +32,8 @@ ModuleEditor::ModuleEditor(string pathToModule)
 
         ZipEditor *gData = new ZipEditor(Config::getGameDir() + "/" + Engine::GBASE_PATH);
 
-        iEdit = new ItemEditor(openMod->getItemsPath(), gData);
-        eEdit = new EffectsEditor(openMod->getEffectsPath(), gData);
+        iEdit = new ItemEditor(openMod->getItemsPath(), openMod, gData);
+        eEdit = new EffectsEditor(openMod->getEffectsPath(), openMod, gData);
     }
     catch(runtime_error &e)
     {

@@ -64,7 +64,8 @@ SOURCES += \
     src/util/effectutils.cpp \
     src/ui/util/modifierlistitem.cpp \
     src/core/data/object/baseobject.cpp \
-    src/ui/util/baseobjectlistitem.cpp
+    src/ui/util/baseobjectlistitem.cpp \
+    src/ui/widgets/addeffectdialog.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -99,7 +100,8 @@ HEADERS += \
     src/util/effectutils.h \
     src/ui/util/modifierlistitem.h \
     src/core/data/object/baseobject.h \
-    src/ui/util/baseobjectlistitem.h
+    src/ui/util/baseobjectlistitem.h \
+    src/ui/widgets/addeffectdialog.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
@@ -108,7 +110,8 @@ FORMS += \
     src/ui/forms/weaponseditorwidget.ui \
     src/ui/forms/welcomewidget.ui \
     src/ui/forms/settingswidget.ui \
-    src/ui/forms/effectseditorwidget.ui
+    src/ui/forms/effectseditorwidget.ui \
+    src/ui/forms/addeffectdialog.ui
 
 SUBDIRS += \
     DragonCreator.pro

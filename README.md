@@ -5,7 +5,7 @@ Currently in very early development stage.
 
 ## Installation & Run
 
-Simply download and unpack build.
+Compile from source.
 
 ## License
 

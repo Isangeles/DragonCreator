@@ -1,7 +1,7 @@
 /*
  * weaponseditorwidget.cpp
  *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -30,7 +30,7 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
 {
     ui->setupUi(this);
     this->editor = editor;
-    newModifier = new NewModdifierDialog(this);
+    newModifierD = new NewModdifierDialog(this);
     QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(onBaseObjectEdit()));
 
     for(WeaponType type : *Weapon::getWeaponTypes())
@@ -53,12 +53,12 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
 WeaponsEditorWidget::~WeaponsEditorWidget()
 {
     delete ui;
-    delete newModifier;
+    delete newModifierD;
 }
 
 NewModdifierDialog *WeaponsEditorWidget::getNMDialog()
 {
-    return newModifier;
+    return newModifierD;
 }
 /**
  * @brief WeaponsEditorWidget::on_addB_clicked Method triggered on UI add button clicked
@@ -101,8 +101,8 @@ void WeaponsEditorWidget::on_addB_clicked()
  */
 void WeaponsEditorWidget::on_addBonusB_clicked()
 {
-    newModifier = new NewModdifierDialog(this);
-    newModifier->show();
+    newModifierD = new NewModdifierDialog(this);
+    newModifierD->show();
 }
 /**
  * @brief WeaponsEditorWidget::on_removeB_clicked Triggered on remove modiffer button clicked
@@ -116,6 +116,22 @@ void WeaponsEditorWidget::on_removeModifierB_clicked()
     }
 }
 /**
+ * @brief WeaponsEditorWidget::on_addEffectEqB_clicked Triggered on add on-equip effect button clicked
+ */
+void WeaponsEditorWidget::on_addEffectEqB_clicked()
+{
+    addEffectD = new AddEffectDialog(editor->getModule(), SLOT(effectsEqAdded(vector<Effect*>)), this);
+    addEffectD->show();
+}
+/**
+ * @brief WeaponsEditorWidget::on_addEffectHit_clicked Triggered on add hit effect button clicked
+ */
+void WeaponsEditorWidget::on_addEffectHitB_clicked()
+{
+    addEffectD = new AddEffectDialog(editor->getModule(), SLOT(effectsHitAdded(vector<Effect*>)), this);
+    addEffectD->show();
+}
+/**
  * @brief WeaponsEditorWidget::on_modifer_add Triggered by adding new modifier
  * @param mod New modifier
  */
@@ -123,4 +139,28 @@ void WeaponsEditorWidget::modifierAdded(Modifier* m)
 {
     ModifierListItem* mItem = new ModifierListItem(*m);
     ui->bonusesList->addItem(mItem);
+}
+/**
+ * @brief WeaponsEditorWidget::effectsAdded Triggered by adding on-equip effects from add effect dialog
+ * @param effects List with effects to add
+ */
+void WeaponsEditorWidget::effectsEqAdded(vector<Effect*> effects)
+{
+    for(Effect *e : effects)
+    {
+        BaseObjectListItem *effectListItem = new BaseObjectListItem(*e);
+        ui->effectsEqList->addItem(effectListItem);
+    }
+}
+/**
+ * @brief WeaponsEditorWidget::effectsAdded Triggered by adding on-hit effects from add effect dialog
+ * @param effects List with effects to add
+ */
+void WeaponsEditorWidget::effectsHitAdded(vector<Effect*> effects)
+{
+    for(Effect *e : effects)
+    {
+        BaseObjectListItem *effectListItem = new BaseObjectListItem(*e);
+        ui->effectsHitList->addItem(effectListItem);
+    }
 }

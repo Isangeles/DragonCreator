@@ -1,7 +1,7 @@
 /*
  * newmodifierdialog.h
  *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

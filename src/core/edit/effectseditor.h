@@ -30,7 +30,7 @@ using namespace std;
 class EffectsEditor : public BaseEditor
 {
 public:
-    EffectsEditor(string pathToBase, ZipEditor *gData);
+    EffectsEditor(string pathToBase, Module *mod, ZipEditor *gData);
     ~EffectsEditor();
     bool newEffect(string id, EffectType type, int duration, vector<Modifier> modifiers);
     bool removeEffect(string id);

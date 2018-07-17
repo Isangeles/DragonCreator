@@ -22,7 +22,7 @@
  * @brief Item editor constructor
  * @param pathToBase Path to XML items base
  */
-ItemEditor::ItemEditor(std::string pathToItems, ZipEditor* gData)
+ItemEditor::ItemEditor(std::string pathToItems, Module *mod, ZipEditor* gData)
 {
     itemsPath = pathToItems;
 
@@ -30,7 +30,7 @@ ItemEditor::ItemEditor(std::string pathToItems, ZipEditor* gData)
     weaponsPath = itemsPath + "/weapons" + Engine::BASE_EXT;
     miscPath = itemsPath + "/misc" + Engine::BASE_EXT;
 
-    wEdit = new WeaponsEditor(weaponsPath, gData);
+    wEdit = new WeaponsEditor(weaponsPath, mod, gData);
 }
 /**
  * @brief ItemEditor::~ItemEditor ItemEditor deconstructor

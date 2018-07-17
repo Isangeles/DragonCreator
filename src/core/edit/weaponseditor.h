@@ -25,6 +25,7 @@
 #include "baseeditor.h"
 #include "src/core/data/object/item/weapon.h"
 #include "src/core/data/object/modifier.h"
+#include "src/core/data/object/module.h"
 #include "src/core/data/dconnector.h"
 #include "zip/zipeditor.h"
 
@@ -35,7 +36,7 @@ using namespace std;
 class WeaponsEditor : public BaseEditor
 {
 public:
-    WeaponsEditor(string pathToBase, ZipEditor *gData) : BaseEditor(pathToBase, gData){}
+    WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData) : BaseEditor(pathToBase, mod, gData){}
     ~WeaponsEditor();
     vector<string> getIconsFiles();
     vector<string> getSpritesheetsFiles();

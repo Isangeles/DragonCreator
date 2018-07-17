@@ -22,7 +22,7 @@
  * @param pathToBase String with path to XML base
  * @param gData ZipEditor for game graphic data archive
  */
-EffectsEditor::EffectsEditor(string pathToBase, ZipEditor *gData) : BaseEditor(pathToBase, gData)
+EffectsEditor::EffectsEditor(string pathToBase, Module *mod, ZipEditor *gData) : BaseEditor(pathToBase, mod, gData)
 {
     effects = DConnector::getEffectsFromBase(pathToBase);
 }
