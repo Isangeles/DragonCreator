@@ -78,7 +78,6 @@ void WeaponsEditorWidget::on_addB_clicked()
    string ss = ui->spritesheetCombo->currentText().toStdString();
 
    vector<Modifier> *modifiers = new vector<Modifier>;
-
    for(int i = 0; i < ui->bonusesList->count(); i++)
    {
        QListWidgetItem* item = ui->bonusesList->item(i);
@@ -87,8 +86,28 @@ void WeaponsEditorWidget::on_addB_clicked()
        modifiers->push_back(*m->getModifier());
    }
 
+   vector<Effect> *effectsEq = new vector<Effect>;
+   for(int i = 0; i < ui->effectsEqList->count(); i++)
+   {
+       QListWidgetItem* item = ui->effectsEqList->item(i);
+
+       BaseObjectListItem *eItem = static_cast<BaseObjectListItem*>(item);
+       Effect *e = static_cast<Effect*>(eItem->getObject());
+       effectsEq->push_back(*e);
+   }
+
+   vector<Effect> *effectsHit = new vector<Effect>;
+   for(int i = 0; i < ui->effectsHitList->count(); i++)
+   {
+       QListWidgetItem* item = ui->effectsHitList->item(i);
+
+       BaseObjectListItem *eItem = static_cast<BaseObjectListItem*>(item);
+       Effect *e = static_cast<Effect*>(eItem->getObject());
+       effectsHit->push_back(*e);
+   }
+
    //TODO translate messages
-   if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, modifiers))
+   if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, modifiers, *effectsEq, *effectsHit))
    {
        emit itemAdded();
        QMessageBox::information(this, "Succes", "Items successfully added");
@@ -130,6 +149,28 @@ void WeaponsEditorWidget::on_addEffectHitB_clicked()
 {
     addEffectD = new AddEffectDialog(editor->getModule(), SLOT(effectsHitAdded(vector<Effect*>)), this);
     addEffectD->show();
+}
+/**
+ * @brief WeaponsEditorWidget::on_removeEffectEqB_clicked Triggered on remove on-equip effect button clicked
+ */
+void WeaponsEditorWidget::on_removeEffectEqB_clicked()
+{
+    QList<QListWidgetItem*> selection = ui->effectsEqList->selectedItems();
+    for(QListWidgetItem *i : selection)
+    {
+        delete i;
+    }
+}
+/**
+ * @brief WeaponsEditorWidget::on_removeEffectHitB_clicked Triggered on remove hit effect button clicked
+ */
+void WeaponsEditorWidget::on_removeEffectHitB_clicked()
+{
+    QList<QListWidgetItem*> selection = ui->effectsHitList->selectedItems();
+    for(QListWidgetItem *i : selection)
+    {
+        delete i;
+    }
 }
 /**
  * @brief WeaponsEditorWidget::on_modifer_add Triggered by adding new modifier

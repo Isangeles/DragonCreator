@@ -25,6 +25,7 @@
 #include "baseeditor.h"
 #include "src/core/data/object/item/weapon.h"
 #include "src/core/data/object/modifier.h"
+#include "src/core/data/object/effect.h"
 #include "src/core/data/object/module.h"
 #include "src/core/data/dconnector.h"
 #include "zip/zipeditor.h"
@@ -41,7 +42,7 @@ public:
     vector<string> getIconsFiles();
     vector<string> getSpritesheetsFiles();
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
-                   string icon, string spritesheet, vector<Modifier> *modifiers);
+                   string icon, string spritesheet, vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
     vector<BaseObject *> getBaseObjects();
 private:
     Weapon *getEditedWeapon(); //UNUSED

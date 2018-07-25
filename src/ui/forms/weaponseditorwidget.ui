@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>584</width>
-    <height>613</height>
+    <height>690</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,10 +20,20 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="1">
-    <widget class="QLabel" name="typeLabel">
+   <item row="0" column="11">
+    <widget class="QSpinBox" name="valueEdit"/>
+   </item>
+   <item row="1" column="8">
+    <widget class="QLabel" name="dmgMinLabel">
      <property name="text">
-      <string>Type</string>
+      <string>Damage min</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1" colspan="2">
+    <widget class="QLabel" name="effectsEqLabel">
+     <property name="text">
+      <string>Effects-equip</string>
      </property>
     </widget>
    </item>
@@ -31,6 +41,118 @@
     <widget class="QLabel" name="spritesheetLabel">
      <property name="text">
       <string>Spritesheet</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="6">
+    <widget class="QComboBox" name="spritesheetCombo">
+     <item>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="6" column="10">
+    <widget class="QPushButton" name="addBonusB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="10">
+    <widget class="QLabel" name="valueLabel">
+     <property name="text">
+      <string>Value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="8">
+    <widget class="QLabel" name="materialLabel">
+     <property name="text">
+      <string>Material</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="9" colspan="3">
+    <widget class="QComboBox" name="iconCombo">
+     <item>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="2">
+    <widget class="QLabel" name="idLabel">
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="10">
+    <widget class="QLabel" name="dmgMaxLabel">
+     <property name="text">
+      <string>Damage max</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
+    <widget class="QLabel" name="levelLabel">
+     <property name="text">
+      <string>Level</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="8" colspan="4">
+    <widget class="QListWidget" name="effectsHitList"/>
+   </item>
+   <item row="0" column="2" rowspan="3" colspan="6">
+    <widget class="QLineEdit" name="idEdit"/>
+   </item>
+   <item row="1" column="11">
+    <widget class="QSpinBox" name="dmgMaxEdit"/>
+   </item>
+   <item row="7" column="1" colspan="11">
+    <widget class="QListWidget" name="bonusesList"/>
+   </item>
+   <item row="3" column="2" colspan="6">
+    <widget class="QComboBox" name="typeCombo"/>
+   </item>
+   <item row="9" column="1" colspan="7">
+    <widget class="QListWidget" name="effectsEqList"/>
+   </item>
+   <item row="0" column="9">
+    <widget class="QSpinBox" name="levelEdit"/>
+   </item>
+   <item row="1" column="9">
+    <widget class="QSpinBox" name="dmgMinEdit"/>
+   </item>
+   <item row="5" column="8">
+    <widget class="QLabel" name="iconLabel">
+     <property name="text">
+      <string>Icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2">
+    <widget class="QLabel" name="bonusesLabel">
+     <property name="text">
+      <string>Modifiers</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="11">
+    <widget class="QPushButton" name="removeModifierB">
+     <property name="text">
+      <string>Remove</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="11">
+    <widget class="QPushButton" name="addB">
+     <property name="text">
+      <string>Add</string>
      </property>
     </widget>
    </item>
@@ -58,155 +180,47 @@
      </item>
     </widget>
    </item>
-   <item row="8" column="1" colspan="2">
-    <widget class="QLabel" name="effectsEqLabel">
+   <item row="3" column="1">
+    <widget class="QLabel" name="typeLabel">
      <property name="text">
-      <string>Effects-equip</string>
+      <string>Type</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="10">
-    <widget class="QLabel" name="valueLabel">
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="11">
-    <widget class="QSpinBox" name="dmgMaxEdit"/>
-   </item>
-   <item row="8" column="11">
-    <widget class="QPushButton" name="addEffectHitB">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="9" colspan="3">
-    <widget class="QComboBox" name="iconCombo">
-     <item>
-      <property name="text">
-       <string>default</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="5" column="8">
-    <widget class="QLabel" name="iconLabel">
-     <property name="text">
-      <string>Icon</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="8">
-    <widget class="QLabel" name="materialLabel">
-     <property name="text">
-      <string>Material</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1" colspan="11">
-    <widget class="QListWidget" name="bonusesList"/>
-   </item>
-   <item row="6" column="10">
-    <widget class="QPushButton" name="addBonusB">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="9">
-    <widget class="QSpinBox" name="levelEdit"/>
-   </item>
-   <item row="0" column="8">
-    <widget class="QLabel" name="levelLabel">
-     <property name="text">
-      <string>Level</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="11">
-    <widget class="QSpinBox" name="valueEdit"/>
-   </item>
-   <item row="6" column="11">
-    <widget class="QPushButton" name="removeModifierB">
+   <item row="8" column="6">
+    <widget class="QPushButton" name="removeEffectEqB">
      <property name="text">
       <string>Remove</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="1" colspan="7">
-    <widget class="QListWidget" name="effectsEqList"/>
-   </item>
-   <item row="8" column="9" colspan="2">
-    <widget class="QLabel" name="effectsHitLabel">
-     <property name="text">
-      <string>Effects-hit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="9">
-    <widget class="QSpinBox" name="dmgMinEdit"/>
-   </item>
-   <item row="1" column="8">
-    <widget class="QLabel" name="dmgMinLabel">
-     <property name="text">
-      <string>Damage min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="11">
-    <widget class="QPushButton" name="addB">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1" colspan="2">
-    <widget class="QLabel" name="bonusesLabel">
-     <property name="text">
-      <string>Modifiers</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="7">
+   <item row="8" column="5">
     <widget class="QPushButton" name="addEffectEqB">
      <property name="text">
       <string>Add</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="10">
-    <widget class="QLabel" name="dmgMaxLabel">
+   <item row="8" column="8">
+    <widget class="QLabel" name="effectsHitLabel">
      <property name="text">
-      <string>Damage max</string>
+      <string>Effects-hit</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="8" colspan="4">
-    <widget class="QListWidget" name="effectsHitList"/>
-   </item>
-   <item row="3" column="2" colspan="6">
-    <widget class="QComboBox" name="typeCombo"/>
-   </item>
-   <item row="5" column="2" colspan="6">
-    <widget class="QComboBox" name="spritesheetCombo">
-     <item>
-      <property name="text">
-       <string>default</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="0" column="1" rowspan="2">
-    <widget class="QLabel" name="idLabel">
+   <item row="8" column="11">
+    <widget class="QPushButton" name="removeEffectHitB">
      <property name="text">
-      <string>ID</string>
+      <string>Remove</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="2" rowspan="3" colspan="6">
-    <widget class="QLineEdit" name="idEdit"/>
+   <item row="8" column="10">
+    <widget class="QPushButton" name="addEffectHitB">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

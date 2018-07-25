@@ -24,7 +24,8 @@
 #include <string>
 #include <vector>
 
-#include "../baseobject.h"
+#include "src/core/data/object/baseobject.h"
+#include "src/core/data/object/effect.h"
 #include "src/core/data/object/modifier.h"
 
 using namespace std;
@@ -38,7 +39,8 @@ class Weapon
 friend class ItemParser;
 public:
     static vector<WeaponType> *getWeaponTypes();
-    Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet, vector<Modifier> *modifiers);
+    Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
+           vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
     string toString();
     string getId();
 private:
@@ -52,8 +54,8 @@ private:
     string icon;
     string spritesheet;
     vector<Modifier> *bonuses;
-    vector<string> effectEq; //TODO proper equip effects
-    vector<string> effectsHt; //TODO proper hit effects
+    vector<Effect> effectsEq;
+    vector<Effect> effectsHit;
 };
 
 #endif // WEAPON_H

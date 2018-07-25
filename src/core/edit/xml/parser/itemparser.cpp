@@ -61,11 +61,24 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
         bonusesE.appendChild(modNode);
     }
     weaponE.appendChild(bonusesE);
+
     QDomElement equipEffectsE = doc->createElement("equipEffects");
-    //TODO weapon equip effects
+    for(Effect e : weapon->effectsEq)
+    {
+        QDomElement effectE = doc->createElement("effect");
+        effectE.setNodeValue(QString::fromStdString(e.getId()));
+        equipEffectsE.appendChild(effectE);
+    }
     weaponE.appendChild(equipEffectsE);
+
     QDomElement hitEffectsE = doc->createElement("hitEffects");
-    //TODO weapon hit effects
+    for(Effect e : weapon->effectsHit)
+    {
+        QDomElement effectE = doc->createElement("effect");
+        QDomText effectIdText = doc->createTextNode(QString::fromStdString(e.getId()));
+        effectE.appendChild(effectIdText);
+        hitEffectsE.appendChild(effectE);
+    }
     weaponE.appendChild(hitEffectsE);
 
     return weaponE;

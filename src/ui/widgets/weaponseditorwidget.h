@@ -67,6 +67,8 @@ private slots:
     void on_addBonusB_clicked();
     void on_addEffectEqB_clicked();
     void on_addEffectHitB_clicked();
+    void on_removeEffectEqB_clicked();
+    void on_removeEffectHitB_clicked();
     void modifierAdded(Modifier *m);
     void effectsEqAdded(vector<Effect*> effects);
     void effectsHitAdded(vector<Effect*> effects);
