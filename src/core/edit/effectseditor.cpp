@@ -72,11 +72,9 @@ bool EffectsEditor::removeEffect(string id)
 vector<BaseObject *> EffectsEditor::getBaseObjects()
 {
     vector<BaseObject *> objects = vector<BaseObject *>();
-
     for(Effect &e : *effects)
     {
         objects.push_back(&e);
     }
-
     return objects;
 }

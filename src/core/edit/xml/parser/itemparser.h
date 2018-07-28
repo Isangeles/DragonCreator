@@ -27,6 +27,7 @@
 #include "src/core/data/object/item/weapon.h"
 #include "src/util/weaponutils.h"
 #include "modifierparser.h"
+#include "effectparser.h"
 
 using namespace std;
 /**
@@ -36,6 +37,7 @@ class ItemParser
 {
 public:
     static QDomNode weaponToNode(Weapon *weapon, QDomDocument *doc);
+    static Weapon weaponFromNode(QDomNode weaponNode);
 private:
     ItemParser();
 

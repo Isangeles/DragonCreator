@@ -21,6 +21,17 @@
 
 const string WeaponsEditor::WEAPONS_ICONS_PATH = "graphic/icon/item/weapon";
 const string WeaponsEditor::WEAPONS_SPRITESHEETS_PATH = "graphic/sprite/item";
+
+/**
+ * @brief WeaponsEditor::WeaponsEditor Weapons editor constructor
+ * @param pathToBase
+ * @param mod
+ * @param gData
+ */
+WeaponsEditor::WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData) : BaseEditor(pathToBase, mod, gData)
+{
+    weapons = DConnector::getWeaponsFromBase(pathToBase);
+}
 /**
  * @brief WeaponsEditor::~WeaponsEditor Weapons editor consructor
  */
@@ -92,7 +103,10 @@ vector<string> WeaponsEditor::getSpritesheetsFiles()
  */
 vector<BaseObject *> WeaponsEditor::getBaseObjects()
 {
-    //TODO return base objects
     vector<BaseObject *> objects = vector<BaseObject *>();
+    for(Weapon &w : *weapons)
+    {
+        objects.push_back(&w);
+    }
     return objects;
 }

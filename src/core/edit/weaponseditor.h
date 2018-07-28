@@ -37,7 +37,7 @@ using namespace std;
 class WeaponsEditor : public BaseEditor
 {
 public:
-    WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData) : BaseEditor(pathToBase, mod, gData){}
+    WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData);
     ~WeaponsEditor();
     vector<string> getIconsFiles();
     vector<string> getSpritesheetsFiles();
@@ -45,10 +45,11 @@ public:
                    string icon, string spritesheet, vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
     vector<BaseObject *> getBaseObjects();
 private:
-    Weapon *getEditedWeapon(); //UNUSED
-    Weapon *editedWeapon;
     static const string WEAPONS_ICONS_PATH;
     static const string WEAPONS_SPRITESHEETS_PATH;
+    Weapon *getEditedWeapon(); //UNUSED
+    Weapon *editedWeapon;
+    vector<Weapon> *weapons;
 };
 
 #endif // WEAPONSEDITOR_H

@@ -72,6 +72,7 @@ private slots:
     void modifierAdded(Modifier *m);
     void effectsEqAdded(vector<Effect*> effects);
     void effectsHitAdded(vector<Effect*> effects);
+    void baseTreeObjectSelected(BaseObject *o);
 };
 
 #endif // WEAPONSEDITORWIDGET_H

@@ -39,6 +39,7 @@ public:
     static bool addEffectToBase(string basePath, Effect *effect);
     static bool removeBaseObjectById(string basePath, string id);
     static vector<Effect> *getEffectsFromBase(string basePath);
+    static vector<Weapon> *getWeaponsFromBase(string basePath);
     static string getXmlSource(string xmlPath);
 private:
     DConnector();

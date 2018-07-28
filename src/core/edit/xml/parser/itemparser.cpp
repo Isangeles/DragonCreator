@@ -83,3 +83,59 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
 
     return weaponE;
 }
+/**
+ * @brief ItemParser::weaponFromNode Parses specified XML node from weapons base to weapon object
+ * @param node XML document node
+ * @return Weapon object
+ */
+Weapon ItemParser::weaponFromNode(QDomNode node)
+{
+    QDomElement itemE = node.toElement();
+    string id = itemE.attribute("id").toStdString();
+    int level = itemE.attribute("level").toInt();
+
+    WeaponType type = WeaponType::DAGGER; // TODO: type parsing
+
+    string material = itemE.attribute("material").toStdString();
+    int value = itemE.attribute("value").toInt();
+
+    string damageAttr = itemE.attribute("damage").toStdString();
+    int damageMin = 0; // TODO: min damage parsing
+    int damageMax = 0; // TODO: max damage parsing
+
+    QDomElement iconE = itemE.elementsByTagName("icon").at(0).toElement();
+    string icon = iconE.text().toStdString(); // TODO: check if works OK
+
+    QDomElement spirtesheetE = itemE.elementsByTagName("spritesheet").at(0).toElement();
+    string spritesheet = spirtesheetE.text().toStdString();
+
+    vector<Modifier> *modifiers = new vector<Modifier>();
+    QDomElement bonusesE = itemE.elementsByTagName("bonuses").at(0).toElement();
+    QDomNodeList modNl = bonusesE.childNodes();
+    for(int i = 0; i < modNl.size(); i ++)
+    {
+        QDomNode modNode = modNl.at(i);
+        modifiers->push_back(ModifierParser::modifierFromNode(&modNode));
+    }
+
+    vector<Effect> effectsEq;
+    QDomElement equipEffectsE = itemE.elementsByTagName("equipEffects").at(0).toElement();
+    QDomNodeList effectsEqNl = equipEffectsE.childNodes();
+    for(int i = 0; i < effectsEqNl.size(); i ++)
+    {
+        QDomNode effectNode = effectsEqNl.at(i);
+        effectsEq.push_back(*EffectParser::effectFromNode(effectNode));
+    }
+
+    vector<Effect> effectsHit;
+    QDomElement hitEffectsE = itemE.elementsByTagName("hitEffects").at(0).toElement();
+    QDomNodeList effectsHitNl = hitEffectsE.childNodes();
+    for(int i = 0; i < effectsHitNl.size(); i ++)
+    {
+        QDomNode effectNode = effectsHitNl.at(i);
+        effectsHit.push_back(*EffectParser::effectFromNode(effectNode));
+    }
+
+    return Weapon(id, level, type, material, value, damageMin, damageMax, icon, spritesheet,
+                  modifiers, effectsEq, effectsHit);
+}

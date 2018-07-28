@@ -213,7 +213,11 @@ void MainWindow::on_baseTree_itemClicked(const QListWidgetItem &item)
     //const BaseObjectListItem *o = reinterpret_cast<const BaseObjectListItem*>(i);
     //cout << "base_tree_item_clicked:" << o->text().toStdString() << endl;
 }
-
+/**
+ * @brief MainWindow::on_baseTree_clicked Triggered on base tree clicked
+ * Emits @link MainWindow::baseObjectSelected(BaseObject*)
+ * @param index Index of clicked item
+ */
 void MainWindow::on_baseTree_clicked(const QModelIndex &index)
 {
     QListWidgetItem *item = ui->baseTree->item(index.row());

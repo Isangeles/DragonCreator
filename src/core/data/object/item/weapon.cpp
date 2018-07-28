@@ -40,7 +40,7 @@ vector<WeaponType> *Weapon::getWeaponTypes()
  * @brief Weapon::Weapon Weapon constructor
  */
 Weapon::Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-               vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit)
+               vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit) : BaseObject()
 {
     this->id = id;
     this->level = level;

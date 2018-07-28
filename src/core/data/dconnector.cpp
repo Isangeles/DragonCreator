@@ -141,6 +141,33 @@ vector<Effect> *DConnector::getEffectsFromBase(string basePath)
     return effects;
 }
 /**
+ * @brief DConnector::getWeaponsFromBase Returns all wapons for base in specified path
+ * @param path Path to XML wapons base
+ * @return List with weapons
+ */
+vector<Weapon> *DConnector::getWeaponsFromBase(string basePath)
+{
+    vector<Weapon> *weapons = new vector<Weapon>;
+    try
+    {
+        QXmlEditor xml(basePath);
+
+        QDomNodeList nl = xml.getDoc()->elementsByTagName("item");
+        for(int i = 0; i < nl.size(); i ++)
+        {
+            QDomNode itemNode = nl.at(i);
+            Weapon item = ItemParser::weaponFromNode(itemNode);
+            //cout << "w_from_node:" << item.getId() << endl; // DEBUG
+            weapons->push_back(item);
+        }
+    }
+    catch (runtime_error e)
+    {
+        cerr << "get_weapons_from_base_fail:" << e.what() << endl;
+    }
+    return weapons;
+}
+/**
  * @brief DConnector::getXmlSource Retruns source of XML document from specified path
  * @param xmlPath Path to XML document
  * @return String with source of XML document

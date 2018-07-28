@@ -33,8 +33,9 @@ using namespace std;
 enum WeaponType{DAGGER = 0, SWORD = 1, AXE = 2, MACE = 3, SPEAR = 4, BOW = 5, FIST = 6};
 /**
  * @brief Class for weapons to edit
+ * TODO: IMPLEMENT REQUIREMENTS
  */
-class Weapon
+class Weapon : public BaseObject
 {
 friend class ItemParser;
 public:

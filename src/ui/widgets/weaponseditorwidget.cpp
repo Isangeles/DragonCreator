@@ -31,7 +31,9 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
     ui->setupUi(this);
     this->editor = editor;
     newModifierD = new NewModdifierDialog(this);
+
     QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(onBaseObjectEdit()));
+    QObject::connect(parent, SIGNAL(baseObjectSelected(BaseObject*)), this, SLOT(baseTreeObjectSelected(BaseObject*)));
 
     for(WeaponType type : *Weapon::getWeaponTypes())
     {
@@ -203,5 +205,16 @@ void WeaponsEditorWidget::effectsHitAdded(vector<Effect*> effects)
     {
         BaseObjectListItem *effectListItem = new BaseObjectListItem(*e);
         ui->effectsHitList->addItem(effectListItem);
+    }
+}
+/**
+ * @brief WeaponsEditorWidget::baseTreeObjectSelected
+ * @param o Selected base object
+ */
+void WeaponsEditorWidget::baseTreeObjectSelected(BaseObject *o)
+{
+    if(Weapon *w = static_cast<Weapon*>(o))
+    {
+        cout << "edit_req:" << w->getId() << endl; // DEBUG
     }
 }
