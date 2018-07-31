@@ -65,7 +65,10 @@ SOURCES += \
     src/ui/util/modifierlistitem.cpp \
     src/core/data/object/baseobject.cpp \
     src/ui/util/baseobjectlistitem.cpp \
-    src/ui/widgets/addeffectdialog.cpp
+    src/ui/widgets/addeffectdialog.cpp \
+    src/core/data/object/requirement.cpp \
+    src/util/requirementutils.cpp \
+    src/core/edit/xml/parser/requirementparser.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -101,7 +104,11 @@ HEADERS += \
     src/ui/util/modifierlistitem.h \
     src/core/data/object/baseobject.h \
     src/ui/util/baseobjectlistitem.h \
-    src/ui/widgets/addeffectdialog.h
+    src/ui/widgets/addeffectdialog.h \
+    src/core/data/object/requirement.h \
+    src/core/data/object/requirement.h \
+    src/util/requirementutils.h \
+    src/core/edit/xml/parser/requirementparser.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
