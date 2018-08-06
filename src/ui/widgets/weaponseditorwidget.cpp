@@ -63,6 +63,20 @@ NewModdifierDialog *WeaponsEditorWidget::getNMDialog()
     return newModifierD;
 }
 /**
+ * @brief WeaponsEditorWidget::editWeapon fills editor fields with data of specified weapon object
+ * @param w Weapon
+ */
+void WeaponsEditorWidget::editWeapon(Weapon *w)
+{
+    //TODO fill all fields with weapon data
+    ui->idEdit->setText(QString::fromStdString(w->getId()));
+    ui->levelEdit->setValue(w->getLevel());
+    ui->valueEdit->setValue(w->getValue());
+    ui->dmgMaxEdit->setValue(w->getDamageMax());
+    ui->dmgMinEdit->setValue(w->getDamageMin());
+
+}
+/**
  * @brief WeaponsEditorWidget::on_addB_clicked Method triggered on UI add button clicked
  */
 void WeaponsEditorWidget::on_addB_clicked()
@@ -213,8 +227,11 @@ void WeaponsEditorWidget::effectsHitAdded(vector<Effect*> effects)
  */
 void WeaponsEditorWidget::baseTreeObjectSelected(BaseObject *o)
 {
-    if(Weapon *w = static_cast<Weapon*>(o))
+    if(typeid(*o) == typeid(Weapon))
     {
-        cout << "edit_req:" << w->getId() << endl; // DEBUG
+        if(Weapon *w = static_cast<Weapon*>(o))
+        {
+            editWeapon(w);
+        }
     }
 }

@@ -31,7 +31,7 @@ class EffectUtils
 {
 public:
     static string typeToId(EffectType type);
-    static EffectType typeFromTagName(string tagName);
+    static EffectType typeFromId(string tagName);
 private:
     EffectUtils();
 };

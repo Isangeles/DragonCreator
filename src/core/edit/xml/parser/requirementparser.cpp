@@ -31,7 +31,19 @@ RequirementParser::RequirementParser()
  */
 Requirement RequirementParser::getRequirementFromNode(QDomNode node)
 {
-    //TODO parse node to requirement object
+    QDomElement reqE = node.toElement();
+
+    RequirementType type = RequirementUtils::typeFromTagName(reqE.tagName().toStdString());
+
+    string value = reqE.text().toStdString();
+
     map<string, string> attrs;
-    return Requirement(RequirementType::NONE, attrs, "");
+    QDomNamedNodeMap nodeAttrsMap = reqE.attributes();
+    for(int i = 0; i < nodeAttrsMap.size(); i ++)
+    {
+        QDomNode attr = nodeAttrsMap.item(i);
+        attrs.insert(make_pair(attr.nodeName().toStdString(), attr.nodeValue().toStdString()));
+    }
+
+    return Requirement(type, attrs, value);
 }

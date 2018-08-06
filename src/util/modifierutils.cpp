@@ -117,6 +117,8 @@ ModifierAtributeType ModifierUtils::typeFromOrdinal(int ordinal)
     {
     case 0:
         return ModifierAtributeType(HEALTH);
+    default:
+        return ModifierAtributeType(NONE);
     }
 }
 /**

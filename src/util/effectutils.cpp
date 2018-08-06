@@ -32,19 +32,14 @@ string EffectUtils::typeToId(EffectType type)
     {
     case MAGIC:
         return "magic";
-        break;
     case FIRE:
         return "fire";
-        break;
     case ICE:
         return "ice";
-        break;
     case NATURE:
         return "nature";
-        break;
     default:
         return "normal";
-        break;
     }
 }
 /**
@@ -52,7 +47,7 @@ string EffectUtils::typeToId(EffectType type)
  * @param tagName Tag name
  * @return Effect type enum
  */
-EffectType EffectUtils::typeFromTagName(string tagName)
+EffectType EffectUtils::typeFromId(string tagName)
 {
     if(tagName == "magic")
         return EffectType::MAGIC;

@@ -68,3 +68,75 @@ string Weapon::getId()
 {
     return id;
 }
+/**
+ * @brief Weapon::getLevel Return weapon level
+ * @return Level
+ */
+int Weapon::getLevel()
+{
+    return level;
+}
+/**
+ * @brief Weapon::getType Return weapon type
+ * @return Weapon type
+ */
+WeaponType Weapon::getType()
+{
+    return type;
+}
+/**
+ * @brief Weapon::getMaterial Return weapon material
+ * @return Weapon material
+ */
+string Weapon::getMaterial()
+{
+    return material;
+}
+/**
+ * @brief Weapon::getValue Returns weapon value
+ * @return Weapon value
+ */
+int Weapon::getValue()
+{
+    return value;
+}
+/**
+ * @brief Weapon::getDamageMax Returns weapon max damage
+ * @return Max damage value
+ */
+int Weapon::getDamageMax()
+{
+    return damageMax;
+}
+/**
+ * @brief Weapon::getDamageMin Returnss weapon min damage
+ * @return Weapon min damage
+ */
+int Weapon::getDamageMin()
+{
+    return damageMin;
+}
+/**
+ * @brief Weapon::getIcon Returns item icon file name
+ * @return Icon name
+ */
+string Weapon::getIcon()
+{
+    return icon;
+}
+/**
+ * @brief Weapon::getSpritesheet Returns weapon spritesheet file name
+ * @return Spritesheet name
+ */
+string Weapon::getSpritesheet()
+{
+    return spritesheet;
+}
+/**
+ * @brief Weapon::getModifiers Returns list with weapon modifiers
+ * @return Weapon modifiers
+ */
+vector<Modifier> *Weapon::getModifiers()
+{
+    return bonuses;
+}

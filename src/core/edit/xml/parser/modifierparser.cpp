@@ -46,18 +46,16 @@ QDomNode ModifierParser::modifierToNode(Modifier *modifier, QDomDocument *doc)
  */
 Modifier ModifierParser::modifierFromNode(QDomNode *node)
 {
-    //TODO node parsing
     QDomElement modE = node->toElement();
 
     ModifierType type = ModifierUtils::typeFromTagName(modE.tagName().toStdString());
 
     map<string, string> attrs;
     QDomNamedNodeMap nodeAttrsMap = modE.attributes();
-
     for(int i = 0; i < nodeAttrsMap.size(); i ++)
     {
         QDomNode attr = nodeAttrsMap.item(i);
-        //cout << "node_attr_name:" << attr.nodeName().toStdString() << endl;
+        //cout << "node_attr_name:" << attr.nodeName().toStdString() << endl; // debug
         attrs.insert(make_pair(attr.nodeName().toStdString(), attr.nodeValue().toStdString()));
     }
 

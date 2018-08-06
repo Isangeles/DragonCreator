@@ -51,7 +51,7 @@ public:
     explicit WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent = 0);
     ~WeaponsEditorWidget();
     NewModdifierDialog* getNMDialog();
-
+    void editWeapon(Weapon *w);
 signals:
     void itemAdded();
 

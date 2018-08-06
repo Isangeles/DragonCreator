@@ -104,15 +104,18 @@ void EffectsEditorWidget::modifierAdded(Modifier *m)
  */
 void EffectsEditorWidget::baseTreeObjectSelected(BaseObject *o)
 {
-    if(Effect *e = static_cast<Effect*>(o))
+    if(typeid(*o) == typeid(Effect))
     {
-         /* //DEBUG
-        for(Modifier &mod : *e->getModifiers())
+        if(Effect *e = static_cast<Effect*>(o))
         {
-            cout << "e_sel_mod:" << mod.getName() << endl;
+             /* //DEBUG
+            for(Modifier &mod : *e->getModifiers())
+            {
+                cout << "e_sel_mod:" << mod.getName() << endl;
+            }
+            */
+            editEffect(e);
         }
-        */
-        editEffect(e);
     }
 }
 /**
@@ -121,6 +124,7 @@ void EffectsEditorWidget::baseTreeObjectSelected(BaseObject *o)
  */
 void EffectsEditorWidget::editEffect(Effect *e)
 {
+    // TODO fill effect type combo
     clearEditor();
     ui->idEdit->setText(QString::fromStdString(e->getId()));
     ui->durationEdit->setValue(e->getDuration());

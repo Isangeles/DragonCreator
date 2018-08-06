@@ -44,6 +44,15 @@ public:
            vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
     string toString();
     string getId();
+    int getLevel();
+    WeaponType getType();
+    string getMaterial();
+    int getValue();
+    int getDamageMax();
+    int getDamageMin();
+    string getIcon();
+    string getSpritesheet();
+    vector<Modifier> *getModifiers();
 private:
     string id;
     int level;
