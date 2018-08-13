@@ -4,5 +4,10 @@ Major:
 *Characters editor
 *Misc items editor
 *Armors editor
+*Translation
+*Design better(any) translation system
+*New module creation
 Minor:
-*
+*Implement requirements
+*Requirements parser
+...

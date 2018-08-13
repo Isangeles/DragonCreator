@@ -89,6 +89,7 @@ void MainWindow::setModuleTree(ModuleEditor *mEditor)
  */
 void MainWindow::setBaseTree(BaseEditor *bEditor)
 {
+    ui->baseTree->clear();
     for(BaseObject *o : bEditor->getBaseObjects())
     {
         BaseObjectListItem *oListItem = new BaseObjectListItem(*o);

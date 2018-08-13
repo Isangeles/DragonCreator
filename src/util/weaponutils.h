@@ -31,6 +31,7 @@ class WeaponUtils
 {
 public:
     static string typeToId(WeaponType type);
+    static WeaponType typeFromId(string id);
 private:
     WeaponUtils();
 };

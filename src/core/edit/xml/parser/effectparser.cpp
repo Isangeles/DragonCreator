@@ -62,7 +62,7 @@ Effect *EffectParser::effectFromNode(QDomNode node)
     vector<Modifier> modifiers;
 
     id = effectE.attribute("id").toStdString();
-    type = EffectUtils::typeFromId(effectE.tagName().toStdString());
+    type = EffectUtils::typeFromId(effectE.attribute("type").toStdString());
     duration = effectE.attribute("duration").toInt();
 
     QDomElement modifiersE = effectE.elementsByTagName("modifiers").at(0).toElement();

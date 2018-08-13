@@ -26,13 +26,13 @@ vector<WeaponType> *Weapon::getWeaponTypes()
 {
     vector<WeaponType> *types = new vector<WeaponType>();
 
+    types->push_back(WeaponType(FIST));
     types->push_back(WeaponType(DAGGER));
     types->push_back(WeaponType(SWORD));
     types->push_back(WeaponType(AXE));
     types->push_back(WeaponType(MACE));
     types->push_back(WeaponType(SPEAR));
     types->push_back(WeaponType(BOW));
-    types->push_back(WeaponType(FIST));
 
     return types;
 }
@@ -40,7 +40,7 @@ vector<WeaponType> *Weapon::getWeaponTypes()
  * @brief Weapon::Weapon Weapon constructor
  */
 Weapon::Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-               vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit) : BaseObject()
+               vector<Modifier> &modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit) : BaseObject()
 {
     this->id = id;
     this->level = level;
@@ -136,7 +136,7 @@ string Weapon::getSpritesheet()
  * @brief Weapon::getModifiers Returns list with weapon modifiers
  * @return Weapon modifiers
  */
-vector<Modifier> *Weapon::getModifiers()
+vector<Modifier> Weapon::getModifiers()
 {
     return bonuses;
 }

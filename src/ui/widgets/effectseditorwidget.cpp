@@ -47,7 +47,7 @@ EffectsEditorWidget::~EffectsEditorWidget()
 void EffectsEditorWidget::on_addB_clicked()
 {
     string id = ui->idEdit->text().toStdString();
-    EffectType type = (EffectType)ui->typeCombo->currentIndex();
+    EffectType type = static_cast<EffectType>(ui->typeCombo->currentIndex());
 
     int duration = ui->durationEdit->value();
 
@@ -124,10 +124,10 @@ void EffectsEditorWidget::baseTreeObjectSelected(BaseObject *o)
  */
 void EffectsEditorWidget::editEffect(Effect *e)
 {
-    // TODO fill effect type combo
     clearEditor();
     ui->idEdit->setText(QString::fromStdString(e->getId()));
     ui->durationEdit->setValue(e->getDuration());
+    ui->typeCombo->setCurrentIndex(static_cast<int>(e->getType()));
     for(Modifier &m : *e->getModifiers())
     {
         ModifierListItem *mItem = new ModifierListItem(m);

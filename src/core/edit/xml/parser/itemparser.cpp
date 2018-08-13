@@ -55,7 +55,7 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
     weaponE.appendChild(spritesheetE);
 
     QDomElement bonusesE = doc->createElement("bonuses");
-    for(Modifier mod : *weapon->bonuses)
+    for(Modifier mod : weapon->bonuses)
     {
         QDomNode modNode = ModifierParser::modifierToNode(&mod, doc);
         bonusesE.appendChild(modNode);
@@ -93,8 +93,7 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
     QDomElement itemE = node.toElement();
     string id = itemE.attribute("id").toStdString();
     int level = itemE.attribute("level").toInt();
-
-    WeaponType type = WeaponType::DAGGER; // TODO: type parsing
+    WeaponType type = WeaponUtils::typeFromId(itemE.attribute("type").toStdString());
 
     string material = itemE.attribute("material").toStdString();
     int value = itemE.attribute("value").toInt();
@@ -109,13 +108,13 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
     QDomElement spirtesheetE = itemE.elementsByTagName("spritesheet").at(0).toElement();
     string spritesheet = spirtesheetE.text().toStdString();
 
-    vector<Modifier> *modifiers = new vector<Modifier>();
+    vector<Modifier> modifiers;
     QDomElement bonusesE = itemE.elementsByTagName("bonuses").at(0).toElement();
     QDomNodeList modNl = bonusesE.childNodes();
     for(int i = 0; i < modNl.size(); i ++)
     {
         QDomNode modNode = modNl.at(i);
-        modifiers->push_back(ModifierParser::modifierFromNode(&modNode));
+        modifiers.push_back(ModifierParser::modifierFromNode(&modNode));
     }
 
     vector<Effect> effectsEq;

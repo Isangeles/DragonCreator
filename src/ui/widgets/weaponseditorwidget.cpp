@@ -70,6 +70,7 @@ void WeaponsEditorWidget::editWeapon(Weapon *w)
 {
     //TODO fill all fields with weapon data
     ui->idEdit->setText(QString::fromStdString(w->getId()));
+    ui->typeCombo->setCurrentIndex(static_cast<int>(w->getType()));
     ui->levelEdit->setValue(w->getLevel());
     ui->valueEdit->setValue(w->getValue());
     ui->dmgMaxEdit->setValue(w->getDamageMax());
@@ -82,7 +83,7 @@ void WeaponsEditorWidget::editWeapon(Weapon *w)
 void WeaponsEditorWidget::on_addB_clicked()
 {
    string id = ui->idEdit->text().toStdString();
-   WeaponType type = (WeaponType)ui->typeCombo->currentIndex();
+   WeaponType type = static_cast<WeaponType>(ui->typeCombo->currentIndex());
    string material = ui->materialCombo->currentText().toStdString();
 
    int level = ui->levelEdit->value();
@@ -123,7 +124,7 @@ void WeaponsEditorWidget::on_addB_clicked()
    }
 
    //TODO translate messages
-   if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, modifiers, *effectsEq, *effectsHit))
+   if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, *modifiers, *effectsEq, *effectsHit))
    {
        emit itemAdded();
        QMessageBox::information(this, "Succes", "Items successfully added");

@@ -48,3 +48,25 @@ string WeaponUtils::typeToId(WeaponType type)
         return "fist";
     }
 }
+/**
+ * @brief WeaponUtils::typeFromId Converts specified ID to weapon type enum
+ * @param id Weapon type ID
+ * @return Weapon type enumeration
+ */
+WeaponType WeaponUtils::typeFromId(string id)
+{
+    if(id == "dagger")
+        return WeaponType::DAGGER;
+    else if(id == "sword")
+        return WeaponType::SWORD;
+    else if(id == "axe")
+        return WeaponType::AXE;
+    else if(id == "mace")
+        return WeaponType::MACE;
+    else if(id == "spear")
+        return WeaponType::SPEAR;
+    else if(id == "bow")
+        return WeaponType::BOW;
+    else
+        return WeaponType::FIST;
+}

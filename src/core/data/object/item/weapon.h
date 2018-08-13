@@ -30,7 +30,7 @@
 
 using namespace std;
 
-enum WeaponType{DAGGER = 0, SWORD = 1, AXE = 2, MACE = 3, SPEAR = 4, BOW = 5, FIST = 6};
+enum WeaponType{FIST = 0, DAGGER = 1, SWORD = 2, AXE = 3, MACE = 4, SPEAR = 5, BOW = 6};
 /**
  * @brief Class for weapons to edit
  * TODO: IMPLEMENT REQUIREMENTS
@@ -41,7 +41,7 @@ friend class ItemParser;
 public:
     static vector<WeaponType> *getWeaponTypes();
     Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-           vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
+           vector<Modifier> &modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
     string toString();
     string getId();
     int getLevel();
@@ -52,7 +52,7 @@ public:
     int getDamageMin();
     string getIcon();
     string getSpritesheet();
-    vector<Modifier> *getModifiers();
+    vector<Modifier> getModifiers();
 private:
     string id;
     int level;
@@ -63,7 +63,7 @@ private:
     int damageMax;
     string icon;
     string spritesheet;
-    vector<Modifier> *bonuses;
+    vector<Modifier> bonuses;
     vector<Effect> effectsEq;
     vector<Effect> effectsHit;
 };

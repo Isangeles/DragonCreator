@@ -52,7 +52,7 @@ WeaponsEditor::~WeaponsEditor()
  * @return True if weapon was successfully created, false otherwise
  */
 bool WeaponsEditor::newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
-                              string icon, string spritesheet, vector<Modifier> *modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit)
+                              string icon, string spritesheet, vector<Modifier> &modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit)
 {
     editedWeapon = new Weapon(id, level, type, material ,value, damageMin, damageMax, icon, spritesheet, modifiers, effectsEq, effectsHit);
     return DConnector::addWeaponToBase(basePath, editedWeapon);
