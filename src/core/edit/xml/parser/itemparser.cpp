@@ -63,19 +63,19 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
     weaponE.appendChild(bonusesE);
 
     QDomElement equipEffectsE = doc->createElement("equipEffects");
-    for(Effect e : weapon->effectsEq)
+    for(string eId : weapon->effectsEq)
     {
         QDomElement effectE = doc->createElement("effect");
-        effectE.setNodeValue(QString::fromStdString(e.getId()));
+        effectE.setNodeValue(QString::fromStdString(eId));
         equipEffectsE.appendChild(effectE);
     }
     weaponE.appendChild(equipEffectsE);
 
     QDomElement hitEffectsE = doc->createElement("hitEffects");
-    for(Effect e : weapon->effectsHit)
+    for(string eId : weapon->effectsHit)
     {
         QDomElement effectE = doc->createElement("effect");
-        QDomText effectIdText = doc->createTextNode(QString::fromStdString(e.getId()));
+        QDomText effectIdText = doc->createTextNode(QString::fromStdString(eId));
         effectE.appendChild(effectIdText);
         hitEffectsE.appendChild(effectE);
     }
@@ -117,22 +117,24 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
         modifiers.push_back(ModifierParser::modifierFromNode(&modNode));
     }
 
-    vector<Effect> effectsEq;
+    vector<string> effectsEq;
     QDomElement equipEffectsE = itemE.elementsByTagName("equipEffects").at(0).toElement();
     QDomNodeList effectsEqNl = equipEffectsE.childNodes();
     for(int i = 0; i < effectsEqNl.size(); i ++)
     {
         QDomNode effectNode = effectsEqNl.at(i);
-        effectsEq.push_back(*EffectParser::effectFromNode(effectNode));
+        string eId = effectNode.toElement().text().toStdString();
+        effectsEq.push_back(eId);
     }
 
-    vector<Effect> effectsHit;
+    vector<string> effectsHit;
     QDomElement hitEffectsE = itemE.elementsByTagName("hitEffects").at(0).toElement();
     QDomNodeList effectsHitNl = hitEffectsE.childNodes();
     for(int i = 0; i < effectsHitNl.size(); i ++)
     {
         QDomNode effectNode = effectsHitNl.at(i);
-        effectsHit.push_back(*EffectParser::effectFromNode(effectNode));
+        string eId = effectNode.toElement().text().toStdString();
+        effectsHit.push_back(eId);
     }
 
     return Weapon(id, level, type, material, value, damageMin, damageMax, icon, spritesheet,

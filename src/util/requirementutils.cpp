@@ -56,3 +56,38 @@ RequirementType RequirementUtils::typeFromTagName(string tagName)
     else
         return RequirementType::NONE;
 }
+/**
+ * @brief RequirementUtils::tagNameFromType Return requirement XML node tag name
+ * @param type Requirement type
+ * @return Requirement name
+ */
+string RequirementUtils::tagNameFromType(RequirementType type)
+{
+    switch(type)
+    {
+    case RequirementType::LEVEL:
+        return "levelReq";
+    case RequirementType::STATS:
+        return "statsReq";
+    case RequirementType::GENDER:
+        return "genderReq";
+    case RequirementType::GUILD:
+        return "guildReq";
+    case RequirementType::GOLD:
+        return "goldReq";
+    case RequirementType::ITEMS:
+        return "itemsReq";
+    case RequirementType::POINTS:
+        return "pointsReq";
+    case RequirementType::MANA:
+        return "manaReq";
+    case RequirementType::HEALTH:
+        return "healthReq";
+    case RequirementType::WEAPON:
+        return "wepaonReq";
+    case RequirementType::FLAG:
+        return "flagReq";
+    default:
+        return "noneReq";
+    }
+}

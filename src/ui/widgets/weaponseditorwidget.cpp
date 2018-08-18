@@ -30,7 +30,9 @@ WeaponsEditorWidget::WeaponsEditorWidget(WeaponsEditor *editor, QWidget *parent)
 {
     ui->setupUi(this);
     this->editor = editor;
-    newModifierD = new NewModdifierDialog(this);
+
+    //newModifierD = new NewModdifierDialog(this);
+    //newRequirementD = new NewRequirementDialog(this);
 
     QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(onBaseObjectEdit()));
     QObject::connect(parent, SIGNAL(baseObjectSelected(BaseObject*)), this, SLOT(baseTreeObjectSelected(BaseObject*)));
@@ -68,14 +70,28 @@ NewModdifierDialog *WeaponsEditorWidget::getNMDialog()
  */
 void WeaponsEditorWidget::editWeapon(Weapon *w)
 {
-    //TODO fill all fields with weapon data
     ui->idEdit->setText(QString::fromStdString(w->getId()));
     ui->typeCombo->setCurrentIndex(static_cast<int>(w->getType()));
     ui->levelEdit->setValue(w->getLevel());
     ui->valueEdit->setValue(w->getValue());
     ui->dmgMaxEdit->setValue(w->getDamageMax());
     ui->dmgMinEdit->setValue(w->getDamageMin());
-
+    ui->bonusesList->clear();
+    for(Modifier m : *w->getModifiers())
+    {
+        ModifierListItem *mItem = new ModifierListItem(m);
+        ui->bonusesList->addItem(mItem);
+    }
+    ui->effectsEqList->clear();
+    for(string eId : *w->getEffectsEq())
+    {
+        ui->effectsEqList->addItem(QString::fromStdString(eId));
+    }
+    ui->effectsHitList->clear();
+    for(string eId : *w->getEffectsHit())
+    {
+        ui->effectsHitList->addItem(QString::fromStdString(eId));
+    }
 }
 /**
  * @brief WeaponsEditorWidget::on_addB_clicked Method triggered on UI add button clicked
@@ -103,24 +119,24 @@ void WeaponsEditorWidget::on_addB_clicked()
        modifiers->push_back(*m->getModifier());
    }
 
-   vector<Effect> *effectsEq = new vector<Effect>;
+   vector<string> *effectsEq = new vector<string>;
    for(int i = 0; i < ui->effectsEqList->count(); i++)
    {
        QListWidgetItem* item = ui->effectsEqList->item(i);
 
-       BaseObjectListItem *eItem = static_cast<BaseObjectListItem*>(item);
-       Effect *e = static_cast<Effect*>(eItem->getObject());
-       effectsEq->push_back(*e);
+       //BaseObjectListItem *eItem = static_cast<BaseObjectListItem*>(item);
+       //Effect *e = static_cast<Effect*>(eItem->getObject());
+       effectsEq->push_back(item->text().toStdString());
    }
 
-   vector<Effect> *effectsHit = new vector<Effect>;
+   vector<string> *effectsHit = new vector<string>;
    for(int i = 0; i < ui->effectsHitList->count(); i++)
    {
        QListWidgetItem* item = ui->effectsHitList->item(i);
 
-       BaseObjectListItem *eItem = static_cast<BaseObjectListItem*>(item);
-       Effect *e = static_cast<Effect*>(eItem->getObject());
-       effectsHit->push_back(*e);
+       //BaseObjectListItem *eItem = static_cast<BaseObjectListItem*>(item);
+       //Effect *e = static_cast<Effect*>(eItem->getObject());
+       effectsHit->push_back(item->text().toStdString());
    }
 
    //TODO translate messages
@@ -150,6 +166,14 @@ void WeaponsEditorWidget::on_removeModifierB_clicked()
     {
         ui->bonusesList->takeItem(ui->bonusesList->row(item));
     }
+}
+/**
+ * @brief WeaponsEditorWidget::on_addReqB_clicked Triggered on add requirement button clicked
+ */
+void WeaponsEditorWidget::on_addReqB_clicked()
+{
+    newRequirementD = new NewRequirementDialog(this);
+    newRequirementD->show();
 }
 /**
  * @brief WeaponsEditorWidget::on_addEffectEqB_clicked Triggered on add on-equip effect button clicked

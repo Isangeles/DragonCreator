@@ -30,7 +30,8 @@
 class RequirementParser
 {
 public:
-    static Requirement getRequirementFromNode(QDomNode node);
+    static QDomNode requirementToNode(Requirement *req, QDomDocument *doc);
+    static Requirement requirementFromNode(QDomNode node);
 private:
     RequirementParser();
 };

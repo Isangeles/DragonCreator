@@ -68,7 +68,8 @@ SOURCES += \
     src/ui/widgets/addeffectdialog.cpp \
     src/core/data/object/requirement.cpp \
     src/util/requirementutils.cpp \
-    src/core/edit/xml/parser/requirementparser.cpp
+    src/core/edit/xml/parser/requirementparser.cpp \
+    src/ui/widgets/newrequirementdialog.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -108,7 +109,8 @@ HEADERS += \
     src/core/data/object/requirement.h \
     src/core/data/object/requirement.h \
     src/util/requirementutils.h \
-    src/core/edit/xml/parser/requirementparser.h
+    src/core/edit/xml/parser/requirementparser.h \
+    src/ui/widgets/newrequirementdialog.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
@@ -118,7 +120,8 @@ FORMS += \
     src/ui/forms/welcomewidget.ui \
     src/ui/forms/settingswidget.ui \
     src/ui/forms/effectseditorwidget.ui \
-    src/ui/forms/addeffectdialog.ui
+    src/ui/forms/addeffectdialog.ui \
+    src/ui/forms/newrequirementdialog.ui
 
 SUBDIRS += \
     DragonCreator.pro

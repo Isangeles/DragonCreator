@@ -26,7 +26,7 @@ using namespace std;
 /**
  * @brief Enumeration for requirement types
  */
-enum RequirementType {NONE, LEVEL, STATS, GENDER, GUILD, GOLD, ITEMS, POINTS, MANA, HEALTH, WEAPON, FLAG};
+enum class RequirementType {NONE, LEVEL, STATS, GENDER, GUILD, GOLD, ITEMS, POINTS, MANA, HEALTH, WEAPON, FLAG};
 /**
  * @brief Class representing requirements(for items, skills, etc.)
  */
@@ -37,7 +37,6 @@ public:
     RequirementType getType();
     map<string, string> getAttributes();
     string getValue();
-    string getTagName();
 private:
     RequirementType type;
     map<string, string> attributes;

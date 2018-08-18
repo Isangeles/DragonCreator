@@ -41,7 +41,7 @@ friend class ItemParser;
 public:
     static vector<WeaponType> *getWeaponTypes();
     Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-           vector<Modifier> &modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
+           vector<Modifier> &modifiers, vector<string> &effectsEq, vector<string> &effectsHit);
     string toString();
     string getId();
     int getLevel();
@@ -52,7 +52,9 @@ public:
     int getDamageMin();
     string getIcon();
     string getSpritesheet();
-    vector<Modifier> getModifiers();
+    vector<Modifier> *getModifiers();
+    vector<string> *getEffectsEq();
+    vector<string> *getEffectsHit();
 private:
     string id;
     int level;
@@ -64,8 +66,8 @@ private:
     string icon;
     string spritesheet;
     vector<Modifier> bonuses;
-    vector<Effect> effectsEq;
-    vector<Effect> effectsHit;
+    vector<string> effectsEq;
+    vector<string> effectsHit;
 };
 
 #endif // WEAPON_H

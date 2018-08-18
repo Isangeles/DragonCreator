@@ -31,23 +31,23 @@ string Lang::getModifierAttributeName(ModifierAtributeType attr)
 {
     switch(attr)
     {
-    case VALUE:
+    case ModifierAtributeType::VALUE:
         return QObject::tr("Value").toStdString();
-    case STEALTH_LEVEL: case LOCK_LEVEL:
+    case ModifierAtributeType::STEALTH_LEVEL: case ModifierAtributeType::LOCK_LEVEL:
         return QObject::tr("Level").toStdString();
-    case RESI_TYPE: case WEAPON_TYPE:
+    case ModifierAtributeType::RESI_TYPE: case ModifierAtributeType::WEAPON_TYPE:
         return QObject::tr("Type").toStdString();
-    case FLAG_NAME:
+    case ModifierAtributeType::FLAG_NAME:
         return QObject::tr("Flag").toStdString();
-    case STR:
+    case ModifierAtributeType::STR:
         return QObject::tr("Strength").toStdString();
-    case CON:
+    case ModifierAtributeType::CON:
         return QObject::tr("Constitution").toStdString();
-    case DEX:
+    case ModifierAtributeType::DEX:
         return QObject::tr("Dexterity").toStdString();
-    case WIS:
+    case ModifierAtributeType::WIS:
         return QObject::tr("Wisdom").toStdString();
-    case INT:
+    case ModifierAtributeType::INT:
         return QObject::tr("Inteliegence").toStdString();
     default:
         return QObject::tr("Unknown").toStdString();

@@ -26,7 +26,7 @@
 
 using namespace std;
 
-enum EffectType {NORMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
+enum class EffectType {NORMAL = 0, MAGIC = 1, FIRE = 2, ICE = 3, NATURE = 4};
 /**
  * @brief Class for effects
  */

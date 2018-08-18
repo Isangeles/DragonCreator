@@ -54,37 +54,3 @@ string Requirement::getValue()
 {
     return value;
 }
-/**
- * @brief Requirement::getName Return requirement XML node tag name
- * @return Requirement name
- */
-string Requirement::getTagName()
-{
-    switch(type)
-    {
-    case LEVEL:
-        return "levelReq";
-    case STATS:
-        return "statsReq";
-    case GENDER:
-        return "genderReq";
-    case GUILD:
-        return "guildReq";
-    case GOLD:
-        return "goldReq";
-    case ITEMS:
-        return "itemsReq";
-    case POINTS:
-        return "pointsReq";
-    case MANA:
-        return "manaReq";
-    case HEALTH:
-        return "healthReq";
-    case WEAPON:
-        return "wepaonReq";
-    case FLAG:
-        return "flagReq";
-    default:
-        return "noneReq";
-    }
-}

@@ -29,13 +29,13 @@ using namespace std;
 /**
  * @brief Enumeration for modifiers types assosiated with XML nodes names
  */
-enum ModifierType {HEALTH = 0, MANA = 1, STATS = 2, HASTE = 3, DODGE = 4,
+enum class ModifierType {HEALTH = 0, MANA = 1, STATS = 2, HASTE = 3, DODGE = 4,
                    DAMAGE = 5, UNDETECT = 6, DUALWIELD = 7, RESISTANCE = 8, UNLOCK = 9,
                    ATTITUDE = 10, FLAG = 11, NONE};
 /**
  * @brief Enumeration for modifier attributes types
  */
-enum ModifierAtributeType {VALUE = 0, STEALTH_LEVEL = 1, LOCK_LEVEL = 2, RESI_TYPE = 3,
+enum class ModifierAtributeType {VALUE = 0, STEALTH_LEVEL = 1, LOCK_LEVEL = 2, RESI_TYPE = 3,
                            FLAG_NAME = 4, WEAPON_TYPE = 5, STR = 6, CON = 7, DEX = 8, WIS = 9, INT = 10};
 /**
  * @brief Class for modifiers(a.k.a bonuses)
@@ -47,7 +47,6 @@ public:
     ~Modifier();
     ModifierType getType();
     map<string, string> getAttributes();
-    string getName();
 private:
     ModifierType type;
     map<string, string> attributes;

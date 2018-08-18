@@ -28,6 +28,7 @@ class RequirementUtils
 {
 public:
     static RequirementType typeFromTagName(string tagName);
+    static string tagNameFromType(RequirementType type);
 private:
     RequirementUtils();
 };

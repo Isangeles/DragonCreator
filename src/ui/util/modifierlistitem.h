@@ -22,6 +22,7 @@
 #include <QListWidgetItem>
 
 #include "src/core/data/object/modifier.h"
+#include "src/util/modifierutils.h"
 /**
  * @brief Modifier wrapper class for Qt qlistwidgetitem
  */

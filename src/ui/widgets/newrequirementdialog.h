@@ -1,6 +1,5 @@
 /*
- * newmodifierdialog.h
- *
+ * addrequirementdialog.h
  * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
@@ -17,41 +16,33 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef NEWMODDIFIERDIALOG_H
-#define NEWMODDIFIERDIALOG_H
-
-#include <iostream>
-#include <map>
+#ifndef NEWREQUIREMENTDIALOG_H
+#define NEWREQUIREMENTDIALOG_H
 
 #include <QDialog>
-#include <QRegExp>
 
-#include "src/core/data/object/modifier.h"
-#include "src/util/modifierutils.h"
-#include "src/ui/lang.h"
-#include "src/util/text/textreader.h"
+#include "src/core/data/object/requirement.h"
+#include "src/core/data/object/module.h"
 
-namespace Ui
-{
-class NewModdifierDialog;
+namespace Ui {
+class NewRequirementDialog;
 }
-
-class NewModdifierDialog : public QDialog
+/**
+ * @brief Class for add requirement dialog window.
+ */
+class NewRequirementDialog : public QDialog
 {
     Q_OBJECT
+
 public:
-    explicit NewModdifierDialog(QWidget *parent = 0);
-    ~NewModdifierDialog();
-signals:
-    void add(Modifier* m);
+    explicit NewRequirementDialog(QWidget *parent = nullptr);
+    ~NewRequirementDialog();
+
 private:
-    Ui::NewModdifierDialog *ui;
-    void loadAttributesFor(ModifierType mod);
-    void loadValuesFor(ModifierAtributeType attr);
-private slots:
-    void on_addB_clicked();
-    void on_addAttrB_clicked();
-    void on_typeCombo_currentIndexChanged(int id);
+    Ui::NewRequirementDialog *ui;
+
+signals:
+    void add(Requirement *req);
 };
 
-#endif // NEWMODDIFIERDIALOG_H
+#endif // NEWREQUIREMENTDIALOG_H

@@ -30,7 +30,7 @@ ModifierParser::ModifierParser() {}
  */
 QDomNode ModifierParser::modifierToNode(Modifier *modifier, QDomDocument *doc)
 {
-    QDomElement modE = doc->createElement(QString::fromStdString(modifier->getName()));
+    QDomElement modE = doc->createElement(QString::fromStdString(ModifierUtils::tagNameFromType(modifier->getType())));
 
     for(pair<string, string> attr : modifier->getAttributes())
     {

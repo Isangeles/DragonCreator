@@ -25,11 +25,30 @@ RequirementParser::RequirementParser()
 {
 }
 /**
- * @brief RequirementParser::getRequirementFromNode Parses specified XML node to requirement object
+ * @brief RequirementParser::requirementToNode Parses requirement to XML document node
+ * @param req Requirement to parse
+ * @param doc XML document
+ * @return XML document node
+ */
+QDomNode RequirementParser::requirementToNode(Requirement *req, QDomDocument *doc)
+{
+    QDomElement reqE = doc->createElement(QString::fromStdString(RequirementUtils::tagNameFromType(req->getType())));
+
+    QDomText reqNodeText = doc->createTextNode(QString::fromStdString(req->getValue()));
+    reqE.appendChild(reqNodeText);
+    for(pair<string, string> attr : req->getAttributes())
+    {
+        reqE.setAttribute(QString::fromStdString(attr.first), QString::fromStdString(attr.second));
+    }
+
+    return reqE;
+}
+/**
+ * @brief RequirementParser::requirementFromNode Parses specified XML node to requirement object
  * @param node XML doc node from base
  * @return Requirement from specified node
  */
-Requirement RequirementParser::getRequirementFromNode(QDomNode node)
+Requirement RequirementParser::requirementFromNode(QDomNode node)
 {
     QDomElement reqE = node.toElement();
 

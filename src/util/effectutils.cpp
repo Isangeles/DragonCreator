@@ -30,13 +30,13 @@ string EffectUtils::typeToId(EffectType type)
 {
     switch(type)
     {
-    case MAGIC:
+    case EffectType::MAGIC:
         return "magic";
-    case FIRE:
+    case EffectType::FIRE:
         return "fire";
-    case ICE:
+    case EffectType::ICE:
         return "ice";
-    case NATURE:
+    case EffectType::NATURE:
         return "nature";
     default:
         return "normal";

@@ -24,7 +24,7 @@
 ModifierListItem::ModifierListItem(Modifier &modifier)
 {
     this->modifier = &modifier;
-    this->setText(QString::fromStdString(this->modifier->getName()));
+    this->setText(QString::fromStdString(ModifierUtils::tagNameFromType(modifier.getType())));
 }
 /**
  * @brief ModifierListItem::~ModifierListItem Modifier list item dostructor

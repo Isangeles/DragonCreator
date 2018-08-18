@@ -42,7 +42,7 @@ public:
     vector<string> getIconsFiles();
     vector<string> getSpritesheetsFiles();
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
-                   string icon, string spritesheet, vector<Modifier> &modifiers, vector<Effect> &effectsEq, vector<Effect> &effectsHit);
+                   string icon, string spritesheet, vector<Modifier> &modifiers, vector<string> &effectsEq, vector<string> &effectsHit);
     vector<BaseObject *> getBaseObjects();
 private:
     static const string WEAPONS_ICONS_PATH;

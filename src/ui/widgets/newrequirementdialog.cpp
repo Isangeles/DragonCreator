@@ -1,7 +1,6 @@
 /*
- * modifierutils.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * addrequirementdialog.cpp
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,28 +16,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef MODIFIERUTILS_H
-#define MODIFIERUTILS_H
+#include "newrequirementdialog.h"
+#include "ui_newrequirementdialog.h"
 
-#include <vector>
-
-#include "src/core/data/object/modifier.h"
-
-using namespace std;
-/**
- * @brief Static class for modifiers utils
- */
-class ModifierUtils
+NewRequirementDialog::NewRequirementDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::NewRequirementDialog)
 {
-public:
-    static vector<ModifierAtributeType> getAttributesListFor(ModifierType mod);
-    static vector<string> getValuesListFor(ModifierAtributeType attr);
-    static ModifierAtributeType typeFromOrdinal(int ordinal);
-    static ModifierType typeFromTagName(string name);
-    static string tagNameFromType(ModifierType type);
-    static string getNameFor(ModifierAtributeType attr);
-private:
-    ModifierUtils();
-};
+    ui->setupUi(this);
+}
 
-#endif // MODIFIERUTILS_H
+NewRequirementDialog::~NewRequirementDialog()
+{
+    delete ui;
+}

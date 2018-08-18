@@ -52,39 +52,3 @@ map<string, string> Modifier::getAttributes()
 {
     return attributes;
 }
-/**
- * @brief Modifier::getName Returns name of this modifier(for document node)
- * @return String with name
- */
-string Modifier::getName()
-{
-    switch(type)
-    {
-    case STATS:
-        return "statsModifier";
-    case HEALTH:
-        return "healthModifier";
-    case MANA:
-        return "manaModifier";
-    case HASTE:
-        return "hasteModifier";
-    case DODGE:
-        return "dodgeModifier";
-    case DAMAGE:
-        return "damageModifier";
-    case UNDETECT:
-        return "undetectModifier";
-    case DUALWIELD:
-        return "dualwieldModifier";
-    case RESISTANCE:
-        return "resistanceModifier";
-    case UNLOCK:
-        return "unlockModifier";
-    case ATTITUDE:
-        return "attitudeModifier";
-    case FLAG:
-        return "flagModifier";
-    default:
-        return "noneModifier";
-    }
-}

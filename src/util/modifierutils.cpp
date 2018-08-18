@@ -33,38 +33,38 @@ vector<ModifierAtributeType> ModifierUtils::getAttributesListFor(ModifierType mo
 
     switch(mod)
     {
-    case HEALTH: case MANA: case DUALWIELD: case ATTITUDE: case DODGE: {
-        attrs.push_back(ModifierAtributeType(VALUE));
+    case ModifierType::HEALTH: case ModifierType::MANA: case ModifierType::DUALWIELD: case ModifierType::ATTITUDE: case ModifierType::DODGE: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::VALUE));
         break;
     }
-    case DAMAGE: {
-        attrs.push_back(ModifierAtributeType(VALUE));
-        attrs.push_back(ModifierAtributeType(WEAPON_TYPE));
+    case ModifierType::DAMAGE: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::VALUE));
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::WEAPON_TYPE));
         break;
     }
-    case UNDETECT: {
-        attrs.push_back(ModifierAtributeType(STEALTH_LEVEL));
+    case ModifierType::UNDETECT: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::STEALTH_LEVEL));
         break;
     }
-    case UNLOCK: {
-        attrs.push_back(ModifierAtributeType(LOCK_LEVEL));
+    case ModifierType::UNLOCK: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::LOCK_LEVEL));
         break;
     }
-    case RESISTANCE: {
-        attrs.push_back(ModifierAtributeType(VALUE));
-        attrs.push_back(ModifierAtributeType(RESI_TYPE));
+    case ModifierType::RESISTANCE: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::VALUE));
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::RESI_TYPE));
         break;
     }
-    case FLAG: {
-        attrs.push_back(ModifierAtributeType(FLAG_NAME));
+    case ModifierType::FLAG: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::FLAG_NAME));
         break;
     }
-    case STATS: {
-        attrs.push_back(ModifierAtributeType(STR));
-        attrs.push_back(ModifierAtributeType(CON));
-        attrs.push_back(ModifierAtributeType(DEX));
-        attrs.push_back(ModifierAtributeType(WIS));
-        attrs.push_back(ModifierAtributeType(INT));
+    case ModifierType::STATS: {
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::STR));
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::CON));
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::DEX));
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::WIS));
+        attrs.push_back(ModifierAtributeType(ModifierAtributeType::INT));
         break;
     }
     default: break;
@@ -82,19 +82,19 @@ vector<string> ModifierUtils::getValuesListFor(ModifierAtributeType attr)
     vector<string> values;
     switch (attr)
     {
-    case STEALTH_LEVEL: {
+    case ModifierAtributeType::STEALTH_LEVEL: {
         values.push_back("1");
         values.push_back("2");
         values.push_back("3");
         break;
     }
-    case LOCK_LEVEL: {
+    case ModifierAtributeType::LOCK_LEVEL: {
         values.push_back("1");
         values.push_back("2");
         values.push_back("3");
         break;
     }
-    case RESI_TYPE: {
+    case ModifierAtributeType::RESI_TYPE: {
         values.push_back("fire");
         values.push_back("ice");
         values.push_back("nature");
@@ -116,9 +116,9 @@ ModifierAtributeType ModifierUtils::typeFromOrdinal(int ordinal)
     switch(ordinal)
     {
     case 0:
-        return ModifierAtributeType(HEALTH);
+        return ModifierAtributeType(ModifierType::HEALTH);
     default:
-        return ModifierAtributeType(NONE);
+        return ModifierAtributeType(ModifierType::NONE);
     }
 }
 /**
@@ -156,6 +156,42 @@ ModifierType ModifierUtils::typeFromTagName(string name)
         return ModifierType::NONE;
 }
 /**
+ * @brief ModifierUtils::tagNameFromType Returns name of this modifier(for document node)
+ * @return String with name
+ */
+string ModifierUtils::tagNameFromType(ModifierType type)
+{
+    switch(type)
+    {
+    case ModifierType::STATS:
+        return "statsModifier";
+    case ModifierType::HEALTH:
+        return "healthModifier";
+    case ModifierType::MANA:
+        return "manaModifier";
+    case ModifierType::HASTE:
+        return "hasteModifier";
+    case ModifierType::DODGE:
+        return "dodgeModifier";
+    case ModifierType::DAMAGE:
+        return "damageModifier";
+    case ModifierType::UNDETECT:
+        return "undetectModifier";
+    case ModifierType::DUALWIELD:
+        return "dualwieldModifier";
+    case ModifierType::RESISTANCE:
+        return "resistanceModifier";
+    case ModifierType::UNLOCK:
+        return "unlockModifier";
+    case ModifierType::ATTITUDE:
+        return "attitudeModifier";
+    case ModifierType::FLAG:
+        return "flagModifier";
+    default:
+        return "noneModifier";
+    }
+}
+/**
  * @brief ModifierUtils::getNameForAttr Converts attribute type to name(for XML document node)
  * @param attr Attribute type
  * @return String with attribute name
@@ -164,23 +200,23 @@ string ModifierUtils::getNameFor(ModifierAtributeType attr)
 {
     switch(attr)
     {
-    case VALUE:
+    case ModifierAtributeType::VALUE:
         return "value";
-    case STEALTH_LEVEL: case LOCK_LEVEL:
+    case ModifierAtributeType::STEALTH_LEVEL: case ModifierAtributeType::LOCK_LEVEL:
         return "level";
-    case WEAPON_TYPE: case RESI_TYPE:
+    case ModifierAtributeType::WEAPON_TYPE: case ModifierAtributeType::RESI_TYPE:
         return "type";
-    case FLAG_NAME:
+    case ModifierAtributeType::FLAG_NAME:
         return "flag";
-    case STR:
+    case ModifierAtributeType::STR:
         return "str";
-    case CON:
+    case ModifierAtributeType::CON:
         return "con";
-    case DEX:
+    case ModifierAtributeType::DEX:
         return "dex";
-    case WIS:
+    case ModifierAtributeType::WIS:
         return "wis";
-    case INT:
+    case ModifierAtributeType::INT:
         return "int";
     default:
         return "error";

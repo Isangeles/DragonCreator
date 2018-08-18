@@ -30,6 +30,7 @@
 #include "src/core/edit/weaponseditor.h"
 #include "src/core/data/object/modifier.h"
 #include "newmoddifierdialog.h"
+#include "newrequirementdialog.h"
 #include "addeffectdialog.h"
 #include "src/ui/util/modifierlistitem.h"
 #include "src/util/text/textreader.h"
@@ -59,12 +60,14 @@ private:
     Ui::WeaponsEditorWidget *ui;
     WeaponsEditor *editor;
     NewModdifierDialog *newModifierD;
+    NewRequirementDialog *newRequirementD;
     AddEffectDialog *addEffectD;
 
 private slots:
     void on_addB_clicked();
     void on_removeModifierB_clicked();
     void on_addBonusB_clicked();
+    void on_addReqB_clicked();
     void on_addEffectEqB_clicked();
     void on_addEffectHitB_clicked();
     void on_removeEffectEqB_clicked();
