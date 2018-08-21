@@ -19,6 +19,8 @@
 #ifndef REQUIREMENTUTILS_H
 #define REQUIREMENTUTILS_H
 
+#include <vector>
+
 #include "src/core/data/object/requirement.h"
 
 /**
@@ -29,6 +31,8 @@ class RequirementUtils
 public:
     static RequirementType typeFromTagName(string tagName);
     static string tagNameFromType(RequirementType type);
+    static vector<RequirementAttributeType> getAttributesListFor(RequirementType mod);
+    static string attrNameFromType(RequirementAttributeType type);
 private:
     RequirementUtils();
 };

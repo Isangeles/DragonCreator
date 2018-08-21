@@ -91,3 +91,41 @@ string RequirementUtils::tagNameFromType(RequirementType type)
         return "noneReq";
     }
 }
+/**
+ * @brief RequirementUtils::getAttributesListFor Returns list with attributes for specified requirement type
+ * @param type Type of requirement
+ * @return List with attributes for specified type
+ */
+vector<RequirementAttributeType> RequirementUtils::getAttributesListFor(RequirementType type)
+{
+    vector<RequirementAttributeType> attrs;
+    switch(type)
+    {
+    case RequirementType::FLAG:
+        attrs.push_back(RequirementAttributeType::EXPECT);
+        break;
+    case RequirementType::ITEMS:
+        attrs.push_back(RequirementAttributeType::AMOUNT);
+        break;
+    default:
+        break;
+    }
+    return attrs;
+}
+/**
+ * @brief RequirementUtils::attrNameFromType Returns name of attribute for specified attribute type
+ * @param type Attribute type
+ * @return Name of attribute
+ */
+string RequirementUtils::attrNameFromType(RequirementAttributeType type)
+{
+    switch(type)
+    {
+    case RequirementAttributeType::AMOUNT:
+        return "amount";
+    case RequirementAttributeType::EXPECT:
+        return "expect";
+    default:
+        return "none";
+    }
+}

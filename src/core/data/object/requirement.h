@@ -28,6 +28,10 @@ using namespace std;
  */
 enum class RequirementType {NONE, LEVEL, STATS, GENDER, GUILD, GOLD, ITEMS, POINTS, MANA, HEALTH, WEAPON, FLAG};
 /**
+ * @brief Enumeration for requirements attributes types
+ */
+enum class RequirementAttributeType {NONE, AMOUNT, EXPECT};
+/**
  * @brief Class representing requirements(for items, skills, etc.)
  */
 class Requirement

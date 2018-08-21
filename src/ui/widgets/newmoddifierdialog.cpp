@@ -31,7 +31,7 @@ NewModdifierDialog::NewModdifierDialog(QWidget *parent) :
     ui->setupUi(this);
     bool connResult = QObject::connect(this, SIGNAL(add(Modifier*)), parent, SLOT(modifierAdded(Modifier*)));
 
-    ModifierType activeModType = (ModifierType)ui->typeCombo->currentIndex();
+    ModifierType activeModType = static_cast<ModifierType>(ui->typeCombo->currentIndex());
     loadAttributesFor(activeModType);
 }
 /**
@@ -78,13 +78,14 @@ void NewModdifierDialog::loadValuesFor(ModifierAtributeType attr)
  */
 void NewModdifierDialog::on_addB_clicked()
 {
-    ModifierType type = (ModifierType)ui->typeCombo->currentIndex();
+    ModifierType type = static_cast<ModifierType>(ui->typeCombo->currentIndex());
     map<string, string> attributes;
     for(int i = 0; i < ui->attrsList->count(); i ++)
     {
         QListWidgetItem* attr = ui->attrsList->item(i);
         QString label = attr->text();
 
+        // VOODOO
         //QRegExp regex("'(.*)'");
         QList<QString> a = label.split("=");
         if(a.length() > 1)

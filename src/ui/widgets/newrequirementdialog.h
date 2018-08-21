@@ -23,6 +23,7 @@
 
 #include "src/core/data/object/requirement.h"
 #include "src/core/data/object/module.h"
+#include "src/util/requirementutils.h"
 
 namespace Ui {
 class NewRequirementDialog;
@@ -37,10 +38,12 @@ class NewRequirementDialog : public QDialog
 public:
     explicit NewRequirementDialog(QWidget *parent = nullptr);
     ~NewRequirementDialog();
-
 private:
     Ui::NewRequirementDialog *ui;
-
+    void loadsAttributesFor(RequirementType type);
+private slots:
+    void on_typeCombo_currentIndexChanged(int id);
+    void on_addB_clicked();
 signals:
     void add(Requirement *req);
 };

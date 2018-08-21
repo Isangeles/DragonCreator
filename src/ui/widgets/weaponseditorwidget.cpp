@@ -223,6 +223,15 @@ void WeaponsEditorWidget::modifierAdded(Modifier* m)
     ui->bonusesList->addItem(mItem);
 }
 /**
+ * @brief WeaponsEditorWidget::requirementAdded Triggered on adding new requirement
+ * @param r New requirement
+ */
+void WeaponsEditorWidget::requirementAdded(Requirement* r)
+{
+    // TODO add requirement object to list
+    cout << "req_added:" << RequirementUtils::tagNameFromType(r->getType()) << endl; // debug
+}
+/**
  * @brief WeaponsEditorWidget::effectsAdded Triggered by adding on-equip effects from add effect dialog
  * @param effects List with effects to add
  */

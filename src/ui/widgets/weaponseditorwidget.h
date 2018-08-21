@@ -73,6 +73,7 @@ private slots:
     void on_removeEffectEqB_clicked();
     void on_removeEffectHitB_clicked();
     void modifierAdded(Modifier *m);
+    void requirementAdded(Requirement *r);
     void effectsEqAdded(vector<Effect*> effects);
     void effectsHitAdded(vector<Effect*> effects);
     void baseTreeObjectSelected(BaseObject *o);
