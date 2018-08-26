@@ -40,7 +40,7 @@ vector<WeaponType> *Weapon::getWeaponTypes()
  * @brief Weapon::Weapon Weapon constructor
  */
 Weapon::Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-               vector<Modifier> &modifiers, vector<string> &effectsEq, vector<string> &effectsHit) : BaseObject()
+               vector<Modifier> &modifiers, vector<Requirement> &requirements, vector<string> &effectsEq, vector<string> &effectsHit) : BaseObject()
 {
     this->id = id;
     this->level = level;
@@ -52,8 +52,15 @@ Weapon::Weapon(string id, int level, WeaponType type, string material, int value
     this->icon = icon;
     this->spritesheet = spritesheet;
     this->bonuses = modifiers;
+    this->requirements = requirements;
     this->effectsEq = effectsEq;
     this->effectsHit = effectsHit;
+}
+/**
+ * @brief Weapon::~Weapon Deconstructor
+ */
+Weapon::~Weapon()
+{
 }
 /**
  * @brief Weapon::toString Returns string with ID of this weapon
@@ -139,6 +146,14 @@ string Weapon::getSpritesheet()
 vector<Modifier> *Weapon::getModifiers()
 {
     return &bonuses;
+}
+/**
+ * @brief Weapon::getRequirements Returns list with equip requirements
+ * @return Equip requirements
+ */
+vector<Requirement> *Weapon::getRequirements()
+{
+    return &requirements;
 }
 /**
  * @brief Weapon::getEffectsEq Returns list with 'on-equip' effects

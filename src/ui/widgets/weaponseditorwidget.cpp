@@ -82,6 +82,12 @@ void WeaponsEditorWidget::editWeapon(Weapon *w)
         ModifierListItem *mItem = new ModifierListItem(m);
         ui->bonusesList->addItem(mItem);
     }
+    ui->reqsList->clear();
+    for(Requirement r : *w->getRequirements())
+    {
+        RequirementListItem *rItem = new RequirementListItem(r);
+        ui->reqsList->addItem(rItem);
+    }
     ui->effectsEqList->clear();
     for(string eId : *w->getEffectsEq())
     {
@@ -119,6 +125,15 @@ void WeaponsEditorWidget::on_addB_clicked()
        modifiers->push_back(*m->getModifier());
    }
 
+   vector<Requirement> *requirements = new vector<Requirement>;
+   for(int i = 0; i < ui->reqsList->count(); i ++)
+   {
+       QListWidgetItem* item = ui->reqsList->item(i);
+
+       RequirementListItem *r = static_cast<RequirementListItem*>(item);
+       requirements->push_back(*r->getRequirement());
+   }
+
    vector<string> *effectsEq = new vector<string>;
    for(int i = 0; i < ui->effectsEqList->count(); i++)
    {
@@ -140,7 +155,7 @@ void WeaponsEditorWidget::on_addB_clicked()
    }
 
    //TODO translate messages
-   if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, *modifiers, *effectsEq, *effectsHit))
+   if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, *modifiers, *requirements, *effectsEq, *effectsHit))
    {
        emit itemAdded();
        QMessageBox::information(this, "Succes", "Items successfully added");
@@ -162,9 +177,9 @@ void WeaponsEditorWidget::on_addBonusB_clicked()
 void WeaponsEditorWidget::on_removeModifierB_clicked()
 {
     QList<QListWidgetItem*> moddifiers = ui->bonusesList->selectedItems();
-    for(QListWidgetItem* item : moddifiers)
+    for(QListWidgetItem *i : moddifiers)
     {
-        ui->bonusesList->takeItem(ui->bonusesList->row(item));
+        delete i;
     }
 }
 /**
@@ -174,6 +189,17 @@ void WeaponsEditorWidget::on_addReqB_clicked()
 {
     newRequirementD = new NewRequirementDialog(this);
     newRequirementD->show();
+}
+/**
+ * @brief WeaponsEditorWidget::on_removeReqB_clicked Triggered on remove requirements button clicked
+ */
+void WeaponsEditorWidget::on_removeReqB_clicked()
+{
+    QList<QListWidgetItem*> requirements = ui->reqsList->selectedItems();
+    for(QListWidgetItem *i : requirements)
+    {
+        delete i;
+    }
 }
 /**
  * @brief WeaponsEditorWidget::on_addEffectEqB_clicked Triggered on add on-equip effect button clicked
@@ -228,8 +254,8 @@ void WeaponsEditorWidget::modifierAdded(Modifier* m)
  */
 void WeaponsEditorWidget::requirementAdded(Requirement* r)
 {
-    // TODO add requirement object to list
-    cout << "req_added:" << RequirementUtils::tagNameFromType(r->getType()) << endl; // debug
+    RequirementListItem* rItem = new RequirementListItem(*r);
+    ui->reqsList->addItem(rItem);
 }
 /**
  * @brief WeaponsEditorWidget::effectsAdded Triggered by adding on-equip effects from add effect dialog

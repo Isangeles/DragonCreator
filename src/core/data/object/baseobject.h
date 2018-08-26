@@ -29,6 +29,7 @@ class BaseObject
 {
 public:
     BaseObject();
+    virtual ~BaseObject();
     virtual string getId() = 0;
 };
 

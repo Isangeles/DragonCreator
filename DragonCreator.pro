@@ -69,7 +69,8 @@ SOURCES += \
     src/core/data/object/requirement.cpp \
     src/util/requirementutils.cpp \
     src/core/edit/xml/parser/requirementparser.cpp \
-    src/ui/widgets/newrequirementdialog.cpp
+    src/ui/widgets/newrequirementdialog.cpp \
+    src/ui/util/requirementlistitem.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -110,7 +111,8 @@ HEADERS += \
     src/core/data/object/requirement.h \
     src/util/requirementutils.h \
     src/core/edit/xml/parser/requirementparser.h \
-    src/ui/widgets/newrequirementdialog.h
+    src/ui/widgets/newrequirementdialog.h \
+    src/ui/util/requirementlistitem.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \

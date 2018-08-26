@@ -62,6 +62,14 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
     }
     weaponE.appendChild(bonusesE);
 
+    QDomElement requirementsE = doc->createElement("equipReq");
+    for(Requirement req : weapon->requirements)
+    {
+        QDomNode reqNode = RequirementParser::requirementToNode(&req, doc);
+        requirementsE.appendChild(reqNode);
+    }
+    weaponE.appendChild(requirementsE);
+
     QDomElement equipEffectsE = doc->createElement("equipEffects");
     for(string eId : weapon->effectsEq)
     {
@@ -117,6 +125,15 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
         modifiers.push_back(ModifierParser::modifierFromNode(&modNode));
     }
 
+    vector<Requirement> requirements;
+    QDomElement requirementsE = itemE.elementsByTagName("equipReq").at(0).toElement();
+    QDomNodeList reqNl = requirementsE.childNodes();
+    for(int i = 0; i < reqNl.size(); i ++)
+    {
+        QDomNode reqNode = reqNl.at(i);
+        requirements.push_back(RequirementParser::requirementFromNode(&reqNode));
+    }
+
     vector<string> effectsEq;
     QDomElement equipEffectsE = itemE.elementsByTagName("equipEffects").at(0).toElement();
     QDomNodeList effectsEqNl = equipEffectsE.childNodes();
@@ -138,5 +155,5 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
     }
 
     return Weapon(id, level, type, material, value, damageMin, damageMax, icon, spritesheet,
-                  modifiers, effectsEq, effectsHit);
+                  modifiers, requirements, effectsEq, effectsHit);
 }

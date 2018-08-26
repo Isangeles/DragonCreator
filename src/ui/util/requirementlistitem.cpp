@@ -1,7 +1,6 @@
 /*
- * itemparser.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * requirementlistitem.cpp
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,31 +16,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef ITEMPARSER_H
-#define ITEMPARSER_H
-
-#include <vector>
-
-#include <QDomDocument>
-
-#include "src/core/data/object/item/weapon.h"
-#include "src/util/weaponutils.h"
-#include "modifierparser.h"
-#include "requirementparser.h"
-#include "effectparser.h"
-
-using namespace std;
+#include "requirementlistitem.h"
 /**
- * @brief Static class for parsing items to XML nodes
+ * @brief RequirementListItem::RequirementListItem Constructor
+ * @param req Requirement
  */
-class ItemParser
+RequirementListItem::RequirementListItem(Requirement &req)
 {
-public:
-    static QDomNode weaponToNode(Weapon *weapon, QDomDocument *doc);
-    static Weapon weaponFromNode(QDomNode weaponNode);
-private:
-    ItemParser();
-
-};
-
-#endif // ITEMPARSER_H
+    this->req = &req;
+    this->setText(QString::fromStdString(RequirementUtils::tagNameFromType(req.getType())));
+}
+/**
+ * @brief RequirementListItem::~RequirementListItem Destructor
+ */
+RequirementListItem::~RequirementListItem()
+{}
+/**
+ * @brief RequirementListItem::getRequirement Returns requirement
+ * @return Requirement
+ */
+Requirement *RequirementListItem::getRequirement()
+{
+    return req;
+}

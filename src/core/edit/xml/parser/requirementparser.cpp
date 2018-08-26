@@ -48,9 +48,9 @@ QDomNode RequirementParser::requirementToNode(Requirement *req, QDomDocument *do
  * @param node XML doc node from base
  * @return Requirement from specified node
  */
-Requirement RequirementParser::requirementFromNode(QDomNode node)
+Requirement RequirementParser::requirementFromNode(QDomNode *node)
 {
-    QDomElement reqE = node.toElement();
+    QDomElement reqE = node->toElement();
 
     RequirementType type = RequirementUtils::typeFromTagName(reqE.tagName().toStdString());
 

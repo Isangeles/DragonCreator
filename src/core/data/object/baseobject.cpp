@@ -17,8 +17,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 #include "baseobject.h"
-
+/**
+ * @brief BaseObject::BaseObject Constructor
+ */
 BaseObject::BaseObject()
 {
-
+}
+/**
+ * @brief BaseObject::~BaseObject Destructor
+ */
+BaseObject::~BaseObject()
+{
 }

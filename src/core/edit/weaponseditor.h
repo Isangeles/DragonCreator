@@ -38,11 +38,12 @@ class WeaponsEditor : public BaseEditor
 {
 public:
     WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData);
-    ~WeaponsEditor();
+    virtual ~WeaponsEditor();
     vector<string> getIconsFiles();
     vector<string> getSpritesheetsFiles();
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
-                   string icon, string spritesheet, vector<Modifier> &modifiers, vector<string> &effectsEq, vector<string> &effectsHit);
+                   string icon, string spritesheet, vector<Modifier> &modifiers, vector<Requirement> &requirements,
+                   vector<string> &effectsEq, vector<string> &effectsHit);
     vector<BaseObject *> getBaseObjects();
 private:
     static const string WEAPONS_ICONS_PATH;

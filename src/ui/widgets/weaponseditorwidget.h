@@ -33,6 +33,7 @@
 #include "newrequirementdialog.h"
 #include "addeffectdialog.h"
 #include "src/ui/util/modifierlistitem.h"
+#include "src/ui/util/requirementlistitem.h"
 #include "src/util/text/textreader.h"
 
 using namespace std;
@@ -68,6 +69,7 @@ private slots:
     void on_removeModifierB_clicked();
     void on_addBonusB_clicked();
     void on_addReqB_clicked();
+    void on_removeReqB_clicked();
     void on_addEffectEqB_clicked();
     void on_addEffectHitB_clicked();
     void on_removeEffectEqB_clicked();

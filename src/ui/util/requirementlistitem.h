@@ -1,7 +1,6 @@
 /*
- * itemparser.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * requirementlistitem.h
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,31 +16,25 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef ITEMPARSER_H
-#define ITEMPARSER_H
+#ifndef REQUIREMENTLISTITEM_H
+#define REQUIREMENTLISTITEM_H
 
-#include <vector>
+#include <QListWidgetItem>
 
-#include <QDomDocument>
+#include "src/core/data/object/requirement.h"
+#include "src/util/requirementutils.h"
 
-#include "src/core/data/object/item/weapon.h"
-#include "src/util/weaponutils.h"
-#include "modifierparser.h"
-#include "requirementparser.h"
-#include "effectparser.h"
-
-using namespace std;
 /**
- * @brief Static class for parsing items to XML nodes
+ * @brief Requirement wrapper for Qt qlistwidgetitem
  */
-class ItemParser
+class RequirementListItem : public QListWidgetItem
 {
 public:
-    static QDomNode weaponToNode(Weapon *weapon, QDomDocument *doc);
-    static Weapon weaponFromNode(QDomNode weaponNode);
+    RequirementListItem(Requirement &req);
+    ~RequirementListItem();
+    Requirement *getRequirement();
 private:
-    ItemParser();
-
+    Requirement *req;
 };
 
-#endif // ITEMPARSER_H
+#endif // REQUIREMENTLISTITEM_H

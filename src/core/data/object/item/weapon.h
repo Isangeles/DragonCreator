@@ -27,6 +27,7 @@
 #include "src/core/data/object/baseobject.h"
 #include "src/core/data/object/effect.h"
 #include "src/core/data/object/modifier.h"
+#include "src/core/data/object/requirement.h"
 
 using namespace std;
 
@@ -41,7 +42,8 @@ friend class ItemParser;
 public:
     static vector<WeaponType> *getWeaponTypes();
     Weapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-           vector<Modifier> &modifiers, vector<string> &effectsEq, vector<string> &effectsHit);
+           vector<Modifier> &modifiers, vector<Requirement> &requirements, vector<string> &effectsEq, vector<string> &effectsHit);
+    virtual ~Weapon();
     string toString();
     string getId();
     int getLevel();
@@ -53,6 +55,7 @@ public:
     string getIcon();
     string getSpritesheet();
     vector<Modifier> *getModifiers();
+    vector<Requirement> *getRequirements();
     vector<string> *getEffectsEq();
     vector<string> *getEffectsHit();
 private:
@@ -66,6 +69,7 @@ private:
     string icon;
     string spritesheet;
     vector<Modifier> bonuses;
+    vector<Requirement> requirements;
     vector<string> effectsEq;
     vector<string> effectsHit;
 };
