@@ -44,11 +44,8 @@ EffectsEditor::~EffectsEditor()
 bool EffectsEditor::newEffect(string id, EffectType type, int duration, vector<Modifier> modifiers)
 {
     Effect *editedEffect = new Effect(id, type, duration, modifiers);
-
-    bool out = false;
-    removeEffect(id); //removes previous effect with same ID
-    out = DConnector::addEffectToBase(basePath, editedEffect);
-    if(out)
+    removeEffect(id); // if already exists, removes previous effect with same ID
+    if(DConnector::addEffectToBase(basePath, editedEffect))
     {
         effects = DConnector::getEffectsFromBase(basePath);
         return true;

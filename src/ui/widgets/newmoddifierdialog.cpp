@@ -123,7 +123,7 @@ void NewModdifierDialog::on_addAttrB_clicked()
  */
 void NewModdifierDialog::on_typeCombo_currentIndexChanged(int id)
 {
-    ModifierType type = (ModifierType)id; //Ordinal to type
+    ModifierType type = static_cast<ModifierType>(id); // Ordinal to type
     loadAttributesFor(type);
     ui->attrValueEdit->clear();
     ui->attrsList->clear();

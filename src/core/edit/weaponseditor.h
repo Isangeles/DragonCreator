@@ -44,6 +44,7 @@ public:
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                    string icon, string spritesheet, vector<Modifier> &modifiers, vector<Requirement> &requirements,
                    vector<string> &effectsEq, vector<string> &effectsHit);
+    bool removeWeapon(string id);
     vector<BaseObject *> getBaseObjects();
 private:
     static const string WEAPONS_ICONS_PATH;

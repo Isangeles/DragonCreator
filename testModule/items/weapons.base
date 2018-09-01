@@ -1,23 +1,23 @@
 <?xml version='1.0'?>
 <base>
- <item id="wSOHI" value="10" material="iron" damage="1-5" reqLvl="1" type="sword">
+ <item value="10" reqLvl="1" material="iron" id="wSOHI" damage="1-5" type="sword">
   <icon>swordIron.png</icon>
   <spritesheet>longsword-1222211-80x90.png</spritesheet>
   <bonuses>
-   <statsBonus int="0" wis="0" con="0" dex="0" str="0"/>
+   <statsBonus int="0" dex="0" wis="0" str="0" con="0"/>
   </bonuses>
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="wBTHW" value="5" material="wood" damage="1-3" reqLvl="1" type="bow">
+ <item value="5" reqLvl="1" material="wood" id="wBTHW" damage="1-3" type="bow">
   <icon>bow.png</icon>
   <spritesheet>bow-1222211-80x90.png</spritesheet>
   <bonuses>
-   <statsBonus int="0" wis="0" con="0" dex="0" str="0"/>
+   <statsBonus int="0" dex="0" wis="0" str="0" con="0"/>
   </bonuses>
   <equipEffects/>
  </item>
- <item id="wSOHS" value="100" material="steel" damage="5-10" reqLvl="3" type="sword">
+ <item value="100" reqLvl="3" material="steel" id="wSOHS" damage="5-10" type="sword">
   <icon>sword02.png</icon>
   <spritesheet default="true"/>
   <bonuses/>
@@ -25,7 +25,7 @@
    <effect>bleed01</effect>
   </hitEffects>
  </item>
- <item id="ert" reqLevel="0" value="0" material="Wood" damage="0-0" type="Dagger">
+ <item reqLevel="0" value="0" material="Wood" id="ert" damage="0-0" type="Dagger">
   <icon/>
   <spritesheet/>
   <bonuses>
@@ -34,7 +34,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="Blood Sabre" reqLevel="4" value="20" material="Steel" damage="10-20" type="Sword">
+ <item reqLevel="4" value="20" material="Steel" id="Blood Sabre" damage="10-20" type="Sword">
   <icon/>
   <spritesheet/>
   <bonuses>
@@ -43,7 +43,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="tere" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="tere" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -52,21 +52,21 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="tes" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="tes" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="err" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="err" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="suc" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="suc" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -75,7 +75,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="suc2" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="suc2" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -84,7 +84,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="suc3" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="suc3" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -94,14 +94,14 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="testwep" reqLevel="0" value="0" material="Wood" damage="0-0" type="dagger">
+ <item reqLevel="0" value="0" material="Wood" id="testwep" damage="0-0" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="modItemTest" reqLevel="1" value="15" material="Wood" damage="1-5" type="dagger">
+ <item reqLevel="1" value="15" material="Wood" id="modItemTest" damage="1-5" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -110,7 +110,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="modItemTest" reqLevel="1" value="15" material="Wood" damage="1-5" type="dagger">
+ <item reqLevel="1" value="15" material="Wood" id="modItemTest" damage="1-5" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -119,7 +119,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="effItemTest" reqLevel="1" value="15" material="Wood" damage="1-5" type="dagger">
+ <item reqLevel="1" value="15" material="Wood" id="effItemTest" damage="1-5" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses>
@@ -128,14 +128,14 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="effTest2" reqLevel="1" value="11" material="Wood" damage="3-4" type="dagger">
+ <item reqLevel="1" value="11" material="Wood" id="effTest2" damage="3-4" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="effTest3" reqLevel="1" value="5" material="Wood" damage="3-8" type="dagger">
+ <item reqLevel="1" value="5" material="Wood" id="effTest3" damage="3-8" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
@@ -144,7 +144,7 @@
    <effect/>
   </hitEffects>
  </item>
- <item id="effTest4" reqLevel="2" value="6" material="Wood" damage="8-9" type="dagger">
+ <item reqLevel="2" value="6" material="Wood" id="effTest4" damage="8-9" type="dagger">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
@@ -153,14 +153,14 @@
    <effect>swordBon01</effect>
   </hitEffects>
  </item>
- <item id="reqTest" reqLevel="0" value="0" material="Wood" damage="0-0" type="fist">
+ <item reqLevel="0" value="0" material="Wood" id="reqTest" damage="0-0" type="fist">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="reqTest2" reqLevel="0" value="0" material="Wood" damage="0-0" type="fist">
+ <item reqLevel="0" value="0" material="Wood" id="reqTest2" damage="0-0" type="fist">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
@@ -170,7 +170,7 @@
   <equipEffects/>
   <hitEffects/>
  </item>
- <item id="reqTest3" reqLevel="0" value="0" material="Wood" damage="0-0" type="fist">
+ <item reqLevel="0" value="0" material="Wood" id="reqTest3" damage="0-0" type="fist">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
@@ -179,6 +179,60 @@
    <itemsReq>testit</itemsReq>
   </equipReq>
   <equipEffects/>
+  <hitEffects/>
+ </item>
+ <item reqLevel="0" value="0" material="Wood" id="testReq4" damage="0-0" type="sword">
+  <icon>default</icon>
+  <spritesheet>default</spritesheet>
+  <bonuses/>
+  <equipReq>
+   <itemsReq amount="12">sloe</itemsReq>
+  </equipReq>
+  <equipEffects/>
+  <hitEffects/>
+ </item>
+ <item reqLevel="2" value="99" material="Wood" id="hellFire" damage="10-30" type="axe">
+  <icon>default</icon>
+  <spritesheet>default</spritesheet>
+  <bonuses>
+   <healthModifier value="14"/>
+  </bonuses>
+  <equipReq>
+   <statsReq>1;1;2;3;3</statsReq>
+  </equipReq>
+  <equipEffects>
+   <effect/>
+  </equipEffects>
+  <hitEffects>
+   <effect>burn01</effect>
+  </hitEffects>
+ </item>
+ <item reqLevel="2" value="19" material="Iron" id="testadd1" damage="9-18" type="fist">
+  <icon>default</icon>
+  <spritesheet>default</spritesheet>
+  <bonuses/>
+  <equipReq/>
+  <equipEffects>
+   <effect>rage01</effect>
+  </equipEffects>
+  <hitEffects/>
+ </item>
+ <item reqLevel="2" value="19" material="Iron" id="testadd1" damage="9-18" type="fist">
+  <icon>default</icon>
+  <spritesheet>default</spritesheet>
+  <bonuses/>
+  <equipReq/>
+  <equipEffects/>
+  <hitEffects/>
+ </item>
+ <item reqLevel="0" value="19" material="Wood" id="testadd2" type="fist" damage="9-18">
+  <icon>default</icon>
+  <spritesheet>default</spritesheet>
+  <bonuses/>
+  <equipReq/>
+  <equipEffects>
+   <effect>swordBon01</effect>
+  </equipEffects>
   <hitEffects/>
  </item>
 </base>

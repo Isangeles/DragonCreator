@@ -38,6 +38,7 @@ WeaponsEditor::WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData) :
 WeaponsEditor::~WeaponsEditor()
 {
     delete editedWeapon;
+    delete weapons;
 }
 /**
  * @brief WeaponsEditor::newWeapon Adds new weapon with specified parameters to base
@@ -49,14 +50,33 @@ WeaponsEditor::~WeaponsEditor()
  * @param damageMin Max damage of weapon
  * @param damageMax Min damage of weapon
  * @param modifiers List of modifiers
+ * @param requirements List with equip requirements
+ * @param effectsEq List with on-equip effects
+ * @param effectsHit List with on-hit effects
  * @return True if weapon was successfully created, false otherwise
  */
 bool WeaponsEditor::newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                               string icon, string spritesheet, vector<Modifier> &modifiers, vector<Requirement> &requirements,
                               vector<string> &effectsEq, vector<string> &effectsHit)
 {
-    editedWeapon = new Weapon(id, level, type, material ,value, damageMin, damageMax, icon, spritesheet, modifiers, requirements, effectsEq, effectsHit);
-    return DConnector::addWeaponToBase(basePath, editedWeapon);
+    editedWeapon = new Weapon(id, level, type, material, value, damageMin, damageMax, icon, spritesheet, modifiers, requirements, effectsEq, effectsHit);
+    removeWeapon(id); // if already exists, removes previous item with same ID
+    if(DConnector::addWeaponToBase(basePath, editedWeapon))
+    {
+        weapons = DConnector::getWeaponsFromBase(basePath);
+        return true;
+    }
+    else
+        return false;
+}
+/**
+ * @brief WeaponsEditor::removeWeapon Removes weapons with specified ID from weapons base
+ * @param id ID of weapon to remove
+ * @return True if weapon with specified id was successfully removed, false otherwise
+ */
+bool WeaponsEditor::removeWeapon(string id)
+{
+    return DConnector::removeBaseObjectById(basePath, id);
 }
 /**
  * @brief WeaponsEditor::getEditedWeapon Returns currently eddited weapon

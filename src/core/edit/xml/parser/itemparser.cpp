@@ -22,8 +22,7 @@
  * @brief ItemParser::ItemParser Private constructor
  */
 ItemParser::ItemParser()
-{
-}
+{}
 /**
  * @brief ItemParser::weaponToNode Parses specified weapon to XML node
  * @param weapon Weapon poitner
@@ -74,7 +73,8 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
     for(string eId : weapon->effectsEq)
     {
         QDomElement effectE = doc->createElement("effect");
-        effectE.setNodeValue(QString::fromStdString(eId));
+        QDomText effectIdText = doc->createTextNode(QString::fromStdString(eId));
+        effectE.appendChild(effectIdText);
         equipEffectsE.appendChild(effectE);
     }
     weaponE.appendChild(equipEffectsE);
@@ -106,9 +106,14 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
     string material = itemE.attribute("material").toStdString();
     int value = itemE.attribute("value").toInt();
 
-    string damageAttr = itemE.attribute("damage").toStdString();
-    int damageMin = 0; // TODO: min damage parsing
-    int damageMax = 0; // TODO: max damage parsing
+    vector<string> damageValues = TextReader::getListFromLine(itemE.attribute("damage").toStdString(), '-');
+    int damageMin = 0;
+    int damageMax = 0;
+    if(damageValues.size() > 1)
+    {
+        damageMin = stoi(damageValues.at(0));
+        damageMax = stoi(damageValues.at(1));
+    }
 
     QDomElement iconE = itemE.elementsByTagName("icon").at(0).toElement();
     string icon = iconE.text().toStdString(); // TODO: check if works OK

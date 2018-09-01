@@ -55,6 +55,8 @@ MainWindow::~MainWindow()
     delete welcomeScreen;
     delete settingsWindow;
     delete weWidget;
+    delete efWidget;
+    delete modInfo;
 }
 /**
  * @brief MainWindow::setModuleTree Displays specified module editor in module tree
@@ -126,7 +128,7 @@ QWidget* MainWindow::getEditorWidget(string editorId)
     else if(editorId == "effects")
         return efWidget;
     else
-        return NULL;
+        return nullptr;
 }
 /**
  * @brief MainWindow::getBaseEditor Returns base editor with specified ID
@@ -140,7 +142,7 @@ BaseEditor* MainWindow::getBaseEditor(string editorId)
     if(editorId == "effects")
         return editor->getEffectsEditor();
     else
-        return NULL;
+        return nullptr;
 }
 /**
  * @brief MainWindow::on_actionOpen_module_triggered Opens module editor in new directory, triggered on menu->open module clicked
@@ -187,17 +189,27 @@ void MainWindow::on_actionClose_triggered()
  */
 void MainWindow::on_moduleTree_clicked(const QModelIndex &index)
 {
-    QStandardItemModel *model = (QStandardItemModel*)ui->moduleTree->model();
+    QStandardItemModel *model = dynamic_cast<QStandardItemModel*>(ui->moduleTree->model());
     QStandardItem *item = model->itemFromIndex(index);
 
     QWidget *widgetToSet = getEditorWidget(item->text().toStdString());
-    ui->workspace->removeTab(0); //remove module info tab
-    ui->workspace->addTab(widgetToSet, "Editor");
+    if(widgetToSet != nullptr)
+    {
+        ui->workspace->removeTab(0); //remove module info tab
+        ui->workspace->addTab(widgetToSet, "Editor");
+    }
+    else
+        return;
 
     BaseEditor* editor = getBaseEditor(item->text().toStdString());
-    activeEditor = editor;
-    activeSource = new QPlainTextEdit(QString::fromStdString(editor->getBaseSource()));
-    ui->workspace->addTab(activeSource, "Source");
+    if(editor != nullptr)
+    {
+        activeEditor = editor;
+        activeSource = new QPlainTextEdit(QString::fromStdString(editor->getBaseSource()));
+        ui->workspace->addTab(activeSource, "Source");
+    }
+    else
+        return;
 
     setBaseTree(editor);
 }

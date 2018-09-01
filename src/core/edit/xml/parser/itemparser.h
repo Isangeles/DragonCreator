@@ -21,6 +21,7 @@
 #define ITEMPARSER_H
 
 #include <vector>
+#include <sstream>
 
 #include <QDomDocument>
 
@@ -29,6 +30,7 @@
 #include "modifierparser.h"
 #include "requirementparser.h"
 #include "effectparser.h"
+#include "src/util/text/textreader.h"
 
 using namespace std;
 /**

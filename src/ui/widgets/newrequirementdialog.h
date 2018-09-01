@@ -43,6 +43,7 @@ private:
     void loadsAttributesFor(RequirementType type);
 private slots:
     void on_typeCombo_currentIndexChanged(int id);
+    void on_attrAddB_clicked();
     void on_addB_clicked();
 signals:
     void add(Requirement *req);
