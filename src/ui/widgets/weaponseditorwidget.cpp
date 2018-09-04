@@ -59,7 +59,10 @@ WeaponsEditorWidget::~WeaponsEditorWidget()
     delete ui;
     delete newModifierD;
 }
-
+/**
+ * @brief WeaponsEditorWidget::getNMDialog Returns new modifier dialog
+ * @return New modifier dialog
+ */
 NewModdifierDialog *WeaponsEditorWidget::getNMDialog()
 {
     return newModifierD;

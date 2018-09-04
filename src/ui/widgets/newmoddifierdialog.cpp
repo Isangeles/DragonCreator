@@ -107,15 +107,18 @@ void NewModdifierDialog::on_addB_clicked()
 void NewModdifierDialog::on_addAttrB_clicked()
 {
     QString attrName = ui->attrCombo->currentText();
-    // to avoid attributes duplications
-    for(int i = 0; i < ui->attrsList->count(); i ++)
+    if(!attrName.isEmpty())
     {
-        QListWidgetItem *it = ui->attrsList->item(i);
-        if(TextReader::startsWith(attrName.toStdString(), it->text().toStdString()))
-            delete it;
+        // to avoid attributes duplications
+        for(int i = 0; i < ui->attrsList->count(); i ++)
+        {
+            QListWidgetItem *it = ui->attrsList->item(i);
+            if(TextReader::startsWith(attrName.toStdString(), it->text().toStdString()))
+                delete it;
+        }
+        attrName += "='" + ui->attrValueEdit->text() + "'";
+        ui->attrsList->addItem(attrName);
     }
-    attrName += "='" + ui->attrValueEdit->text() + "'";
-    ui->attrsList->addItem(attrName);
 }
 /**
  * @brief NewModdifierDialog::on_typeCombo_currentIndexChanged Triggered on type combobox item change

@@ -26,7 +26,7 @@
 #include <vector>
 
 #include "config.h"
-#include "edit/itemeditor.h"
+#include "edit/itemseditor.h"
 #include "edit/effectseditor.h"
 #include "src/util/engine.h"
 #include "src/core/data/object/module.h"
@@ -46,14 +46,14 @@ public:
     ~ModuleEditor();
     vector<BaseEditor> getChildEditors();
     BaseEditor* getEditor(EditorType type);
-    ItemEditor *getItemEditor();
+    ItemsEditor *getItemsEditor();
     EffectsEditor *getEffectsEditor();
 
     Module *getOpenModule();
 
 private:
     Module* openMod;
-    ItemEditor *iEdit;
+    ItemsEditor *iEdit;
     EffectsEditor *eEdit;
     bool isValidDir(string path);
 };

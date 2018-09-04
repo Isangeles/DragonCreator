@@ -40,7 +40,6 @@ SOURCES += \
     src/core/edit/xml/qxmleditor.cpp \
     src/core/edit/zip/zipeditor.cpp \
     src/core/edit/baseeditor.cpp \
-    src/core/edit/itemeditor.cpp \
     src/core/edit/weaponseditor.cpp \
     src/core/config.cpp \
     src/core/main.cpp \
@@ -70,7 +69,10 @@ SOURCES += \
     src/util/requirementutils.cpp \
     src/core/edit/xml/parser/requirementparser.cpp \
     src/ui/widgets/newrequirementdialog.cpp \
-    src/ui/util/requirementlistitem.cpp
+    src/ui/util/requirementlistitem.cpp \
+    src/ui/widgets/armorseditorwidget.cpp \
+    src/core/edit/armorseditor.cpp \
+    src/core/edit/itemseditor.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -82,7 +84,6 @@ HEADERS += \
     src/core/edit/xml/qxmleditor.h \
     src/core/edit/zip/zipeditor.h \
     src/core/edit/baseeditor.h \
-    src/core/edit/itemeditor.h \
     src/core/edit/weaponseditor.h \
     src/core/config.h \
     src/core/moduleeditor.h \
@@ -112,7 +113,10 @@ HEADERS += \
     src/util/requirementutils.h \
     src/core/edit/xml/parser/requirementparser.h \
     src/ui/widgets/newrequirementdialog.h \
-    src/ui/util/requirementlistitem.h
+    src/ui/util/requirementlistitem.h \
+    src/ui/widgets/armorseditorwidget.h \
+    src/core/edit/armorseditor.h \
+    src/core/edit/itemseditor.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
@@ -123,7 +127,8 @@ FORMS += \
     src/ui/forms/settingswidget.ui \
     src/ui/forms/effectseditorwidget.ui \
     src/ui/forms/addeffectdialog.ui \
-    src/ui/forms/newrequirementdialog.ui
+    src/ui/forms/newrequirementdialog.ui \
+    src/ui/forms/armorseditorwidget.ui
 
 SUBDIRS += \
     DragonCreator.pro

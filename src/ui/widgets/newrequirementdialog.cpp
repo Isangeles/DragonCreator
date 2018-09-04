@@ -68,15 +68,18 @@ void NewRequirementDialog::on_typeCombo_currentIndexChanged(int id)
 void NewRequirementDialog::on_attrAddB_clicked()
 {
     QString attrName = ui->attrCombo->currentText();
-    // to avoid attributes duplication
-    for(int i = 0; i < ui->attrsList->count(); i ++)
+    if(!attrName.isEmpty())
     {
-        QListWidgetItem *it = ui->attrsList->item(i);
-        if(TextReader::startsWith(attrName.toStdString(), it->text().toStdString()))
-            delete it;
+        // to avoid attributes duplication
+        for(int i = 0; i < ui->attrsList->count(); i ++)
+        {
+            QListWidgetItem *it = ui->attrsList->item(i);
+            if(TextReader::startsWith(attrName.toStdString(), it->text().toStdString()))
+                delete it;
+        }
+        attrName += "='" + ui->attrValueEdit->text() + "'";
+        ui->attrsList->addItem(attrName);
     }
-    attrName += "='" + ui->attrValueEdit->text() + "'";
-    ui->attrsList->addItem(attrName);
 }
 /**
  * @brief NewRequirementDialog::on_addB_clicked Triggered on add button click

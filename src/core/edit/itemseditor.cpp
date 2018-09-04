@@ -17,12 +17,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#include "itemeditor.h"
+#include "itemseditor.h"
 /**
- * @brief Item editor constructor
+ * @brief Items editor constructor
  * @param pathToBase Path to XML items base
  */
-ItemEditor::ItemEditor(std::string pathToItems, Module *mod, ZipEditor* gData)
+ItemsEditor::ItemsEditor(std::string pathToItems, Module *mod, ZipEditor* gData)
 {
     itemsPath = pathToItems;
 
@@ -31,19 +31,21 @@ ItemEditor::ItemEditor(std::string pathToItems, Module *mod, ZipEditor* gData)
     miscPath = itemsPath + "/misc" + Engine::BASE_EXT;
 
     wEdit = new WeaponsEditor(weaponsPath, mod, gData);
+    aEdit = new ArmorsEditor(armorsPath, mod, gData);
 }
 /**
  * @brief ItemEditor::~ItemEditor ItemEditor deconstructor
  */
-ItemEditor::~ItemEditor()
+ItemsEditor::~ItemsEditor()
 {
     delete wEdit;
+    delete aEdit;
 }
 /**
  * @brief ItemEditor::getChildEditors Returns all child editors
  * @deprecated
  */
-vector<BaseEditor> ItemEditor::getChildEditors()
+vector<BaseEditor> ItemsEditor::getChildEditors()
 {
     vector<BaseEditor> editors;
 
@@ -53,7 +55,15 @@ vector<BaseEditor> ItemEditor::getChildEditors()
  * @brief ItemEditor::getWeaponsEditor Returns weapons editor
  * @return Weapons editor
  */
-WeaponsEditor* ItemEditor::getWeaponsEditor()
+WeaponsEditor* ItemsEditor::getWeaponsEditor()
 {
     return wEdit;
+}
+/**
+ * @brief ItemEditor::getArmorsEditor Returns armors editor
+ * @return Armors editor
+ */
+ArmorsEditor* ItemsEditor::getArmorsEditor()
+{
+    return aEdit;
 }

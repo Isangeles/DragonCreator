@@ -17,8 +17,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef ITEMEDITOR_H
-#define ITEMEDITOR_H
+#ifndef ITEMESDITOR_H
+#define ITEMESDITOR_H
 
 #include <string>
 #include <QtXml>
@@ -28,18 +28,20 @@
 #include "src/core/config.h"
 #include "baseeditor.h"
 #include "weaponseditor.h"
+#include "armorseditor.h"
 
 using namespace std;
 /**
- * @brief Class for items base editor
+ * @brief Class for items bases editor
  */
-class ItemEditor
+class ItemsEditor
 {
 public:
-    ItemEditor(std::string pathToItems, Module *mod, ZipEditor *gData);
-    ~ItemEditor();
+    ItemsEditor(std::string pathToItems, Module *mod, ZipEditor *gData);
+    ~ItemsEditor();
     vector<BaseEditor> getChildEditors();
     WeaponsEditor* getWeaponsEditor();
+    ArmorsEditor* getArmorsEditor();
 
 private:
     string itemsPath;
@@ -47,6 +49,7 @@ private:
     string weaponsPath;
     string miscPath;
     WeaponsEditor* wEdit;
+    ArmorsEditor* aEdit;
 };
 
-#endif // ITEMEDITOR_H
+#endif // ITEMESDITOR_H

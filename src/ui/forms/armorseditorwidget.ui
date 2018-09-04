@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ArmorsEditorWidget</class>
+ <widget class="QWidget" name="ArmorsEditorWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="8">
+    <widget class="QLabel" name="iconLabel">
+     <property name="text">
+      <string>Icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
+    <widget class="QLabel" name="valueLabel">
+     <property name="text">
+      <string>Value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QLabel" name="damageMinLabel">
+     <property name="text">
+      <string>Damage min.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="effectsEqLabel">
+     <property name="text">
+      <string>Effects on-equip</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="QSpinBox" name="damageMinSpinBox"/>
+   </item>
+   <item row="0" column="6">
+    <widget class="QSpinBox" name="levelSpinBox"/>
+   </item>
+   <item row="6" column="5">
+    <widget class="QPushButton" name="effectEqAddButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="9">
+    <widget class="QPushButton" name="addRequirementButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4" colspan="2">
+    <widget class="QComboBox" name="spritesheetComboBox">
+     <item>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLabel" name="levelLabel">
+     <property name="text">
+      <string>Level</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="9">
+    <widget class="QSpinBox" name="valueSpinBox"/>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLabel" name="modifiersLabel">
+     <property name="text">
+      <string>Modifiers</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="typeLabel">
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="8">
+    <widget class="QLabel" name="materialLabel">
+     <property name="text">
+      <string>Material</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2" colspan="4">
+    <widget class="QListWidget" name="effectsEqList"/>
+   </item>
+   <item row="4" column="5">
+    <widget class="QPushButton" name="addModifierButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="4">
+    <widget class="QListWidget" name="modifiersList"/>
+   </item>
+   <item row="2" column="4" colspan="2">
+    <widget class="QComboBox" name="typeComboBox">
+     <item>
+      <property name="text">
+       <string>none</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="9">
+    <widget class="QComboBox" name="iconComboBox">
+     <item>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="9">
+    <widget class="QSpinBox" name="damageMaxSpinBox"/>
+   </item>
+   <item row="1" column="8">
+    <widget class="QLabel" name="damageMaxLabel">
+     <property name="text">
+      <string>Damage max.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="spritesheetLabel">
+     <property name="text">
+      <string>Spritesheet</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="9">
+    <widget class="QComboBox" name="materialComboBox">
+     <item>
+      <property name="text">
+       <string>none</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="8" column="9">
+    <widget class="QPushButton" name="addButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="idLabel">
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLineEdit" name="idEdit"/>
+   </item>
+   <item row="4" column="6" colspan="3">
+    <widget class="QLabel" name="requirementsLabel">
+     <property name="text">
+      <string>Requirements</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="6" colspan="4">
+    <widget class="QListWidget" name="requirementsList"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

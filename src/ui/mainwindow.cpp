@@ -55,6 +55,7 @@ MainWindow::~MainWindow()
     delete welcomeScreen;
     delete settingsWindow;
     delete weWidget;
+    delete arWidget;
     delete efWidget;
     delete modInfo;
 }
@@ -125,6 +126,8 @@ QWidget* MainWindow::getEditorWidget(string editorId)
 {
     if(editorId == "weapons")
         return weWidget;
+    else if(editorId == "armors")
+        return arWidget;
     else if(editorId == "effects")
         return efWidget;
     else
@@ -138,8 +141,10 @@ QWidget* MainWindow::getEditorWidget(string editorId)
 BaseEditor* MainWindow::getBaseEditor(string editorId)
 {
     if(editorId == "weapons")
-        return editor->getItemEditor()->getWeaponsEditor();
-    if(editorId == "effects")
+        return editor->getItemsEditor()->getWeaponsEditor();
+    else if(editorId == "armors")
+        return editor->getItemsEditor()->getArmorsEditor();
+    else if(editorId == "effects")
         return editor->getEffectsEditor();
     else
         return nullptr;
@@ -155,7 +160,8 @@ void MainWindow::on_actionOpen_module_triggered()
     try
     {
         editor = new ModuleEditor(path.toStdString());
-        weWidget = new WeaponsEditorWidget(editor->getItemEditor()->getWeaponsEditor(), this);
+        weWidget = new WeaponsEditorWidget(editor->getItemsEditor()->getWeaponsEditor(), this);
+        arWidget = new ArmorsEditorWidget(editor->getItemsEditor()->getArmorsEditor(), this);
         efWidget = new EffectsEditorWidget(editor->getEffectsEditor(), this);
         setModuleTree(editor);
         modInfo = new ModuleInfoWidget(editor->getOpenModule(), this);
@@ -259,7 +265,7 @@ void MainWindow::onBaseObjectEdit()
  */
 void MainWindow::updateSource()
 {
-    QPlainTextEdit* sourceTab = (QPlainTextEdit*)ui->workspace->widget(1);
+    QPlainTextEdit* sourceTab = dynamic_cast<QPlainTextEdit*>(ui->workspace->widget(1));
     sourceTab->clear();
     sourceTab->insertPlainText(QString::fromStdString(activeEditor->getBaseSource()));
 }
@@ -268,7 +274,7 @@ void MainWindow::updateSource()
  */
 void MainWindow::updateBaseTree()
 {
-    if(activeEditor != NULL)
+    if(activeEditor != nullptr)
     {
         ui->baseTree->clear();
         for(BaseObject *o : activeEditor->getBaseObjects())

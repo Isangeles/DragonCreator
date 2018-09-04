@@ -38,6 +38,7 @@
 
 #include "src/core/moduleeditor.h"
 #include "widgets/weaponseditorwidget.h"
+#include "widgets/armorseditorwidget.h"
 #include "widgets/welcomewidget.h"
 #include "widgets/moduleinfowidget.h"
 #include "widgets/settingswidget.h"
@@ -56,7 +57,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
@@ -70,6 +71,7 @@ private:
     SettingsWidget *settingsWindow;
     ModuleInfoWidget *modInfo;
     WeaponsEditorWidget *weWidget;
+    ArmorsEditorWidget *arWidget;
     EffectsEditorWidget *efWidget;
 
     void setModuleTree(ModuleEditor *mEditor);
