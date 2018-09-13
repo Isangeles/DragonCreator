@@ -1,7 +1,7 @@
 /*
  * itemparser.cpp
  *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,8 +21,7 @@
 /**
  * @brief ItemParser::ItemParser Private constructor
  */
-ItemParser::ItemParser()
-{}
+ItemParser::ItemParser() {}
 /**
  * @brief ItemParser::weaponToNode Parses specified weapon to XML node
  * @param weapon Weapon poitner
@@ -90,6 +89,64 @@ QDomNode ItemParser::weaponToNode(Weapon *weapon, QDomDocument *doc)
     weaponE.appendChild(hitEffectsE);
 
     return weaponE;
+}
+/**
+ * @brief ItemParser::armorToNode Parses specified armor to item node for XML base.
+ * @param armor Armor to parse.
+ * @param doc XML base document.
+ * @return Node for XML doc.
+ */
+QDomNode ItemParser::armorToNode(Armor *armor, QDomDocument *doc)
+{
+    QDomElement itemE = doc->createElement("item");
+
+    itemE.setAttribute("id", QString::fromStdString(armor->getId()));
+    itemE.setAttribute("reqLevel", QString::number(armor->getLevel()));
+
+    string typeId = ArmorUtils::typeToId(armor->getType());
+    itemE.setAttribute("type", QString::fromStdString(typeId));
+
+    itemE.setAttribute("material", QString::fromStdString(armor->getMaterial()));
+    itemE.setAttribute("value", QString::number(armor->getValue()));
+    itemE.setAttribute("armorRat", armor->getArmorRat());
+
+    QDomElement iconE = doc->createElement("icon");
+    QDomText iconEText = doc->createTextNode(QString::fromStdString(armor->getIcon()));
+    iconE.appendChild(iconEText);
+    itemE.appendChild(iconE);
+
+    QDomElement spritesheetE = doc->createElement("spritesheet");
+    QDomText spritesheetEText = doc->createTextNode(QString::fromStdString(armor->getSpritesheet()));
+    spritesheetE.appendChild(spritesheetEText);
+    itemE.appendChild(spritesheetE);
+
+    QDomElement bonusesE = doc->createElement("bonuses");
+    for(Modifier mod : *armor->getModifiers())
+    {
+        QDomNode modNode = ModifierParser::modifierToNode(&mod, doc);
+        bonusesE.appendChild(modNode);
+    }
+    itemE.appendChild(bonusesE);
+
+    QDomElement requirementsE = doc->createElement("equipReq");
+    for(Requirement req : *armor->getRequirement())
+    {
+        QDomNode reqNode = RequirementParser::requirementToNode(&req, doc);
+        requirementsE.appendChild(reqNode);
+    }
+    itemE.appendChild(requirementsE);
+
+    QDomElement equipEffectsE = doc->createElement("equipEffects");
+    for(string eId : *armor->getEffectsEq())
+    {
+        QDomElement effectE = doc->createElement("effect");
+        QDomText effectIdText = doc->createTextNode(QString::fromStdString(eId));
+        effectE.appendChild(effectIdText);
+        equipEffectsE.appendChild(effectE);
+    }
+    itemE.appendChild(equipEffectsE);
+
+    return itemE;
 }
 /**
  * @brief ItemParser::weaponFromNode Parses specified XML node from weapons base to weapon object
@@ -161,4 +218,58 @@ Weapon ItemParser::weaponFromNode(QDomNode node)
 
     return Weapon(id, level, type, material, value, damageMin, damageMax, icon, spritesheet,
                   modifiers, requirements, effectsEq, effectsHit);
+}
+/**
+ * @brief ItemParser::armorFromNode Parses node to armor
+ * @param node XML document node
+ * @return Armor
+ */
+Armor ItemParser::armorFromNode(QDomNode node)
+{
+    QDomElement itemE = node.toElement();
+    string id = itemE.attribute("id").toStdString();
+    int level = itemE.attribute("level").toInt();
+    ArmorType type = ArmorUtils::typeFromId(itemE.attribute("type").toStdString());
+
+    string material = itemE.attribute("material").toStdString();
+    int value = itemE.attribute("value").toInt();
+
+    int armorRat = itemE.attribute("armorRat").toInt();
+
+    QDomElement iconE = itemE.elementsByTagName("icon").at(0).toElement();
+    string icon = iconE.text().toStdString();
+
+    QDomElement spirtesheetE = itemE.elementsByTagName("spritesheet").at(0).toElement();
+    string spritesheet = spirtesheetE.text().toStdString();
+
+    vector<Modifier> modifiers;
+    QDomElement bonusesE = itemE.elementsByTagName("bonuses").at(0).toElement();
+    QDomNodeList modNl = bonusesE.childNodes();
+    for(int i = 0; i < modNl.size(); i ++)
+    {
+        QDomNode modNode = modNl.at(i);
+        modifiers.push_back(ModifierParser::modifierFromNode(&modNode));
+    }
+
+    vector<Requirement> requirements;
+    QDomElement requirementsE = itemE.elementsByTagName("equipReq").at(0).toElement();
+    QDomNodeList reqNl = requirementsE.childNodes();
+    for(int i = 0; i < reqNl.size(); i ++)
+    {
+        QDomNode reqNode = reqNl.at(i);
+        requirements.push_back(RequirementParser::requirementFromNode(&reqNode));
+    }
+
+    vector<string> effectsEq;
+    QDomElement equipEffectsE = itemE.elementsByTagName("equipEffects").at(0).toElement();
+    QDomNodeList effectsEqNl = equipEffectsE.childNodes();
+    for(int i = 0; i < effectsEqNl.size(); i ++)
+    {
+        QDomNode effectNode = effectsEqNl.at(i);
+        string eId = effectNode.toElement().text().toStdString();
+        effectsEq.push_back(eId);
+    }
+
+    return Armor(id, level, type, material, value, armorRat, icon, spritesheet,
+                 modifiers, requirements, effectsEq);
 }

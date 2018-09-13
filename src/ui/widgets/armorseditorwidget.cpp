@@ -1,4 +1,4 @@
-/*
+ /*
  * armorseditorwidget.cpp
  * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *

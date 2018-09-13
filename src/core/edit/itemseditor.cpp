@@ -26,7 +26,7 @@ ItemsEditor::ItemsEditor(std::string pathToItems, Module *mod, ZipEditor* gData)
 {
     itemsPath = pathToItems;
 
-    armorsPath = itemsPath + "/armors" + Engine::BASE_EXT;
+    armorsPath = itemsPath + "/armor" + Engine::BASE_EXT;
     weaponsPath = itemsPath + "/weapons" + Engine::BASE_EXT;
     miscPath = itemsPath + "/misc" + Engine::BASE_EXT;
 

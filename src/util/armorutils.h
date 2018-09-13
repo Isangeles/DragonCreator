@@ -1,7 +1,6 @@
 /*
- * itemparser.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * armorutils.h
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,37 +16,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef ITEMPARSER_H
-#define ITEMPARSER_H
+#ifndef ARMORUTILS_H
+#define ARMORUTILS_H
 
-#include <vector>
-#include <sstream>
-
-#include <QDomDocument>
-
-#include "src/core/data/object/item/weapon.h"
 #include "src/core/data/object/item/armor.h"
-#include "src/util/weaponutils.h"
-#include "src/util/armorutils.h"
-#include "modifierparser.h"
-#include "requirementparser.h"
-#include "effectparser.h"
-#include "src/util/text/textreader.h"
 
-using namespace std;
 /**
- * @brief Static class for parsing items to XML nodes
+ * @brief Static class with utility functions for armors.
  */
-class ItemParser
+class ArmorUtils
 {
 public:
-    static QDomNode weaponToNode(Weapon *weapon, QDomDocument *doc);
-    static QDomNode armorToNode(Armor *armor, QDomDocument *doc);
-    static Weapon weaponFromNode(QDomNode weaponNode);
-    static Armor armorFromNode(QDomNode armorNode);
+    static string typeToId(ArmorType type);
+    static ArmorType typeFromId(string id);
 private:
-    ItemParser();
-
+    ArmorUtils();
 };
 
-#endif // ITEMPARSER_H
+#endif // ARMORUTILS_H

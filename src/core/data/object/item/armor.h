@@ -1,7 +1,6 @@
 /*
- * weapon.h
- *
- * Copyright (C) 2018 Dariusz Sikora<darek@dellins-solus>
+ * armor.h
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,59 +16,56 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#ifndef WEAPON_H
-#define WEAPON_H
+#ifndef ARMOR_H
+#define ARMOR_H
 
-#include <iostream>
 #include <vector>
 
 #include "src/core/data/object/baseobject.h"
-#include "src/core/data/object/effect.h"
 #include "src/core/data/object/modifier.h"
 #include "src/core/data/object/requirement.h"
 
 using namespace std;
 
-enum WeaponType{FIST = 0, DAGGER = 1, SWORD = 2, AXE = 3, MACE = 4, SPEAR = 5, BOW = 6};
 /**
- * @brief Class for weapons to edit
+ * @brief Enumeration class for armor types.
  */
-class Weapon : public BaseObject
+enum class ArmorType { FEET = 0, HANDS = 1, OFFHAND = 2, CHEST = 3, HEAD = 4 };
+/**
+ * @brief Class for armors.
+ */
+class Armor : public BaseObject
 {
-friend class ItemParser;
 public:
-    static vector<WeaponType> *getWeaponTypes();
-    Weapon(string getId, int level, WeaponType type, string material, int value, int damageMin, int damageMax, string icon, string spritesheet,
-           vector<Modifier> &modifiers, vector<Requirement> &requirements, vector<string> &effectsEq, vector<string> &effectsHit);
-    virtual ~Weapon();
+    static vector<ArmorType> *getArmorTypes();
+    Armor(string getId, int level, ArmorType type, string material, int value,
+          int armorRat, string icon, string spritesheet, vector<Modifier> &modifiers,
+          vector<Requirement> &requirements, vector<string> &effectsEq);
+    virtual ~Armor();
     string toString();
     string getId();
     int getLevel();
-    WeaponType getType();
+    ArmorType getType();
     string getMaterial();
     int getValue();
-    int getDamageMax();
-    int getDamageMin();
+    int getArmorRat();
     string getIcon();
     string getSpritesheet();
     vector<Modifier> *getModifiers();
-    vector<Requirement> *getRequirements();
+    vector<Requirement> *getRequirement();
     vector<string> *getEffectsEq();
-    vector<string> *getEffectsHit();
 private:
     string id;
     int level;
-    WeaponType type;
+    ArmorType type;
     string material;
     int value;
-    int damageMin;
-    int damageMax;
+    int armorRat;
     string icon;
     string spritesheet;
-    vector<Modifier> bonuses;
+    vector<Modifier> modifiers;
     vector<Requirement> requirements;
     vector<string> effectsEq;
-    vector<string> effectsHit;
 };
 
-#endif // WEAPON_H
+#endif // ARMOR_H

@@ -72,7 +72,9 @@ SOURCES += \
     src/ui/util/requirementlistitem.cpp \
     src/ui/widgets/armorseditorwidget.cpp \
     src/core/edit/armorseditor.cpp \
-    src/core/edit/itemseditor.cpp
+    src/core/edit/itemseditor.cpp \
+    src/core/data/object/item/armor.cpp \
+    src/util/armorutils.cpp
 
 HEADERS += \
     src/core/data/object/item/weapon.h \
@@ -116,7 +118,9 @@ HEADERS += \
     src/ui/util/requirementlistitem.h \
     src/ui/widgets/armorseditorwidget.h \
     src/core/edit/armorseditor.h \
-    src/core/edit/itemseditor.h
+    src/core/edit/itemseditor.h \
+    src/core/data/object/item/armor.h \
+    src/util/armorutils.h
 
 FORMS += \
     src/ui/forms/mainwindow.ui \
