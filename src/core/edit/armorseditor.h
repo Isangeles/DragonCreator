@@ -24,12 +24,24 @@
 #include "src/core/data/dconnector.h"
 #include "zip/zipeditor.h"
 
+/**
+ * @brief Class for armors editor.
+ */
 class ArmorsEditor : public BaseEditor
 {
 public:
     ArmorsEditor(string pathToBase, Module *mod, ZipEditor *gData);
     virtual ~ArmorsEditor();
     vector<BaseObject *> getBaseObjects();
+    vector<string> getIconFiles();
+    vector<string> getSpritesheetFiles();
+    bool newArmor(string id, int level, ArmorType type, string material, int value, int armorRat, string icon, string spritesheet, vector<Modifier> &modifiers,
+                  vector<Requirement> &requirements, vector<string> &effectsEq);
+    bool removeArmor(string id);
+private:
+    static const string ARMORS_ICONS_PATH;
+    static const string ARMORS_SPRITESHEETS_PATH;
+    vector<Armor> *armors;
 };
 
 #endif // ARMORSEDITOR_H

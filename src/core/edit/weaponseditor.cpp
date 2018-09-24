@@ -41,7 +41,9 @@ WeaponsEditor::~WeaponsEditor()
     delete weapons;
 }
 /**
- * @brief WeaponsEditor::newWeapon Adds new weapon with specified parameters to base
+ * @brief WeaponsEditor::newWeapon Adds new weapon with specified parameters to base,
+ *        if armor with specified ID already exist in base then old
+ *        item will be deleted from base.
  * @param id ID
  * @param level Item level
  * @param type Weapon type

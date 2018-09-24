@@ -35,10 +35,12 @@ using namespace std;
 class DConnector
 {
 public:
+    static bool addArmorToBase(string basePath, Armor *armor);
     static bool addWeaponToBase(string basePath, Weapon *weapon);
     static bool addEffectToBase(string basePath, Effect *effect);
     static bool removeBaseObjectById(string basePath, string id);
     static vector<Effect> *getEffectsFromBase(string basePath);
+    static vector<Armor> *getArmorsFromBase(string basePath);
     static vector<Weapon> *getWeaponsFromBase(string basePath);
     static string getXmlSource(string xmlPath);
 private:

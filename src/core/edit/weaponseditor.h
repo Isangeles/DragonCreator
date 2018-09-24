@@ -28,7 +28,6 @@
 #include "src/core/data/object/effect.h"
 #include "src/core/data/object/module.h"
 #include "src/core/data/dconnector.h"
-#include "zip/zipeditor.h"
 
 using namespace std;
 /**
@@ -39,13 +38,13 @@ class WeaponsEditor : public BaseEditor
 public:
     WeaponsEditor(string pathToBase, Module *mod, ZipEditor *gData);
     virtual ~WeaponsEditor();
+    vector<BaseObject *> getBaseObjects();
     vector<string> getIconsFiles();
     vector<string> getSpritesheetsFiles();
     bool newWeapon(string id, int level, WeaponType type, string material, int value, int damageMin, int damageMax,
                    string icon, string spritesheet, vector<Modifier> &modifiers, vector<Requirement> &requirements,
                    vector<string> &effectsEq, vector<string> &effectsHit);
     bool removeWeapon(string id);
-    vector<BaseObject *> getBaseObjects();
 private:
     static const string WEAPONS_ICONS_PATH;
     static const string WEAPONS_SPRITESHEETS_PATH;

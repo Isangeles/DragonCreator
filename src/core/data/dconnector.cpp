@@ -22,6 +22,37 @@
  * @brief DConnector::DConnector Private constructor
  */
 DConnector::DConnector(){}
+
+/**
+ * @brief DConnector::addArmorToBase Adds specified armor to game armors base.
+ * @param basePath System path to armors base.
+ * @param armor Armor item to add.
+ * @return True if specified item was successfully added, false otherwise.
+ */
+bool DConnector::addArmorToBase(string basePath, Armor *armor)
+{
+    try
+    {
+        QXmlEditor baseEdit(basePath);
+        QDomNode itemNode = ItemParser::armorToNode(armor, baseEdit.getDoc());
+        if(baseEdit.addNode(itemNode))
+        {
+            baseEdit.save();
+            baseEdit.close();
+            return true;
+        }
+        else
+        {
+            baseEdit.close();
+            return false;
+        }
+    }
+    catch(runtime_error *e)
+    {
+        cerr << "add_armor_to_base_fail:" << e->what() << endl;
+    }
+    return false;
+}
 /**
  * @brief DConnector::addWeaponToBase Adds specified weapon to game weapons base
  * @param basePath Path to XML wapons base
@@ -139,6 +170,33 @@ vector<Effect> *DConnector::getEffectsFromBase(string basePath)
     }
 
     return effects;
+}
+/**
+ * @brief DConnector::getArmorsFromBase Returns all armors from
+ *        base in specified system path.
+ * @param basePath System path to base.
+ * @return List with armors from base.
+ */
+vector<Armor> *DConnector::getArmorsFromBase(string basePath)
+{
+    vector<Armor> *armors = new vector<Armor>;
+    try
+    {
+        QXmlEditor xml(basePath);
+
+        QDomNodeList nl = xml.getDoc()->elementsByTagName("item");
+        for(int i = 0; i < nl.size(); i ++)
+        {
+            QDomNode itemNode = nl.at(i);
+            Armor item = ItemParser::armorFromNode(itemNode);
+            armors->push_back(item);
+        }
+    }
+    catch(runtime_error *e)
+    {
+        cerr << "get_armors_from_base_fail:" << e->what() << endl;
+    }
+    return armors;
 }
 /**
  * @brief DConnector::getWeaponsFromBase Returns all wapons for base in specified path
