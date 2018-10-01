@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>541</width>
+    <height>428</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,22 +28,12 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="5">
-    <widget class="QLabel" name="damageMinLabel">
-     <property name="text">
-      <string>Damage min.</string>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="2">
     <widget class="QLabel" name="effectsEqLabel">
      <property name="text">
       <string>Effects on-equip</string>
      </property>
     </widget>
-   </item>
-   <item row="1" column="6">
-    <widget class="QSpinBox" name="damageMinSpinBox"/>
    </item>
    <item row="0" column="6">
     <widget class="QSpinBox" name="levelSpinBox"/>
@@ -119,7 +109,27 @@
     <widget class="QComboBox" name="typeComboBox">
      <item>
       <property name="text">
-       <string>none</string>
+       <string>feet</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>hands</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>off-hand</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>chest</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>head</string>
       </property>
      </item>
     </widget>
@@ -134,12 +144,12 @@
     </widget>
    </item>
    <item row="1" column="9">
-    <widget class="QSpinBox" name="damageMaxSpinBox"/>
+    <widget class="QSpinBox" name="armorRatSpinBox"/>
    </item>
    <item row="1" column="8">
-    <widget class="QLabel" name="damageMaxLabel">
+    <widget class="QLabel" name="armorRatLabel">
      <property name="text">
-      <string>Damage max.</string>
+      <string>Armor Rating</string>
      </property>
     </widget>
    </item>

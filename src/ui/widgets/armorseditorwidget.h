@@ -20,13 +20,23 @@
 #define ARMORSEDITORWIDGET_H
 
 #include <QWidget>
+#include <QMessageBox>
 
 #include "src/core/edit/armorseditor.h"
+#include "src/ui/widgets/newmoddifierdialog.h"
+#include "src/ui/widgets/newrequirementdialog.h"
+#include "src/ui/widgets/addeffectdialog.h"
+#include "src/ui/util/modifierlistitem.h"
+#include "src/ui/util/requirementlistitem.h"
+#include "src/ui/util/baseobjectlistitem.h"
 
 namespace Ui {
 class ArmorsEditorWidget;
 }
 
+/**
+ * @brief The ArmorsEditorWidget class Class for armor items editor widget.
+ */
 class ArmorsEditorWidget : public QWidget
 {
     Q_OBJECT
@@ -34,10 +44,23 @@ class ArmorsEditorWidget : public QWidget
 public:
     explicit ArmorsEditorWidget(ArmorsEditor *editor, QWidget *parent = nullptr);
     ~ArmorsEditorWidget();
+    void editArmor(Armor *a);
+signals:
+    void itemAdded();
 
 private:
+    bool addItem();
     Ui::ArmorsEditorWidget *ui;
     ArmorsEditor *editor;
+    NewModdifierDialog *newModifierD;
+    NewRequirementDialog *newRequirementD;
+    AddEffectDialog *addEffectD;
+
+private slots:
+    void on_addButton_clicked();
+    void baseTreeObjectSelected(BaseObject *o);
+    void modifierAdded(Modifier *m);
+    void requirementAdded(Requirement *r);
 };
 
 #endif // ARMORSEDITORWIDGET_H

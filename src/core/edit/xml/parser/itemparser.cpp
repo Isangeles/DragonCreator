@@ -101,7 +101,7 @@ QDomNode ItemParser::armorToNode(Armor *armor, QDomDocument *doc)
     QDomElement itemE = doc->createElement("item");
 
     itemE.setAttribute("id", QString::fromStdString(armor->getId()));
-    itemE.setAttribute("reqLevel", QString::number(armor->getLevel()));
+    itemE.setAttribute("reqLvl", QString::number(armor->getLevel()));
 
     string typeId = ArmorUtils::typeToId(armor->getType());
     itemE.setAttribute("type", QString::fromStdString(typeId));
@@ -228,7 +228,7 @@ Armor ItemParser::armorFromNode(QDomNode node)
 {
     QDomElement itemE = node.toElement();
     string id = itemE.attribute("id").toStdString();
-    int level = itemE.attribute("level").toInt();
+    int level = itemE.attribute("reqLvl").toInt();
     ArmorType type = ArmorUtils::typeFromId(itemE.attribute("type").toStdString());
 
     string material = itemE.attribute("material").toStdString();

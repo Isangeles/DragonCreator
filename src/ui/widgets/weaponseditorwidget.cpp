@@ -19,6 +19,11 @@
 */
 #include "weaponseditorwidget.h"
 #include "ui_weaponseditorwidget.h"
+
+/*
+ * TODO: Dialogs(for new effect, requirement, etc.) are created
+ * 'on th go', this is can couse of memory leak.
+ */
 /**
  * @brief WeaponsEditorWidget::WeaponsEditorWidget Weapons editor widget constructor
  * @param editor Weapons editor
@@ -107,10 +112,13 @@ void WeaponsEditorWidget::editWeapon(Weapon *w)
  */
 void WeaponsEditorWidget::on_addB_clicked()
 {
+    // TODO: move adding item logic to separate function.
    string id = ui->idEdit->text().toStdString();
    WeaponType type = static_cast<WeaponType>(ui->typeCombo->currentIndex());
    string material = ui->materialCombo->currentText().toStdString();
 
+   // TODO: save level requirement as proper requirement,
+   // i.e. add level requirement to requirements list.
    int level = ui->levelEdit->value();
    int dmgMin = ui->dmgMinEdit->value();
    int dmgMax = ui->dmgMaxEdit->value();
@@ -157,7 +165,7 @@ void WeaponsEditorWidget::on_addB_clicked()
        effectsHit->push_back(item->text().toStdString());
    }
 
-   //TODO translate messages
+   // TODO translate messages.
    if(editor->newWeapon(id, level, type, material, value, dmgMin, dmgMax, icon, ss, *modifiers, *requirements, *effectsEq, *effectsHit))
    {
        emit itemAdded();
