@@ -58,9 +58,16 @@ private:
 
 private slots:
     void on_addButton_clicked();
+    void on_addModifierButton_clicked();
+    void on_addRequirementButton_clicked();
+    void on_addEffectEqButton_clicked();
+    void on_removeModifierButton_clicked();
+    void on_removeRequirementButton_clicked();
+    void on_removeEffectEqButton_clicked();
     void baseTreeObjectSelected(BaseObject *o);
     void modifierAdded(Modifier *m);
     void requirementAdded(Requirement *r);
+    void effectsEqAdded(vector<Effect*> effects);
 };
 
 #endif // ARMORSEDITORWIDGET_H

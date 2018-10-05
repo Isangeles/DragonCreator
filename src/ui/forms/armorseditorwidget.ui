@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>541</width>
+    <width>661</width>
     <height>428</height>
    </rect>
   </property>
@@ -14,18 +14,20 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="8">
-    <widget class="QLabel" name="iconLabel">
+   <item row="4" column="6" colspan="3">
+    <widget class="QLabel" name="requirementsLabel">
      <property name="text">
-      <string>Icon</string>
+      <string>Requirements</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="8">
-    <widget class="QLabel" name="valueLabel">
-     <property name="text">
-      <string>Value</string>
-     </property>
+   <item row="2" column="11">
+    <widget class="QComboBox" name="materialComboBox">
+     <item>
+      <property name="text">
+       <string>none</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="6" column="2">
@@ -35,20 +37,10 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="6">
-    <widget class="QSpinBox" name="levelSpinBox"/>
-   </item>
-   <item row="6" column="5">
-    <widget class="QPushButton" name="effectEqAddButton">
+   <item row="0" column="8">
+    <widget class="QLabel" name="valueLabel">
      <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="9">
-    <widget class="QPushButton" name="addRequirementButton">
-     <property name="text">
-      <string>Add</string>
+      <string>Value</string>
      </property>
     </widget>
    </item>
@@ -61,16 +53,6 @@
      </item>
     </widget>
    </item>
-   <item row="0" column="5">
-    <widget class="QLabel" name="levelLabel">
-     <property name="text">
-      <string>Level</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="9">
-    <widget class="QSpinBox" name="valueSpinBox"/>
-   </item>
    <item row="4" column="2">
     <widget class="QLabel" name="modifiersLabel">
      <property name="text">
@@ -78,12 +60,53 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
-    <widget class="QLabel" name="typeLabel">
+   <item row="0" column="2">
+    <widget class="QLabel" name="idLabel">
      <property name="text">
-      <string>Type</string>
+      <string>ID</string>
      </property>
     </widget>
+   </item>
+   <item row="3" column="8">
+    <widget class="QLabel" name="iconLabel">
+     <property name="text">
+      <string>Icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4">
+    <widget class="QPushButton" name="addModifierButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="11">
+    <widget class="QPushButton" name="addButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLabel" name="levelLabel">
+     <property name="text">
+      <string>Level</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="spritesheetLabel">
+     <property name="text">
+      <string>Spritesheet</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="4">
+    <widget class="QListWidget" name="modifiersList"/>
+   </item>
+   <item row="7" column="2" colspan="4">
+    <widget class="QListWidget" name="effectsEqList"/>
    </item>
    <item row="2" column="8">
     <widget class="QLabel" name="materialLabel">
@@ -92,18 +115,8 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="2" colspan="4">
-    <widget class="QListWidget" name="effectsEqList"/>
-   </item>
-   <item row="4" column="5">
-    <widget class="QPushButton" name="addModifierButton">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2" colspan="4">
-    <widget class="QListWidget" name="modifiersList"/>
+   <item row="1" column="11">
+    <widget class="QSpinBox" name="armorRatSpinBox"/>
    </item>
    <item row="2" column="4" colspan="2">
     <widget class="QComboBox" name="typeComboBox">
@@ -134,17 +147,8 @@
      </item>
     </widget>
    </item>
-   <item row="3" column="9">
-    <widget class="QComboBox" name="iconComboBox">
-     <item>
-      <property name="text">
-       <string>default</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="1" column="9">
-    <widget class="QSpinBox" name="armorRatSpinBox"/>
+   <item row="0" column="4">
+    <widget class="QLineEdit" name="idEdit"/>
    </item>
    <item row="1" column="8">
     <widget class="QLabel" name="armorRatLabel">
@@ -153,48 +157,65 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
-    <widget class="QLabel" name="spritesheetLabel">
+   <item row="5" column="6" colspan="6">
+    <widget class="QListWidget" name="requirementsList"/>
+   </item>
+   <item row="0" column="6">
+    <widget class="QSpinBox" name="levelSpinBox"/>
+   </item>
+   <item row="0" column="11">
+    <widget class="QSpinBox" name="valueSpinBox"/>
+   </item>
+   <item row="4" column="5">
+    <widget class="QPushButton" name="removeModifierButton">
      <property name="text">
-      <string>Spritesheet</string>
+      <string>Remove</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="9">
-    <widget class="QComboBox" name="materialComboBox">
+   <item row="2" column="2">
+    <widget class="QLabel" name="typeLabel">
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="11">
+    <widget class="QComboBox" name="iconComboBox">
      <item>
       <property name="text">
-       <string>none</string>
+       <string>default</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="8" column="9">
-    <widget class="QPushButton" name="addButton">
+   <item row="4" column="9">
+    <widget class="QPushButton" name="addRequirementButton">
      <property name="text">
       <string>Add</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="idLabel">
+   <item row="4" column="11">
+    <widget class="QPushButton" name="removeRequirementButton">
      <property name="text">
-      <string>ID</string>
+      <string>Remove</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="4">
-    <widget class="QLineEdit" name="idEdit"/>
-   </item>
-   <item row="4" column="6" colspan="3">
-    <widget class="QLabel" name="requirementsLabel">
+   <item row="6" column="5">
+    <widget class="QPushButton" name="removeEffectEqButton">
      <property name="text">
-      <string>Requirements</string>
+      <string>Remove</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="6" colspan="4">
-    <widget class="QListWidget" name="requirementsList"/>
+   <item row="6" column="4">
+    <widget class="QPushButton" name="addEffectEqButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -32,7 +32,7 @@ ArmorsEditorWidget::ArmorsEditorWidget(ArmorsEditor *editor, QWidget *parent) :
 
     newModifierD = new NewModdifierDialog(this);
     newRequirementD = new NewRequirementDialog(this);
-    // TODO: init add effect dialog.
+    addEffectD = new AddEffectDialog(editor->getModule(), SLOT(effectsEqAdded(vector<Effect*>)), this);
 
     QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(onBaseObjectEdit()));
     QObject::connect(parent, SIGNAL(baseObjectSelected(BaseObject*)), this, SLOT(baseTreeObjectSelected(BaseObject*)));
@@ -157,6 +157,71 @@ void ArmorsEditorWidget::on_addButton_clicked()
 }
 
 /**
+ * @brief ArmorsEditorWidget::on_addModifierButton_clicked Triggered on add modifier button clicked
+ */
+void ArmorsEditorWidget::on_addModifierButton_clicked()
+{
+    newModifierD->open();
+}
+
+/**
+ * @brief ArmorsEditorWidget::on_addRequiementButton_clicked Triggered on add requirement
+ *        button clicked
+ */
+void ArmorsEditorWidget::on_addRequirementButton_clicked()
+{
+    newRequirementD->open();
+}
+
+/**
+ * @brief ArmorsEditorWidget::on_addEffectEqButton_clickeds Triggered after
+ *        add effect eq clicked.
+ */
+void ArmorsEditorWidget::on_addEffectEqButton_clicked()
+{
+    addEffectD->open();
+}
+
+/**
+ * @brief ArmorsEditorWidget::on_removeModifierButton_clicked Triggered on remove
+ *        modifier button clicked
+ */
+void ArmorsEditorWidget::on_removeModifierButton_clicked()
+{
+    QList<QListWidgetItem*> selection = ui->modifiersList->selectedItems();
+    for(QListWidgetItem *i : selection)
+    {
+        delete i;
+    }
+}
+
+/**
+ * @brief ArmorsEditorWidget::on_removeRequirementButton_clicked Tiggered on remove
+ *        requirement button clicked.
+ */
+void ArmorsEditorWidget::on_removeRequirementButton_clicked()
+{
+    QList<QListWidgetItem*> selection = ui->requirementsList->selectedItems();
+    for(QListWidgetItem *i : selection)
+    {
+        delete i;
+    }
+}
+
+/**
+ * @brief ArmorsEditorWidget::on_removeEffectEqButton_clicked Triggered on effect
+ *        eq button clicked.
+ */
+void ArmorsEditorWidget::on_removeEffectEqButton_clicked()
+{
+    QList<QListWidgetItem*> selection = ui->effectsEqList->selectedItems();
+    for(QListWidgetItem *i : selection)
+    {
+        delete i;
+    }
+}
+
+/**
  * @brief ArmorsEditorWidget::baseTreeObjectSelected Triggered on select item from
  *        base tree UI list.
  * @param o Selected object.
@@ -190,4 +255,17 @@ void ArmorsEditorWidget::requirementAdded(Requirement *r)
 {
     RequirementListItem* rItem = new RequirementListItem(*r);
     ui->requirementsList->addItem(rItem);
+}
+
+/**
+ * @brief ArmorsEditorWidget::effectsEqAdded Triggered on effect eq add.
+ * @param effects Effect to add.
+ */
+void ArmorsEditorWidget::effectsEqAdded(vector<Effect*> effects)
+{
+    for(Effect *e : effects)
+    {
+        BaseObjectListItem *effectListItem = new BaseObjectListItem(*e);
+        ui->effectsEqList->addItem(effectListItem);
+    }
 }

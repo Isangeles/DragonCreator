@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <base>
- <item armRat="0" value="2" type="chest" reqLvl="1" id="acCS00" material="cloth">
+ <item reqLvl="1" type="chest" material="cloth" value="2" id="acCS00" armRat="0">
   <icon>shirtWhite.png</icon>
   <maleSprite>m-cloth-1222211-80x90.png</maleSprite>
   <femaleSprite>f-cloth-1222211-80x90.png</femaleSprite>
@@ -9,7 +9,7 @@
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="5" value="100" type="chest" reqLvl="3" id="aImpLArm01" material="leather">
+ <item reqLvl="3" type="chest" material="leather" value="100" id="aImpLArm01" armRat="5">
   <icon>leatherArmor01.png</icon>
   <maleSprite>m-leather-1222211-80x90.png</maleSprite>
   <femaleSprite>f-leather-1222211-80x90.png</femaleSprite>
@@ -18,7 +18,7 @@
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="8" value="180" type="chest" reqLvl="3" id="aRedSwLArm01" material="leather">
+ <item reqLvl="3" type="chest" material="leather" value="180" id="aRedSwLArm01" armRat="8">
   <icon>leatherArmor02.png</icon>
   <maleSprite>m-leather-1222211-80x90.png</maleSprite>
   <femaleSprite>f-leather-1222211-80x90.png</femaleSprite>
@@ -27,7 +27,7 @@
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="50" value="5000" type="chest" reqLvl="10" id="aImpCArm01" material="steel">
+ <item reqLvl="10" type="chest" material="steel" value="5000" id="aImpCArm01" armRat="50">
   <icon>steelArmorC.png</icon>
   <maleSprite>m-mail-1222211-80x90.png</maleSprite>
   <femaleSprite>f-mail-1222211-80x90.png</femaleSprite>
@@ -36,7 +36,7 @@
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="20" value="2500" type="head" reqLvl="10" id="aImpCHelm01" material="steel">
+ <item reqLvl="10" type="head" material="steel" value="2500" id="aImpCHelm01" armRat="20">
   <icon>steelHelmetC.png</icon>
   <maleSprite>m-headBlack-1222211-80x90.png</maleSprite>
   <femaleSprite>f-headBlack-1222211-80x90.png</femaleSprite>
@@ -45,21 +45,21 @@
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="20" value="2500" type="hands" reqLvl="10" id="aImpCGlov01" material="steel">
+ <item reqLvl="10" type="hands" material="steel" value="2500" id="aImpCGlov01" armRat="20">
   <icon>steelGlovesC.png</icon>
   <bonuses>
    <statsBonus>0;1;0;0;0;</statsBonus>
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="20" value="2500" type="feet" reqLvl="10" id="aImpCBoot01" material="steel">
+ <item reqLvl="10" type="feet" material="steel" value="2500" id="aImpCBoot01" armRat="20">
   <icon>steelBootsC.png</icon>
   <bonuses>
    <statsBonus>0;1;0;0;0;</statsBonus>
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="20" value="1000" type="chest" reqLvl="6" id="aImpArm01" material="iron">
+ <item reqLvl="6" type="chest" material="iron" value="1000" id="aImpArm01" armRat="20">
   <icon>steelArmor.png</icon>
   <maleSprite>m-mail-1222211-80x90.png</maleSprite>
   <femaleSprite>f-mail-1222211-80x90.png</femaleSprite>
@@ -68,27 +68,36 @@
   </bonuses>
   <equipEffects/>
  </item>
- <item armRat="5" value="500" type="head" reqLvl="6" id="aImpHelm01" material="iron">
+ <item reqLvl="6" type="head" material="iron" value="500" id="aImpHelm01" armRat="5">
   <icon>steelHelmet.png</icon>
   <maleSprite>m-headBlack-1222211-80x90.png</maleSprite>
   <femaleSprite>f-headBlack-1222211-80x90.png</femaleSprite>
   <bonuses/>
   <equipEffects/>
  </item>
- <item armRat="5" value="500" type="hands" reqLvl="6" id="aImpGlov01" material="iron">
+ <item reqLvl="6" type="hands" material="iron" value="500" id="aImpGlov01" armRat="5">
   <icon>steelGloves.png</icon>
   <bonuses/>
   <equipEffects/>
  </item>
- <item armRat="5" value="500" type="feet" reqLvl="6" id="aImpBoot01" material="iron">
+ <item reqLvl="6" type="feet" material="iron" value="500" id="aImpBoot01" armRat="5">
   <icon>steelBoots.png</icon>
   <bonuses/>
   <equipEffects/>
  </item>
- <item reqLevel="2" value="2" type="feet" id="test" armorRat="0" material="none">
+ <item type="feet" armorRat="0" reqLevel="2" material="none" value="2" id="test">
   <icon>default</icon>
   <spritesheet>default</spritesheet>
   <bonuses/>
+  <equipReq/>
+  <equipEffects/>
+ </item>
+ <item reqLvl="4" type="feet" armorRat="0" material="none" id="healthMod test" value="0">
+  <icon>default</icon>
+  <spritesheet>default</spritesheet>
+  <bonuses>
+   <healthModifier value="90"/>
+  </bonuses>
   <equipReq/>
   <equipEffects/>
  </item>
