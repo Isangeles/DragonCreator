@@ -1,6 +1,6 @@
 /*
  * settingswidget.h
- * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -33,18 +33,21 @@ namespace Ui {
 class SettingsWidget;
 }
 
+/**
+ * @brief Class for settings widget.
+ */
 class SettingsWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit SettingsWidget(QWidget *parent = 0);
+    explicit SettingsWidget(QWidget *parent = nullptr);
     ~SettingsWidget();
 
 private:
     Ui::SettingsWidget *ui;
 private slots:
-    void on_gameDirB_clicked();
+    void on_gdataPathB_clicked();
     void on_settingsDialog_accepted();
     void on_settingsDialog_rejected();
 };

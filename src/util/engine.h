@@ -29,7 +29,7 @@ public:
     static const std::string BASE_EXT;
     static const std::string CONF_EXT;
     static const std::string MOD_CONF_NAME;
-    static const std::string GBASE_PATH;
+    static const std::string GDATA_NAME;
 private:
     Engine();
 };

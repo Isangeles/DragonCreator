@@ -1,7 +1,7 @@
 /*
  * moduleeditor.cpp
  *
- * Copyright (C) 2017 Dariusz Sikora<darek@dellins-solus>
+ * Copyright (C) 2017-2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -30,7 +30,7 @@ ModuleEditor::ModuleEditor(string pathToModule)
     {
         openMod = new Module(pathToModule);
 
-        ZipEditor *gData = new ZipEditor(Config::getGameDir() + "/" + Engine::GBASE_PATH);
+        ZipEditor *gData = new ZipEditor(Config::getGdataPath());
 
         iEdit = new ItemsEditor(openMod->getItemsPath(), openMod, gData);
         eEdit = new EffectsEditor(openMod->getEffectsPath(), openMod, gData);
@@ -38,7 +38,7 @@ ModuleEditor::ModuleEditor(string pathToModule)
     catch(runtime_error &e)
     {
         cerr << "module_editor_init_fail_msg:" << e.what() << endl;
-        throw runtime_error("Invalid path to game module direcotry!");
+        throw runtime_error("Invalid path to graphic data archive!");
     }
 }
 /**

@@ -21,7 +21,6 @@
 const std::string Engine::BASE_EXT = ".base";
 const std::string Engine::CONF_EXT = ".conf";
 const std::string Engine::MOD_CONF_NAME = "mod.conf";
-const std::string Engine::GBASE_PATH = "data/gData";
 /**
  * @brief Engine::Engine Private constructor
  */

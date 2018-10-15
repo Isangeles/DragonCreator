@@ -20,7 +20,7 @@
 
 const string Config::CONF_FILE_PATH = "dragoncreator.conf";
 const string Config::REQ_ENGINE_VERSION = "0.7";
-string Config::gameDir = TConnector::getSetting("game_path");//"/home/darek/Senlin"; //TEST DIR
+string Config::gdata_path = TConnector::getSetting("game_path");//"/home/darek/Senlin"; //TEST DIR
 /**
  * @brief Config::Config Private constructor to prevent initialization
  */
@@ -36,39 +36,50 @@ string Config::getEngineVer()
     return REQ_ENGINE_VERSION;
 }
 /**
- * @brief Config::getGameDir Returns current game directory
- * @return String with absolute path to game directory
+ * @brief Config::getGameDir Returns current path to graphic archive.
+ * @return String with absolute path to graphic archive.
  */
-string Config::getGameDir()
+string Config::getGdataPath()
 {
-    return gameDir;
+    return gdata_path;
 }
 /**
- * @brief Config::setGameDir Sets directory with specified path as game directory
- * @param path String with path to directory
- * @return  True if specified directory was susscessfully set, false otherwise
+ * @brief Config::setGameDir Sets specified path as grpahic archive path.
+ * @param path String with system path.
+ * @return True if specified path was susscessfully set, false otherwise.
  */
-bool Config::setGameDir(string path)
+bool Config::setGdataPath(string path)
 {
-    if(isGameDirValid(path))
+    if(isGdataPathValid(path))
     {
-        gameDir = path;
+        gdata_path = path;
         return true;
     }
     else
         return false;
 }
 
-bool Config::isGameDirValid(string path)
+/**
+ * @brief Config::isGameDirValid Validates whether specifeid path is valid
+ *        system path to grphical archive.
+ * @param path String with system path to archive.
+ * @return True if specified path is valid, false otherwise.
+ */
+bool Config::isGdataPathValid(string path)
 {
     //TODO path validation
     return true;
 }
 
+/**
+ * @brief Config::saveConf Saves current configuration parameters to
+ *        config file.
+ * @return True if configuration was successfully saved, false otherwise.
+ */
 bool Config::saveConf()
 {
     string conf = "";
-    conf += "game_path:" + gameDir + ";\n";
+    conf += "game_path:" + gdata_path + ";\n";
 
     filebuf fb;
     fb.open(CONF_FILE_PATH, ios::out);

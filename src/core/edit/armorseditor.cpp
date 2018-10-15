@@ -18,7 +18,7 @@
 */
 #include "armorseditor.h"
 
-const string ArmorsEditor::ARMORS_ICONS_PATH = "graphic/icon/armor";
+const string ArmorsEditor::ARMORS_ICONS_PATH = "graphic/icon/item/armor";
 const string ArmorsEditor::ARMORS_SPRITESHEETS_PATH = "graphic/sprite/item";
 
 /**

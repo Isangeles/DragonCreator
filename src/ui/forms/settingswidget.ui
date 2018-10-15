@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>Settings</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -31,19 +31,19 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QLineEdit" name="gameDirEdit"/>
+    <widget class="QLineEdit" name="gdataPathEdit"/>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="gameDirLabel">
+    <widget class="QLabel" name="gdataPathLabel">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Graphic archive:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="2">
-    <widget class="QPushButton" name="gameDirB">
+    <widget class="QPushButton" name="gdataPathB">
      <property name="text">
-      <string>PushButton</string>
+      <string>Set</string>
      </property>
     </widget>
    </item>

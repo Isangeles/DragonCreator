@@ -37,7 +37,6 @@ ArmorsEditorWidget::ArmorsEditorWidget(ArmorsEditor *editor, QWidget *parent) :
     QObject::connect(this, SIGNAL(itemAdded()), parent, SLOT(onBaseObjectEdit()));
     QObject::connect(parent, SIGNAL(baseObjectSelected(BaseObject*)), this, SLOT(baseTreeObjectSelected(BaseObject*)));
 
-    // TODO: fill armor type combobox.
     for(string &file : editor->getIconFiles())
     {
         ui->iconComboBox->addItem(QString::fromStdString(file));

@@ -1,6 +1,6 @@
 /*
  * settingswidget.cpp
- * Copyright (C) 2018 Dariusz Sikora<darek@pc-solus>
+ * Copyright (C) 2018 Dariusz Sikora<dev@isangeles.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -30,10 +30,7 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
 
     setWindowTitle(tr("Settings"));
 
-    ui->settingTitle->setText(tr("Settings"));
-    ui->gameDirLabel->setText(tr("Game directory:"));
-    ui->gameDirB->setText(tr("Change"));
-    ui->gameDirEdit->setText(QString::fromStdString(Config::getGameDir()));
+    ui->gdataPathEdit->setText(QString::fromStdString(Config::getGdataPath()));
 }
 
 SettingsWidget::~SettingsWidget()
@@ -43,14 +40,14 @@ SettingsWidget::~SettingsWidget()
 /**
  * @brief SettingsWidget::on_gameDirB_clicked Triggered on change game directory button clicked
  */
-void SettingsWidget::on_gameDirB_clicked()
+void SettingsWidget::on_gdataPathB_clicked()
 {
     QFileDialog* fd = new QFileDialog(this);
 
-    QString path = fd->getExistingDirectory();
+    QString path = fd->getOpenFileUrl(this).toString().replace("file://", "");
     if(!path.isEmpty())
     {
-        ui->gameDirEdit->setText(path);
+        ui->gdataPathEdit->setText(path);
     }
 }
 /**
@@ -58,9 +55,9 @@ void SettingsWidget::on_gameDirB_clicked()
  */
 void SettingsWidget::on_settingsDialog_accepted()
 {
-    QString gameDir = ui->gameDirEdit->text();
+    QString gdataPath = ui->gdataPathEdit->text();
 
-    if(Config::setGameDir(gameDir.toStdString()))
+    if(Config::setGdataPath(gdataPath.toStdString()))
     {
         if(Config::saveConf())
             QMessageBox::information(this, tr("Information"), tr("Settings saved"));
@@ -68,7 +65,7 @@ void SettingsWidget::on_settingsDialog_accepted()
             QMessageBox::warning(this, tr("Waring"), tr("Unable to save settings"));
     }
     else
-        QMessageBox::warning(this, tr("Warning"), tr("Game directory is invalid"));
+        QMessageBox::warning(this, tr("Warning"), tr("Path to graphic data archive is invalid"));
 
     close();
 }

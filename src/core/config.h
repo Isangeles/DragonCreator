@@ -34,15 +34,15 @@ class Config
 {
 public:
     static string getEngineVer();
-    static string getGameDir();
-    static bool setGameDir(string path);
+    static string getGdataPath();
+    static bool setGdataPath(string path);
     static bool saveConf();
 private:
     Config();
-    static bool isGameDirValid(string path);
+    static bool isGdataPathValid(string path);
     static const string CONF_FILE_PATH;
     static const string REQ_ENGINE_VERSION;
-    static string gameDir;
+    static string gdata_path;
 };
 
 #endif // CONFIG_H

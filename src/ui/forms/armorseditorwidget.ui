@@ -28,6 +28,26 @@
        <string>none</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>wood</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>iron</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>steel</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>nephrite</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="6" column="2">
